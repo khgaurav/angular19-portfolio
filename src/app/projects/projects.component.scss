@@ -1,0 +1,120 @@
+#projects {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.project-card {
+  display: block;
+  background-color: var(--light-navy);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: transform 0.25s ease;
+  position: relative;
+  text-decoration: none;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-7px);
+
+    .project-title {
+      color: var(--green);
+    }
+
+    .project-links a {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-header {
+  margin-bottom: 1rem;
+}
+
+.project-title {
+  color: var(--lightest-slate);
+  font-size: 22px;
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.project-description {
+  color: var(--slate);
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.project-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 auto 0; // Push links to bottom
+  font-family: var(--font-mono);
+  font-size: 13px;
+
+  li {
+    color: var(--green);
+    padding: 6px 14px;
+    background-color: rgba(100, 255, 218, 0.15);
+    border-radius: 6px;
+    border: 1px solid rgba(100, 255, 218, 0.3);
+  }
+}
+
+.project-links {
+  margin-top: 2rem;
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+
+  a {
+    color: var(--lightest-slate);
+    font-size: 20px;
+    transition: all 0.25s ease;
+    opacity: 0.8;
+    transform: translateY(3px);
+
+    &:hover {
+      color: var(--green);
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    padding: 1.5rem;
+  }
+}

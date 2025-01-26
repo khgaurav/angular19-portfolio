@@ -1,0 +1,44 @@
+<!-- Contact Section at Page End -->
+<section #contactSection class="contact-section">
+  <div class="contact-content">
+    <h2 class="contact-heading">Get In Touch</h2>
+
+    <div class="contact-links">
+      <a href="mailto:kothamachuharish.g@northeastern.edu" class="contact-link">
+        <i class="fas fa-envelope"></i>
+        kothamachuharish.g&#64;northeastern.edu
+      </a>
+
+      <a href="https://linkedin.com/in/gauravkh" class="contact-link" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+        linkedin.com/in/gauravkh
+      </a>
+
+      <a href="https://github.com/khgaurav" class="contact-link" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+        github.com/khgaurav
+      </a>
+    </div>
+
+    <div class="copyright">
+      &copy; {{ currentYear }} Gaurav Kothamachu Harish. All rights reserved.
+    </div>
+  </div>
+</section>
+
+<!-- Persistent Footer -->
+@if (!isContactSectionVisible) {
+<footer class="persistent-footer">
+  <div class="footer-icons">
+    <a href="https://github.com/khgaurav" target="_blank" rel="noopener">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://linkedin.com/in/gauravkh" target="_blank" rel="noopener">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="mailto:kothamachuharish.g@northeastern.edu">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+</footer>
+}

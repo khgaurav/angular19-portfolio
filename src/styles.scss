@@ -1,1 +1,201 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+/* ========== Global Variables ========== */
+:root {
+  // Colors
+  --navy: #0a192f;
+  --light-navy: #112240;
+  --lightest-navy: #233554;
+  --slate: #8892b0;
+  --light-slate: #a8b2d1;
+  --lightest-slate: #ccd6f6;
+  --green: #64ffda;
+  --white: #e6f1ff;
+
+  // Fonts
+  --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+
+  // Sizes
+  --nav-height: 80px;
+  --border-radius: 4px;
+  --scrollbar-width: 8px;
+  --footer-height: 80px;
+}
+
+/* ========== Base Styles ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: var(--navy);
+  color: var(--slate);
+  font-family: var(--font-sans);
+  line-height: 1.3;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--lightest-slate);
+  margin: 0 0 10px 0;
+}
+
+a {
+  color: var(--green);
+  text-decoration: none;
+  transition: all 0.25s ease;
+
+  &:hover {
+    color: var(--white);
+  }
+}
+
+/* ========== Typography ========== */
+.text-lg {
+  font-size: clamp(18px, 5vw, 20px);
+}
+
+.heading-xl {
+  font-size: clamp(40px, 8vw, 80px);
+  line-height: 1.1;
+}
+
+.heading-lg {
+  font-size: clamp(32px, 6vw, 48px);
+}
+
+.numbered-heading {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: clamp(16px, 3vw, 20px);
+  color: var(--green);
+  margin: 10px 0 40px;
+
+  &::before {
+    // content: '01.';
+    margin-right: 10px;
+    font-weight: 400;
+    color: var(--green);
+  }
+}
+
+/* ========== Layout ========== */
+section {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  padding: 0px 2rem;
+  position: relative;
+  scroll-margin-top: 100px;
+}
+
+.scroll-indicators {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    margin: 15px 0;
+    border-radius: 50%;
+    background-color: var(--slate);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.active {
+      background-color: var(--green);
+      transform: scale(1.4);
+    }
+  }
+}
+
+/* Scroll progress indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background-color: var(--green);
+  z-index: 1001;
+  transition: width 0.3s ease;
+}
+
+.container {
+  padding: 0 50px;
+}
+
+/* ========== Media Queries ========== */
+@media (max-width: 768px) {
+  section {
+    padding: 80px 0;
+  }
+
+  .container {
+    padding: 0 25px;
+  }
+
+  .numbered-heading {
+    margin-bottom: 30px;
+  }
+}
+
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+}
+
+/* ========== Material Overrides ========== */
+.mat-card {
+  background-color: var(--light-navy) !important;
+  color: var(--light-slate) !important;
+  border-radius: var(--border-radius) !important;
+}
+
+.mat-toolbar {
+  background-color: rgba(10, 25, 47, 0.85) !important;
+  backdrop-filter: blur(10px) !important;
+}
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  padding-bottom: var(--footer-height) //Space for fixed footer
+}
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--navy);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--slate);
+  border-radius: 4px;
+
+  &:hover {
+    background: var(--green);
+  }
+}

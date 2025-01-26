@@ -1,0 +1,40 @@
+<nav class="header">
+  <div class="header__content">
+    <a href="/" class="logo" aria-label="home">
+      <span class="logo__text">G</span>
+    </a>
+
+    <div class="nav__links">
+      <ol class="nav__list">
+        <li class="nav__item">
+          <a href="#about"
+             class="nav__link"
+             [class.active]="activeSection === 'about'">
+            About
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="#experience"
+             class="nav__link"
+             [class.active]="activeSection === 'experience'">
+            Experience
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="#projects"
+             class="nav__link"
+             [class.active]="activeSection === 'projects'">
+            Projects
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="#contact"
+             class="nav__link"
+             [class.active]="activeSection === 'contact'">
+            Contact
+          </a>
+        </li>
+      </ol>
+    </div>
+  </div>
+</nav>
