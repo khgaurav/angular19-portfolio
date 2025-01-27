@@ -8,6 +8,6 @@ RUN npm run build --prod
 
 # Stage 2: Serve
 FROM nginx:alpine
-COPY --from=build /app/dist/gauravkh-portfolio /usr/share/nginx/html
+COPY --from=builder /app/dist/gauravkh-portfolio /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
