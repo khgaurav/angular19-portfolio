@@ -1,4 +1,3 @@
-// header.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ScrollService } from '../services/scroll.service';
 

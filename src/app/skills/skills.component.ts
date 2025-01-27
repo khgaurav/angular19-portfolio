@@ -1,4 +1,3 @@
-// skills.component.ts
 import { Component } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 

@@ -1,4 +1,3 @@
-// contact.component.ts
 import { Component, ElementRef, HostListener, ViewChild, AfterViewInit } from '@angular/core';
 
 @Component({
