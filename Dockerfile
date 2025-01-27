@@ -4,10 +4,10 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run build -- --configuration=production
+RUN npm run build --prod
 
 # Stage 2: Serve
 FROM nginx:alpine
-COPY --from=builder /app/dist/gauravkh-portfolio /usr/share/nginx/html
+COPY --from=build /app/dist/gauravkh-portfolio /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
