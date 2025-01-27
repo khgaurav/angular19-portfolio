@@ -1,59 +1,75 @@
-# Gaurav's Portfolio
+# Gaurav's Portfolio 🚀
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+[![Angular](https://img.shields.io/badge/Angular-19.1.4-DD0031?logo=angular)](https://angular.io/)
+[![Docker](https://img.shields.io/badge/Docker-✓-2496ED?logo=docker)](https://www.docker.com/)
+[![Responsive](https://img.shields.io/badge/Responsive-✓-44CC11)](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
 
-## Development server
+> Modern portfolio for Engineering roles featuring smooth animations and technical depth
 
-To start a local development server, run:
+![Portfolio Preview](docs/preview.gif)
 
+## 🦾 Project Overview
+A single-page reactive portfolio showcasing robotics projects and AI expertise, built with:
+- Angular 19 with Material Design components
+- GSAP/ScrollMagic for smooth scroll animations
+- Docker containerization for deployment
+- Optimized for performance
+
+## ✨ Key Features
+- **Robotics-First Design**: Clean layout optimized for technical content
+- **Reactive Animations**: Scroll-triggered timelines and 3D transforms
+- **Impact Metrics**: STAR-method project presentation
+- **Docker Ready**: Production-ready container configuration
+- **Accessibility**: WCAG 2.1 compliant components
+
+## 🛠 Tech Stack
+| Category       | Technologies                                                                 |
+|----------------|------------------------------------------------------------------------------|
+| **Frontend**   | Angular 19 • TypeScript • SCSS • Angular Material                            |
+| **Animations** | GSAP • ScrollMagic • Angular Animations                                      |
+| **DevOps**     | Docker • Nginx                              |
+| **Tools**      | ESLint • Prettier • Husky • Lighthouse                                       |
+
+## 🚀 Installation
 ```bash
+# Clone repository
+git clone https://github.com/yourusername/robotics-portfolio.git
+cd robotics-portfolio
+
+# Install dependencies (use --force if needed)
+npm install --force
+
+# Start development server
 ng serve
 ```
+Visit `http://localhost:4200`
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+## 🐳 Docker Deployment
 ```bash
-ng generate component component-name
+# Build image
+docker build -t portfolio .
+
+# Run container
+docker run -d -p 80:80 --name portfolio portfolio
+```
+Access at `https://gauravkh.co.in`
+
+## 🔧 Customization Guide
+### 1. Content Updates
+| Section       | Location                          |
+|---------------|-----------------------------------|
+| Projects      | `src/app/components/projects`     |
+| Skills        | `src/app/skills/skills.component` |
+| Contact Form  | `src/app/services/contact.service`|
+
+### 2. Styling
+```scss
+// Custom theme (src/styles.scss)
+$primary: #0a192f; // Navy
+$accent: #64ffda;  // Green
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🤖 Roadmap
+- [ ] WebGL robot model viewer
+- [ ] Dark mode toggle
+- [ ] SEO optimizations
