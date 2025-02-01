@@ -54,6 +54,10 @@
     padding: 10px;
     transition: color 0.25s ease;
 
+    &.active {
+      color: var(--green);
+    }
+
     &:hover {
       color: var(--green);
     }
