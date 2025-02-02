@@ -1,44 +1,54 @@
 <section id="projects">
   <h2 class="numbered-heading">Some Things I've Built</h2>
 
-  <div class="projects-grid">
+  <div class="projects-list">
     @for (project of projects; track project) {
       <a class="project-card"
          [href]="project.github || project.demo"
          target="_blank"
-         [attr.aria-label]="'View ' + project.title">
+         [attr.aria-label]="'View ' + project.title"
+         [@fadeInUp]>
         <div class="project-content">
           <div class="project-header">
             <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-description">{{ project.description }}</p>
           </div>
 
-          <div class="project-description">
-            <p>{{ project.description }}</p>
-          </div>
+            @if (project.keyPoints) {
+            <div class="project-keypoints">
+              <ul>
+              @for (point of project.keyPoints; track point) {
+                <li>{{ point }}</li>
+              }
+              </ul>
+            </div>
+            }
 
-          <ul class="project-tech-list">
-            @for (tech of project.tech; track tech) {
-              <li>{{ tech }}</li>
-            }
-          </ul>
+          <div class="project-footer">
+            <ul class="project-tech-list">
+              @for (tech of project.tech; track tech) {
+                <li>{{ tech }}</li>
+              }
+            </ul>
 
-          <div class="project-links">
-            @if (project.github) {
-              <a [href]="project.github"
-                 target="_blank"
-                 (click)="$event.stopPropagation()"
-                 aria-label="GitHub repository">
-                <i class="fab fa-github"></i>
-              </a>
-            }
-            @if (project.demo) {
-              <a [href]="project.demo"
-                 target="_blank"
-                 (click)="$event.stopPropagation()"
-                 aria-label="Live demo">
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-            }
+            <div class="project-links">
+              @if (project.github) {
+                <a [href]="project.github"
+                   target="_blank"
+                   (click)="$event.stopPropagation()"
+                   aria-label="GitHub repository">
+                  <i class="fab fa-github"></i>
+                </a>
+              }
+              @if (project.demo) {
+                <a [href]="project.demo"
+                   target="_blank"
+                   (click)="$event.stopPropagation()"
+                   aria-label="Live demo">
+                   <i class="fas fa-external-link-alt"></i>
+                </a>
+              }
+            </div>
           </div>
         </div>
       </a>

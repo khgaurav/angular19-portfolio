@@ -11,7 +11,7 @@
 ## 🦾 Project Overview
 A single-page reactive portfolio showcasing robotics projects and AI expertise, built with:
 - Angular 19 with Material Design components
-- GSAP/ScrollMagic for smooth scroll animations
+- Angular animations for smooth scroll animations
 - Docker containerization for deployment
 - Optimized for performance
 
@@ -23,18 +23,13 @@ A single-page reactive portfolio showcasing robotics projects and AI expertise, 
 - **Accessibility**: WCAG 2.1 compliant components
 
 ## 🛠 Tech Stack
-| Category       | Technologies                                                                 |
-|----------------|------------------------------------------------------------------------------|
-| **Frontend**   | Angular 19 • TypeScript • SCSS • Angular Material                            |
-| **Animations** | GSAP • ScrollMagic • Angular Animations                                      |
-| **DevOps**     | Docker • Nginx                              |
-| **Tools**      | ESLint • Prettier • Husky • Lighthouse                                       |
+- **Technologies**: Angular 19 • TypeScript • SCSS • Angular Material • Angular Animations • Docker • Nginx • ESLint
 
 ## 🚀 Installation
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/robotics-portfolio.git
-cd robotics-portfolio
+git clone https://github.com/khgaurav/angular19-portfolio.git
+cd angular19-portfolio
 
 # Install dependencies (use --force if needed)
 npm install --force
@@ -43,14 +38,13 @@ npm install --force
 ng serve
 ```
 Visit `http://localhost:4200`
-
-## 🐳 Docker Deployment
-```bash
-# Build image
-docker build -t portfolio .
-
-# Run container
-docker run -d -p 80:80 --name portfolio portfolio
+```yaml
+services:
+  angular19-portfolio:
+    build: .
+    ports:
+      - 5699:80
+    restart: always
 ```
 Access at `https://gauravkh.co.in`
 
@@ -58,9 +52,11 @@ Access at `https://gauravkh.co.in`
 ### 1. Content Updates
 | Section       | Location                          |
 |---------------|-----------------------------------|
+| Hero          | `src/app/components/hero`         |
 | Projects      | `src/app/components/projects`     |
-| Skills        | `src/app/skills/skills.component` |
-| Contact Form  | `src/app/services/contact.service`|
+| Experience    | `src/app/components/experience`   |
+| Skills        | `src/app/components/skills`       |
+| Contact Form  | `src/app/components/contact`      |
 
 ### 2. Styling
 ```scss
