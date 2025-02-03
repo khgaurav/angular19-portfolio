@@ -1,6 +1,5 @@
 <section id="skills">
   <h2 class="numbered-heading">My Toolbox</h2>
-
   <div class="skills-grid">
     @for (category of skillCategories; track category; let i = $index) {
       <div class="skill-category">
@@ -8,8 +7,10 @@
         <ul class="skill-list">
           @for (skill of category.skills; track skill) {
             <li class="skill-item" [@fadeIn]="{ value: '', params: { delay: i * 0.1 } }">
-              <strong>{{ skill.name }}</strong>
-              <p>{{ skill.description }}</p>
+              <details>
+                <summary>{{ skill.name }}</summary>
+                <p>{{ skill.description }}</p>
+              </details>
             </li>
           }
         </ul>

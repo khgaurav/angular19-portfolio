@@ -34,13 +34,13 @@ export class ProjectsComponent {
       description: 'Autonomous rover system ranked 7th globally at University Rover Challenge 2020',
       tech: [
         'ROS',
-        'SICK MRS1000 LiDAR',
+        'OpenCV',
+        'EKF Localization',
+        'Gazebo',
+        'LiDAR',
         'Intel RealSense',
         'STM32',
-        'OpenCV',
-        'Gazebo',
         'Ubiquiti 900MHz Radios',
-        'EKF Localization',
         'pyqt5 GUI'
       ],
       keyPoints: [
@@ -55,7 +55,7 @@ export class ProjectsComponent {
     {
       title: 'Path Planning with RL & NeRF',
       description: 'Optimized DDPG algorithm with 2x faster convergence using Whale Optimization and Neural Radiance Fields',
-      tech: ['PyTorch', 'ROS', 'NeRF', 'DDPG', 'MuJoCo'],
+      tech: ['PyTorch', 'TorchRL', 'NeRF', 'MuJoCo'],
       keyPoints: [
         'Reduced training time by 40% using prioritized experience replay',
         'Achieved 5% improvement in path optimality using WOA hyperparameter tuning',
@@ -67,7 +67,7 @@ export class ProjectsComponent {
     {
       title: 'Multi-Agent Trajectory Optimization',
       description: 'Bayesian optimization framework for drone swarm coordination',
-      tech: ['Python', 'BO', 'GTSAM', 'ROS', 'Docker'],
+      tech: ['Python', 'BO', 'GTSAM', 'Docker'],
       keyPoints: [
         'Implemented min-snap trajectories with 98% dynamic feasibility',
         'Reduced collision probability by 75% using Gaussian process classification',

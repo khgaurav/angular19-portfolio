@@ -66,6 +66,35 @@
   }
 }
 
+/* Styling details and adding clickable indicator */
+.skill-item details {
+  cursor: pointer;
+}
+
+.skill-item summary {
+  list-style: none;
+  outline: none;
+  font-weight: bold;
+  position: relative;
+  padding-right: 1.5em;  /* reserve space for the arrow */
+  cursor: pointer;
+}
+
+/* Create the arrow indicator */
+.skill-item summary::after {
+  content: "▼";
+  display: inline-block; /* allow rotation */
+  position: absolute;
+  right: 0;
+  transition: transform 0.2s ease;
+}
+
+/* Rotate the arrow when the details element is open */
+.skill-item details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+
 @media (max-width: 768px) {
   .skills-grid {
     grid-template-columns: 1fr;

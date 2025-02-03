@@ -35,114 +35,74 @@ export class SkillsComponent {
       skills: [
         {
           name: 'Reinforcement Learning',
-          description: 'Research in DDPG, PPO, and NeRF integration for robotic path planning. Developed optimized RL agents for 7-DoF manipulators'
+          description: 'Developed and fine-tuned RL algorithms, integrating methods like DDPG and PPO to solve robotic control and planning problems.'
         },
         {
-          name: 'Neural Radiance Fields',
-          description: 'Implemented NeRF for 3D scene reconstruction and integration with RL frameworks'
+          name: 'Sensor Fusion & Perception',
+          description: 'Implemented sensor fusion techniques using Kalman filters and deep learning for robust perception in dynamic environments, ideal for autonomous navigation.'
         },
         {
-          name: 'Robot Operating System',
-          description: 'Expertise in ROS/ROS2 for autonomous systems (Mars Rover, manipulators) with sensor integration'
-        },
-        {
-          name: 'Autonomous Navigation',
-          description: 'Path planning algorithms using LIDAR, GPS, and IMU fusion for Mars Rover challenge'
+          name: 'ROS/ROS2 Expertise',
+          description: 'Designed and maintained autonomous systems with ROS, integrating hardware sensors and advanced planning algorithms for precise control.'
         },
         {
           name: 'Computer Vision',
-          description: 'OpenCV, TensorFlow for AR tag detection, obstacle avoidance, and semantic segmentation'
-        },
-        {
-          name: 'Sensor Fusion',
-          description: 'Kalman filters, RTABmap for 3D mapping with RGB-D cameras and IMU'
+          description: 'Leveraged TensorFlow and OpenCV for tasks such as obstacle detection and scene understanding to support robotic decision-making.'
         }
       ]
     },
     {
-      name: 'Tools & Frameworks',
+      name: 'Software Development & Engineering',
       skills: [
-        {
-          name: 'PyTorch/TensorFlow',
-          description: 'Deep learning implementations for robotics perception and control'
-        },
-        {
-          name: 'Gazebo/MuJoCo',
-          description: 'High-fidelity simulations for manipulators and autonomous systems'
-        },
-        {
-          name: 'SICK LiDAR',
-          description: '3D environment mapping and obstacle detection for rover navigation'
-        },
-        {
-          name: 'Dynatrace',
-          description: 'Realtime system monitoring and performance analytics'
-        },
-        {
-          name: 'Splunk',
-          description: 'ML-powered dashboards and anomaly detection in distributed systems'
-        },
-        {
-          name: 'MATLAB/Simulink',
-          description: 'Control system design and simulation for robotic mechanisms'
-        }
-      ]
-    },
-    {
-      name: 'Software Engineering',
-      skills: [
-        {
-          name: 'Cloud Robotics',
-          description: 'Azure cloud migration for airline systems, Kubernetes orchestration, OpenShift deployment'
-        },
-        {
-          name: 'MLOps',
-          description: 'Splunk ML for predictive analytics, Docker/Podman containerization, CI/CD pipelines'
-        },
         {
           name: 'Full-Stack Development',
-          description: 'Angular, Material Design, Spring Boot, and microservices architecture'
-        },
-        {
-          name: 'Embedded Systems',
-          description: 'STM32, Atmega328p, Raspberry Pi for real-time control systems'
-        },
-        {
-          name: 'Network Security',
-          description: 'TLS/AUTH implementation, Azure KeyVault, encrypted communication architectures'
+          description: 'Built robust web applications using Angular on the frontend and Spring Boot for microservices, drawing on experience from professional software development roles.'
         },
         {
           name: 'Performance Optimization',
-          description: 'Resolved CPU spikes, log4j mitigation, network latency optimization'
+          description: 'Optimized code and system performance through thorough debugging and profiling, minimizing latency in distributed systems.'
+        },
+        {
+          name: 'DevOps & Containerization',
+          description: 'Used Docker, Kubernetes, and CI/CD pipelines to streamline development processes and manage scalable deployments.'
+        },
+        {
+          name: 'Embedded Systems',
+          description: 'Developed and integrated firmware on microcontrollers (STM32, Atmega328p) to achieve real-time control in robotics applications.'
         }
       ]
     },
     {
-      name: 'Specialized Domains',
+      name: 'Technical & Academic Leadership',
       skills: [
         {
-          name: 'Mars Exploration',
-          description: 'URC competition experience with autonomous rover systems'
+          name: 'Robotics Research',
+          description: 'Conducted academic research in AI-driven robotics, with a focus on integrating advanced perception with autonomous planning algorithms.'
         },
         {
-          name: 'Edge Computing',
-          description: 'NVIDIA Jetson TX2, ROS-on-Edge deployments'
+          name: 'Cross-Functional Mentorship',
+          description: 'Mentored peers and led project teams, leveraging hands-on experience from MSc projects and industry roles to guide innovative solutions.'
         },
         {
-          name: 'Academic Research',
-          description: 'Work in RL, path planning, and neural rendering'
+          name: 'Innovative Problem Solving',
+          description: 'Applied creative engineering and research methods to overcome complex challenges in both academic and professional environments.'
+        }
+      ]
+    },
+    {
+      name: 'Tools, Simulation & Analytics',
+      skills: [
+        {
+          name: 'Simulation Platforms',
+          description: 'Utilized Gazebo and MuJoCo for high-fidelity robotic simulations, validating control strategies before real-world testing.'
         },
         {
-          name: 'Technical Leadership',
-          description: 'Mentored 9+ students, led cross-functional teams in competition settings'
+          name: 'Cloud Robotics',
+          description: 'Integrated cloud-based services for data analytics and remote system management, enhancing the scalability of robotic systems.'
         },
         {
-          name: 'Airline Systems',
-          description: 'E-commerce platforms, fare calculation, payment gateway integrations'
-        },
-        {
-          name: 'Industrial IoT',
-          description: 'MQTT for industrial automation'
+          name: 'System Monitoring & Analytics',
+          description: 'Implemented real-time monitoring tools and dashboards to ensure reliable performance in complex distributed systems.'
         }
       ]
     }
