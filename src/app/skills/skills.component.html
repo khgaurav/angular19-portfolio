@@ -8,7 +8,7 @@
           @for (skill of category.skills; track skill) {
             <li class="skill-item" [@fadeIn]="{ value: '', params: { delay: i * 0.1 } }">
               <details>
-                <summary>{{ skill.name }}</summary>
+                <summary aria-expanded="false">{{ skill.name }}</summary>
                 <p>{{ skill.description }}</p>
               </details>
             </li>
@@ -18,3 +18,48 @@
     }
   </div>
 </section>
+
+<!-- Inline Script for handling auto-expansion on find (Ctrl+F/⌘+F) and button controls -->
+<script>
+  // Update aria-expanded attribute when details toggle
+  document.querySelectorAll('details').forEach(detail => {
+    detail.addEventListener('toggle', () => {
+      const summary = detail.querySelector('summary');
+      summary.setAttribute('aria-expanded', detail.open);
+    });
+  });
+
+  // Automatically open all <details> when Ctrl+F or ⌘+F are pressed
+  document.addEventListener('keydown', (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'f') {
+      document.querySelectorAll('details').forEach((detail) => {
+        detail.open = true;
+        // Update aria attribute
+        const summary = detail.querySelector('summary');
+        if(summary) summary.setAttribute('aria-expanded', 'true');
+      });
+    }
+  });
+
+  // Add listeners for Expand All and Collapse All buttons
+  document.addEventListener('DOMContentLoaded', () => {
+    const expandButton = document.getElementById('expand-all');
+    const collapseButton = document.getElementById('collapse-all');
+
+    expandButton.addEventListener('click', () => {
+      document.querySelectorAll('details').forEach((detail) => {
+        detail.open = true;
+        const summary = detail.querySelector('summary');
+        if(summary) summary.setAttribute('aria-expanded', 'true');
+      });
+    });
+
+    collapseButton.addEventListener('click', () => {
+      document.querySelectorAll('details').forEach((detail) => {
+        detail.open = false;
+        const summary = detail.querySelector('summary');
+        if(summary) summary.setAttribute('aria-expanded', 'false');
+      });
+    });
+  });
+</script>
