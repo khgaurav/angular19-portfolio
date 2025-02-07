@@ -33,7 +33,7 @@
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: none ;
 }
 
 *, *:before, *:after {
