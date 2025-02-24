@@ -1,0 +1,334 @@
+.main {
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: var(--navy);
+  color: var(--slate);
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--green);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateX(-5px);
+  }
+
+  i {
+    font-size: 14px;
+    transition: transform 0.25s ease;
+  }
+}
+
+.project-detail {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: var(--slate);
+
+  .project-header {
+    margin-bottom: 3rem;
+    text-align: center;
+
+    .project-title {
+      color: var(--green);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-description {
+      font-size: 1.2rem;
+      color: var(--lightest-slate);
+      margin-bottom: 1.5rem;
+    }
+
+    .project-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+
+      .link-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border: 1px solid var(--green);
+        border-radius: 4px;
+        color: var(--green);
+        transition: all 0.3s ease;
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+
+        &:hover {
+          background: rgba(100, 255, 218, 0.1);
+          transform: translateY(-2px);
+        }
+
+        i {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .project-content {
+    .project-gallery {
+      margin: 2rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+
+      .image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .project-image {
+          width: 100%;
+          height: 300px;
+          object-fit: cover;
+          border-radius: 8px;
+          transition: transform 0.3s ease;
+          cursor: pointer;
+
+          &:hover {
+            transform: scale(1.02);
+          }
+        }
+
+        .image-caption {
+          margin-top: 1rem;
+          text-align: center;
+          color: var(--slate);
+          font-size: 0.9rem;
+          font-family: var(--font-mono);
+        }
+      }
+    }
+
+    .fullscreen-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(2, 12, 27, 0.98);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+
+      .modal-content {
+        width: 95%;
+        height: 95vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+
+        img {
+          min-width: 90%;
+          min-height: 90vh;
+          max-width: 95%;
+          max-height: 90vh;
+          object-fit: contain;
+          border-radius: 8px;
+          transition: transform 0.3s ease;
+          z-index: 1001; // Add z-index to ensure image is above modal background
+        }
+
+        .modal-caption {
+          z-index: 1001;
+          position: absolute;
+          bottom: -2rem;
+          width: 100%;
+          color: var(--slate);
+          font-family: var(--font-mono);
+          font-size: 1rem;
+          text-align: center;
+          background: rgba(2, 12, 27, 0.8);
+          padding: 1rem;
+          border-radius: 4px;
+        }
+      }
+
+
+      &::after {
+        content: "×";
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: var(--slate);
+        font-size: 2rem;
+        cursor: pointer;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(2, 12, 27, 0.8);
+        transition: all 0.2s ease;
+
+        &:hover {
+          color: var(--green);
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .project-sections {
+      margin: 2rem 0;
+
+      .project-section {
+        margin: 3rem 0;
+        padding: 2rem;
+        background: rgba(2, 12, 27, 0.7);
+        border-radius: 8px;
+        border: 1px solid rgba(100, 255, 218, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+          border-color: var(--green);
+        }
+
+        h2 {
+          color: var(--green);
+          font-size: 1.5rem;
+          margin-bottom: 1.5rem;
+          font-family: var(--font-mono);
+          position: relative;
+          padding-left: 2rem;
+
+          &::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-size: 1.2rem;
+          }
+        }
+
+        .section-content {
+          line-height: 1.8;
+          color: var(--slate);
+          font-size: 1.1rem;
+          text-align: justify;
+          padding-left: 2rem;
+          border-left: 2px solid rgba(100, 255, 218, 0.1);
+          margin-left: 0.5rem;
+          white-space: pre-wrap;
+
+          &::first-letter {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--green);
+          }
+        }
+      }
+    }
+
+
+    .project-tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 auto 0; // Push links to bottom
+      font-family: var(--font-mono);
+      font-size: 13px;
+
+      li {
+        color: var(--green);
+        padding: 6px 14px;
+        background-color: rgba(100, 255, 218, 0.15);
+        border-radius: 6px;
+        border: 1px solid rgba(100, 255, 218, 0.3);
+      }
+    }
+
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 0rem;
+    width: 100%;
+    margin: 0 auto; // Center the content
+  }
+  .project-detail {
+    padding: 1rem;
+    width: 100%;
+
+    .project-header {
+      .project-title {
+        font-size: 2rem;
+      }
+    }
+
+    .project-content {
+    .project-gallery {
+      grid-template-columns: 1fr;
+    }
+
+    .fullscreen-modal {
+      .modal-content {
+        width: 98%;
+
+        img {
+          min-width: 95%;
+          min-height: 80vh;
+          max-width: 98%;
+          max-height: 85vh;
+        }
+      }
+    }
+
+    .project-sections {
+      .project-section {
+        padding: 1rem;
+        margin: 1.5rem 0;
+        width: 100%;
+
+        h2 {
+          font-size: 1.3rem;
+          padding-left: 1.5rem;
+          margin-bottom: 1rem;
+
+          &::before {
+            font-size: 1rem;
+          }
+        }
+
+        .section-content {
+          padding-left: 1rem;
+          padding-right: 1rem;
+          font-size: 1rem;
+          line-height: 1.6;
+          text-align: left;
+          margin-left: 0;
+
+          &::first-letter {
+            font-size: 1.2em;
+          }
+        }
+      }
+    }
+  }
+  }
+}

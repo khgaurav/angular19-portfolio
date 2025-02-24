@@ -3,26 +3,29 @@
 
   <div class="projects-list">
     @for (project of projects; track project) {
-      <a class="project-card"
-         [href]="project.github || project.demo"
-         target="_blank"
-         [attr.aria-label]="'View ' + project.title"
-         [@fadeInUp]>
+      <div class="project-card"
+     (click)="navigateToProject(project.id)"
+     [attr.aria-label]="'View ' + project.title"
+     [@fadeInUp]
+     role="button"
+     tabindex="0"
+     (keydown.enter)="navigateToProject(project.id)"
+     (keydown.space)="$event.preventDefault(); navigateToProject(project.id)">
         <div class="project-content">
           <div class="project-header">
             <h3 class="project-title">{{ project.title }}</h3>
             <p class="project-description">{{ project.description }}</p>
           </div>
 
-            @if (project.keyPoints) {
+          @if (project.keyPoints) {
             <div class="project-keypoints">
               <ul>
-              @for (point of project.keyPoints; track point) {
-                <li>{{ point }}</li>
-              }
+                @for (point of project.keyPoints; track point) {
+                  <li>{{ point }}</li>
+                }
               </ul>
             </div>
-            }
+          }
 
           <div class="project-footer">
             <ul class="project-tech-list">
@@ -32,26 +35,13 @@
             </ul>
 
             <div class="project-links">
-              @if (project.github) {
-                <a [href]="project.github"
-                   target="_blank"
-                   (click)="$event.stopPropagation()"
-                   aria-label="GitHub repository">
-                  <i class="fab fa-github"></i>
-                </a>
-              }
-              @if (project.demo) {
-                <a [href]="project.demo"
-                   target="_blank"
-                   (click)="$event.stopPropagation()"
-                   aria-label="Live demo">
-                   <i class="fas fa-external-link-alt"></i>
-                </a>
-              }
+              <span class="view-more">
+                <i class="fas fa-arrow-right"></i> View Details
+              </span>
             </div>
           </div>
         </div>
-      </a>
+      </div>
     }
   </div>
 </section>

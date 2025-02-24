@@ -27,7 +27,7 @@ export class ScrollService {
     // Update active section
     const scrollPosition = window.scrollY + 100;
 
-    this.sections.forEach(section => {
+    this.sections.filter(section => section !== null).forEach(section => {
       const sectionTop = section.offsetTop;
       const sectionHeight = section.offsetHeight;
 

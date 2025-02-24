@@ -1,6 +1,7 @@
 #projects {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0.5rem;
 }
 
 .projects-list {
@@ -16,6 +17,9 @@
   transition: transform 0.25s ease;
   margin-bottom: 30px;
   min-height: auto;
+  cursor: pointer; // Add this to show clickable cursor
+  user-select: none; // Prevents text selection on click
+  -webkit-tap-highlight-color: transparent; // Removes tap highlight on mobile
 
   &:hover {
     transform: translateY(-7px);
@@ -23,11 +27,10 @@
     .project-title {
       color: var(--green);
     }
+  }
 
-    .project-links a {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  &:active {
+    transform: translateY(-3px); // Gives a subtle press effect
   }
 }
 
@@ -127,7 +130,22 @@
     }
   }
 }
+.view-more {
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
+  i {
+    transition: transform 0.2s ease;
+  }
+}
+
+.project-card:hover .view-more i {
+  transform: translateX(5px);
+}
 @keyframes fadeInUp {
   from {
     opacity: 0;

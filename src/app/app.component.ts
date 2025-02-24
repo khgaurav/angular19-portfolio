@@ -1,22 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
-import { HeroComponent } from './hero/hero.component';
-import { ExperienceComponent } from './experience/experience.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { SkillsComponent } from './skills/skills.component';
-import { ContactComponent } from './contact/contact.component';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ScrollService } from './services/scroll.service';
+import { RouterOutlet } from '@angular/router';
+import { ContactComponent } from './contact/contact.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     HeaderComponent,
-    HeroComponent,
-    ExperienceComponent,
-    ProjectsComponent,
-    SkillsComponent,
+    RouterOutlet,
     ContactComponent
   ],
   templateUrl: './app.component.html',

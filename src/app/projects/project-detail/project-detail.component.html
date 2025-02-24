@@ -1,0 +1,89 @@
+<main class="main">
+  <button class="back-button" (click)="goBack()">
+    <i class="fas fa-arrow-left"></i>
+    Back
+  </button>
+  <section class="project-detail">
+    @if (project) {
+      <header class="project-header">
+        <h1 class="project-title">{{ project.title }}</h1>
+        <p class="project-description">{{ project.description }}</p>
+
+        <div class="project-links">
+          @if (project.github) {
+            <a [href]="project.github" target="_blank" rel="noopener noreferrer" class="link-button">
+              <i class="fab fa-github"></i>
+              GitHub
+            </a>
+          }
+          @if (project.demo && project.demo.url) {
+            <a [href]="project.demo.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link-button">
+            <i [class]="project.demo.type === 'youtube' ? 'fab fa-youtube' : 'far fa-file-pdf'"></i>
+            {{ project.demo.type === 'youtube' ? 'Watch Demo' : 'View Paper' }}
+          </a>
+        }
+      </div>
+    </header>
+
+    <div class="project-content">
+      @if (project.images && project.images.length) {
+        <div class="project-gallery">
+          @for (image of project.images; track image) {
+            <div class="image-container">
+              <img
+              [src]="image.src"
+              [alt]="project.title + ' image'"
+              class="project-image"
+              (click)="openFullscreen(image)"
+              >
+              <p class="image-caption">{{ image.caption }}</p>
+            </div>
+          }
+        </div>
+      }
+
+      <div class="project-sections">
+        @if (project.fullDescription) {
+          <div class="project-section">
+            <h2>Overview</h2>
+            <p class="section-content">{{ project.fullDescription }}</p>
+          </div>
+        }
+        @if (project.sections?.length) {
+          @for (section of project.sections; track section) {
+            <div class="project-section">
+              <h2>{{ section.title }}</h2>
+              <p class="section-content">{{ section.content }}</p>
+            </div>
+          }
+        }
+      </div>
+
+      <div class="project-section">
+        <h2>Technologies Used</h2>
+        <ul class="project-tech-list">
+          @for (tech of project.tech; track tech) {
+            <li>{{ tech }}</li>
+          }
+        </ul>
+      </div>
+      @if (selectedImage) {
+        <div class="fullscreen-modal" (click)="closeFullscreen()">
+          <div class="modal-content">
+            <img
+            [src]="selectedImage.src"
+            [alt]="project.title + ' image'"
+            >
+            <p class="modal-caption">{{ selectedImage.caption }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <p>Project not found</p>
+  }
+</section>
+</main>
