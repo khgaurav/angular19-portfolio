@@ -41,9 +41,9 @@ export class ExperienceComponent {
       company: 'Amadeus Labs',
       duration: 'May 2024 - August 2024',
       points: [
-        'Created an AI Intuitbot to suggest fixes for errors encountered by users, estimated to boost the user look-to-book ratio by 10%',
-        'Implemented E2E network setup on Azure for secured internet and intranet access, reducing setup effort by 60% for other teams',
-        'Conducted scalability, destructive, and flat tests, achieving a 5% improvement in CPU usage and response times'
+        'Implemented an LLM powered chatbot using RAG and GPT-3.5 Turbo, trained on unstructured documentation to deliver personalized error resolution suggestions based on user context, resulting in a 12% increase in website conversion rates',
+        'Architected a secure ingress/egress network setup with firewalls, load balancers, and SNAT for internet access from Openshift containers, enabling external API security and automated entire process to reduce effort by 63',
+        'Migrated local setups for developers from Docker to Podman and automated hot code deployment via PowerShell'
       ]
     },
     {
@@ -51,11 +51,11 @@ export class ExperienceComponent {
       company: 'Amadeus Labs',
       duration: 'August 2021 - April 2024',
       points: [
-        'Developed 50+ features for Air Canada website using Angular UI and Java Backend, including major cutovers like Self-Reaccommodation and Manage booking page redesign',
-        'Containerized Spring Boot app and set up OpenShift namespace for deployment on Azure cloud, auto-scaling cut costs by 35%',
-        'Resolved untraceable performance & platform issues causing 4x CPU usage spikes, preventing downtime for 5M+ users',
-        'Implemented ACWallet architecture, redesigning payment and refund infrastructure and addressing security issues',
-        'Fixed a critical security vulnerability that could have led to millions in revenue loss for the airline'
+        'Led development of 50+ features for the Air Canada website (Angular/Java/MSSQL), including major cutovers such as Manage Booking Page Redesign and introduction of new AC Wallet payment method, with a focus on modular code and 100% test coverage resulting in zero production rollbacks',
+        'Transitioned monolithic Spring Boot application to OpenShift on Azure, reducing cloud costs by 35% through autoscaling and scheduled deployment through Jenkins and secured changes using secrets and ConfigMap',
+        'Undertook initiatives to enhance Air Canada website’s security and performance by fixing a zero-day gift card exploit, preventing million-dollar revenue loss, and resolving 4x CPU usage spikes, ensuring no downtime for 5M+ users',
+        'Engineered a patent-pending REST API technique reducing payload size by 62%, improving mobile load times by 1.8s',
+        'Conceived a novel family seat selection feature for the airline’s website, resulting in a $2,000 innovation award'
       ]
     },
     {
@@ -64,7 +64,7 @@ export class ExperienceComponent {
       duration: 'January 2021 - June 2021',
       points: [
         'Developed a microservice to calculate MongoDB statistics for the Altea Inventory tool, reducing stuck job complaints by 43%',
-        'Engineered an analytics solution leveraging Splunk and machine learning to alert on user behavior trends in Airline websites'
+        'Engineered an analytics solution leveraging Splunk and machine learning to alert user behavior trends in Airline websites'
       ]
     },
     {

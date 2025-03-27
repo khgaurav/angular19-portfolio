@@ -13,7 +13,7 @@
   &__item {
     margin-bottom: 50px;
     padding-left: 30px;
-    border-left: 2px solid var(--green);
+    border-left: 2px solid var(--accent-color);
     position: relative;
     opacity: 0;
     animation: fadeInUp 1s forwards;
@@ -21,7 +21,7 @@
 
     &:hover {
       .company {
-        color: var(--green);
+        color: var(--accent-color);
       }
     }
   }
@@ -35,11 +35,11 @@
   }
 
   .role {
-    color: var(--lightest-slate);
+    color: var(--text-color-highlight);
   }
 
   .company {
-    color: var(--green);
+    color: var(--accent-color);
     font-family: var(--font-mono);
     font-size: 16px;
     transition: color 0.25s ease;
@@ -48,7 +48,7 @@
   &__duration {
     font-family: var(--font-mono);
     font-size: 13px;
-    color: var(--slate);
+    color: var(--text-color);
     margin-bottom: 20px;
   }
 
@@ -61,14 +61,14 @@
     position: relative;
     padding-left: 25px;
     margin-bottom: 10px;
-    color: var(--slate);
+    color: var(--text-color);
     line-height: 1.5;
 
     &::before {
       content: '▹';
       position: absolute;
       left: 0;
-      color: var(--green);
+      color: var(--accent-color);
       font-size: 14px;
     }
   }

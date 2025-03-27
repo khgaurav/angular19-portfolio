@@ -10,7 +10,7 @@
 
   &__subtitle {
     font-family: var(--font-mono);
-    color: var(--green);
+    color: var(--accent-color);
     font-size: clamp(16px, 3vw, 18px);
     margin: 0 0 20px 4px;
     opacity: 0;
@@ -18,7 +18,7 @@
   }
 
   &__title {
-    color: var(--lightest-slate);
+    color: var(--text-color-highlight);
     font-size: clamp(40px, 8vw, 80px);
     line-height: 1.1;
     margin: 0 0 20px 0;
@@ -27,7 +27,7 @@
   }
 
   &__subtitle-large {
-    color: var(--slate);
+    color: var(--text-color);
     font-size: clamp(30px, 6vw, 50px);
     margin: 0 0 30px 0;
     opacity: 0;
@@ -39,7 +39,7 @@
     margin-bottom: 40px;
 
     p {
-      color: var(--slate);
+      color: var(--text-color);
       font-size: clamp(16px, 3vw, 18px);
       line-height: 1.5;
       opacity: 0;
@@ -55,9 +55,9 @@
 
 .cta-button {
   display: inline-block;
-  color: var(--green);
+  color: var(--accent-color);
   background-color: transparent;
-  border: 1px solid var(--green);
+  border: 1px solid var(--accent-color);
   border-radius: var(--border-radius);
   padding: 1.25rem 1.75rem;
   font-family: var(--font-mono);
@@ -87,7 +87,7 @@
 @media (max-width: 768px) {
     .hero {
       padding: 60px 1.5rem 20px;
-      min-height: calc(100vh - var(--nav-height) - var(--footer-height) - 20px); // Extra mobile adjustment
+      min-height: calc(100vh - var(--nav-height) - var(--footer-height) - 20px);
 
     &__description p {
       font-size: 16px;

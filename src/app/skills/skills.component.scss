@@ -12,7 +12,7 @@
 }
 
 .skill-category {
-  background-color: var(--light-navy);
+  background-color: var(--bg-color-secondary);
   border-radius: 8px;
   padding: 2rem;
   transition: transform 0.25s ease;
@@ -23,7 +23,7 @@
 }
 
 .category-title {
-  color: var(--lightest-slate);
+  color: var(--text-color-highlight);
   font-family: var(--font-mono);
   font-size: 20px;
   margin: 0 0 1.5rem 0;
@@ -39,7 +39,7 @@
 }
 
 .skill-item {
-  color: var(--green);
+  color: var(--accent-color);
   background-color: rgba(100, 255, 218, 0.1);
   border: 1px solid rgba(100, 255, 218, 0.2);
   border-radius: 4px;
@@ -56,7 +56,7 @@
   p {
     margin: 0;
     font-size: 12px;
-    color: var(--slate);
+    color: var(--text-color);
   }
 
   &:hover {

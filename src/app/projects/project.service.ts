@@ -10,6 +10,8 @@ export class ProjectsService {
       title: 'Mars Rover Manipal',
       description: 'Autonomous rover system ranked 7th globally at University Rover Challenge 2020',
       tech: [
+        'C++',
+        'Python',
         'ROS',
         'RTK GPS',
         'IMU',
@@ -18,15 +20,13 @@ export class ProjectsService {
         'Extended Kalman Filter',
         'RANSAC',
         'STM32',
-        'Atmega',
-        'Embedded C'
+        'Atmega'
       ],
       keyPoints: [
-        'Spearheaded a team of 9 students in the URC competition 2020, achieving 7th place out of 93 international teams',
+        'Led a diverse cross-disciplinary team of 9 students in the URC 2020, achieving 7th place among 93 global teams',
         'Negotiated sponsorship agreements with industry leaders SICK and Mouser, securing resources worth $6,000 for the team',
         'Utilized RANSAC for ground plane extraction from a 3D LiDAR point cloud for obstacle detection and developed an autonomous navigation system on ROS for a Martian environment, fusing IMU and GPS data via an extended Kalman filter',
-        'Redesigned an embedded C program for rover wheel & arm control and to communicate with the sensors and peripherals connected to STM32/Atmega, incorporating a hill assist feature and fail-safes for rover protection',
-        'Achieved <200ms command latency using Ubiquiti radios with socket-programmed video/data transmission',
+        'Redesigned a C++ program for rover wheel & arm control and to communicate with the sensors and peripherals connected to STM32/Atmega, incorporating a hill assist feature and fail-safes for rover protection',
         'Implemented AR tag detection for autonomous gate navigation with variable speed vector field path planning'
       ],
       fullDescription: `Mars Rover Manipal is an interdisciplinary student project that aims to explore robotics and its application in interplanetary expeditions.
@@ -74,9 +74,9 @@ export class ProjectsService {
       description: 'Optimized DDPG algorithm with 2x faster convergence using Whale Optimization and Neural Radiance Fields',
       tech: ['PyTorch', 'TorchRL', 'NeRF', 'MuJoCo'],
       keyPoints: [
-        'Optimized DDPG algorithm for performing Path Planning on a 7-DoF Franka Emika Panda Robot manipulator, implementing prioritized experience replay and hyperparameters tuning using Whale Optimization, achieving 35% faster convergence',
+        'Optimized DDPG algorithm to learn control policies for a 7-DoF Franka Emika Panda Robot in obstacle-rich environments, implementing Prioritized Experience Replay and Whale Optimization for hyperparameter tuning, achieving 35% faster convergence',
         "Benchmarked against PPO, demonstrating DDPG's 25% better sample efficiency in Meta-World drawer-open tasks",
-        "Shortened episode length by 33% by integrating NeRF-generated volumetric state space representation"
+        "Enhanced robot performance by 33% through novel integration of NeRF-generated volumetric state representations, enabling the learned policy to more efficiently navigate complex environments with improved trajectory planning"
       ],
       fullDescription: `Based on recent research, this project integrates reinforcement learning (RL) with neural radiance fields (NeRF) to optimize path planning in complex environments. My approach enhances standard DDPG by incorporating Whale Optimization Algorithm (WOA) strategies to accelerate convergence and improve policy performance.
 
@@ -113,12 +113,79 @@ Extensive experiments on Meta-World benchmarks demonstrate a 5% improvement in p
       },
     },
     {
+      id: 'monocular-depth',
+      title: 'Monocular Depth Estimation',
+      description: 'Hybrid architecture combining Swin Transformers and knowledge distillation for high-precision depth estimation',
+      tech: ['Python', 'PyTorch', 'Swin Transformer', 'Knowledge Distillation', 'Edge Deployment', 'PyTorch Lightning'],
+      keyPoints: [
+        'Enhanced Apple Depth Pro using Swin Transformer architecture and Cross-Context Distillation from Distill Any Depth teacher model, achieving 22% RMSE reduction on NYU/KITTI',
+        'Optimized boundary accuracy by 41% through multi-scale feature fusion and global-local context alignment',
+        'Deployed real-time inference pipeline (35ms/frame) on NVIDIA Jetson via TensorRT optimization while maintaining 2.25MP resolution'
+      ],
+      fullDescription:
+`This advanced monocular depth estimation system enhances Apple's Depth Pro foundation through three key innovations:
+      1) Swin Transformer architecture for linear-complexity multi-scale processing
+      2) Cross-Context Knowledge Distillation from Distill Any Depth's multi-teacher framework
+      3) Edge-optimized deployment via layer fusion and mixed-precision quantization.
+
+The system achieves state-of-the-art performance on NYU Depth v2 (0.385 RMSE) and KITTI (2.873 RMSE) while maintaining real-time capabilities through architectural optimizations and advanced training techniques. Practical applications span robotic navigation, AR/VR scene understanding, and autonomous vehicle perception systems.`,
+      sections: [
+        {
+          title: 'Architectural Innovations',
+          content:
+`The enhanced architecture combines Swin Transformer's hierarchical attention mechanisms with Depth Pro's original multi-scale ViT design. Key components include:
+      - Shifted window self-attention for local-global feature integration
+      - Cross-Context Distillation head transferring knowledge from Distill Any Depth
+      - Dynamic depth bins adaptation for improved metric depth estimation
+Hybrid quantization (FP16/INT8) enables 4.2x faster inference on edge devices while maintaining sub-centimeter accuracy.`
+        },
+        {
+          title: 'Training Methodology',
+          content:
+`Implemented a phased training approach:
+      1. Pretrained Swin Transformer backbone on synthetic data (MIX-6)
+      2. Knowledge distillation using Distill Any Depth's multi-teacher framework
+      3. Edge deployment optimization via differentiable quantization
+The Cross-Context Distillation loss combines:
+      - Structural similarity (SSIM) for boundary preservation
+      - Scale-aware gradient matching for depth discontinuities
+      - Affinity distillation for global context transfer
+This approach reduced boundary errors by 32% compared to baseline distillation methods.`
+        },
+        {
+          title: 'Performance Benchmarks',
+          content:
+`Comprehensive evaluation across multiple benchmarks:
+      - NYU Depth v2: 0.385 RMSE (22% improvement over baseline)
+      - KITTI: 2.873 RMSE with 41% better edge accuracy`
+        },
+        {
+          title: 'Applications and Extensions',
+          content:
+`Deployed in three real-world scenarios:
+      1. Robotic navigation: Improved obstacle detection in cluttered environments
+      2. AR measurement: Sub-centimeter accuracy up to 5m range
+      3. Automotive perception: 4D occupancy grid generation
+Current work extends the framework to:
+      - Temporal depth consistency using neural parametric filters
+      - Few-shot adaptation for specialized domains (medical imaging)
+      - Multi-task learning with surface normal estimation`
+        }
+      ],
+      demo: {
+        type: 'pdf',
+        url: ''
+      },
+      github: ''
+    },
+    {
       id: 'multi-agent-bayes-opt',
       title: 'Multi-Agent Trajectory Optimization',
       description: 'Bayesian optimization framework for drone swarm coordination',
       tech: ['Python', 'BO', 'GTSAM', 'Dynamic Feasability Models'],
       keyPoints: [
-        'Implemented a modular Bayesian optimization framework in Python generating min snap trajectories considering dynamic feasibility, synchronized waypoints and obstacle avoidance for multiple drones','Adapted single-drone multi-fidelity approach to a multi-drone approach, optimizing performance 98% dynamic feasibility'
+        'Implemented a modular Bayesian optimization framework in Python generating min snap trajectories considering dynamic feasibility, synchronized waypoints and obstacle avoidance for multiple drones',
+        'Adapted single-drone multi-fidelity approach to a multi-drone approach, optimizing performance 98% dynamic feasibility'
       ],
       fullDescription: `Multi-Agent Trajectory Optimization leverages a Bayesian Optimization framework to plan and optimize flight trajectories for a coordinated swarm of drones. By integrating Gaussian Process regression, the system predicts feasible trajectory parameters that minimize snap and jerk while ensuring synchronized waypoint alignment across multiple agents. The approach extends single-drone multi-fidelity methods to a multi-agent context, incorporating dynamic constraint handling and collision avoidance in complex environments.`,
       sections: [
@@ -167,10 +234,6 @@ Extensive experiments on Meta-World benchmarks demonstrate a 5% improvement in p
       fullDescription: `Debate Training with LLMs and Multi-Agent Interaction Structures is a cutting-edge project that combines multi-agent systems with large language models to simulate realistic debates. Inspired by the concepts detailed in the SocrAItic Circle presentation, the framework engages agents that assume opposing stances to rigorously test arguments and generate improved debate strategies. By leveraging iterative feedback and integrating human judgment, the system aims to refine debate quality and ultimately build a high-quality dataset of 40k golden samples for benchmarking and training purposes.`,
       sections: [
         {
-          title: 'Overview',
-          content: `This project introduces an innovative debate training platform where two distinct LLMs play opposing roles in a structured debate. The approach uses LangGraph for orchestrating the debate workflow and systematically enhances the quality of arguments through iterative feedback loops.`
-        },
-        {
           title: 'Methodology',
           content: `The system utilizes a dual-agent setup where each agent simulates a different perspective. The debate workflow is constructed using LangGraph, ensuring that each round of debate progressively refines the presented arguments. A human-in-the-loop mechanism is integrated by employing an LLM configured as a judge. This judge evaluates the debate rounds by comparing BERTScore metrics with a curated OpenDebateEvidence knowledge base, ensuring that debate outcomes reflect high-quality reasoning and evidence.`
         },
@@ -189,81 +252,45 @@ Extensive experiments on Meta-World benchmarks demonstrate a 5% improvement in p
       },
       github: ''
     },
-    {
-      id: 'monocular-depth',
-      title: 'Monocular Depth Estimation',
-      description: 'Deep learning approach for predicting depth maps from single RGB images',
-      tech: ['Python', 'TensorFlow', 'PyTorch', 'Edge Computing'],
-      keyPoints: [
-        'Designed a deep learning pipeline leveraging CNN and Transformer architectures to predict depth maps from single RGB images, achieving a 22% reduction in RMSE on NYU Depth v2 and KITTI datasets',
-        'Optimized models for real-time deployment on edge devices by reducing computational complexity through input partitioning and lightweight architecture design'
-      ],
-      fullDescription: `Monocular Depth Estimation is a research project focused on deriving accurate depth information from a single RGB input using state-of-the-art deep learning techniques. The approach integrates convolutional neural networks with Transformer modules to capture both local and global contextual features. Validated on popular benchmarks including NYU Depth v2 and KITTI, the model achieves significant performance gains while maintaining a lightweight design suitable for edge deployment.
-
-    This project addresses the challenge of estimating depth in real-time applications such as robotics, autonomous driving, and augmented reality by streamlining computations and ensuring scalability.`,
-      sections: [
-        {
-          title: 'Overview',
-          content: `This project introduces a novel fusion of CNN and Transformer architectures to accurately predict depth maps from single images. The model leverages the strength of CNNs in extracting local features and transforms them into a global context using Transformer layers, ensuring robust performance across diverse datasets.`
-        },
-        {
-          title: 'Methodology',
-          content: `The deep learning pipeline is structured in multiple stages. Initially, CNN layers extract dense local features which are then fed into Transformer blocks that model global dependencies. Input partitioning and lightweight architectural modifications reduce computational overhead, enabling real-time inference on edge devices.`
-        },
-        {
-          title: 'Experimental Results',
-          content: `Experiments on NYU Depth v2 and KITTI demonstrate that the proposed approach attains a 22% reduction in RMSE compared to baseline methods. Extensive benchmarking highlights improvements in accuracy, latency, and resource efficiency, confirming the benefits of the hybrid architecture.`
-        },
-        {
-          title: 'Discussion and Future Work',
-          content: `Future directions include further optimizations to reduce latency, the exploration of additional sensor modalities for enhanced context, and the extension of the pipeline to other depth-related applications. Continuous integration of new techniques is expected to drive further improvements in performance and scalability.`
-        }
-      ],
-      demo: {
-        type: 'pdf',
-        url: ''
-      },
-      github: ''
-    },
-    {
-      id: 'smart-home',
-      title: 'Advanced Home Automation Stack',
-      description: 'Containerized smart home ecosystem with high availability and secure remote access',
-      tech: [
-        'Docker',
-        'TensorFlow Lite',
-        'Home Assistant',
-        'Frigate NVR',
-        'Mosquitto MQTT',
-        'Cloudflare Tunnel'
-      ],
-      keyPoints: [
-        'Deployed 15+ services on a self-hosted server, achieving seamless remote access with Cloudflare Argos tunnel and 99% uptime.',
-        'Scripted automated routines in Home Assistant, transforming traditional rocker switches into energy-efficient smart devices, leading to a 30% reduction in energy consumption.',
-        'Integrated cameras with Frigate for live object recognition, enabling smart displays to notify of activity, enhancing home security.',
-        'Built a media server on local network using Linux and Jellyfin, enabling global access to over 10,000 photos and 500 videos.'
-      ],
-      github: 'https://github.com/khgaurav/SmartHome'
-    },
-    {
-      id: 'angular19-portfolio',
-      title: 'Modern Engineering Portfolio',
-      description: 'Performance-optimized Angular 19 showcase with enterprise-grade deployment',
-      tech: [
-        'Angular 19',
-        'Docker',
-        'TypeScript',
-        'Angular Material',
-        'WCAG 2.1'
-      ],
-      keyPoints: [
-        'Implemented scroll-triggered animations with 60 FPS consistency',
-        'Containerized deployment with Docker + Cloudflare Tunnel',
-        'Integrated Angular Material accessibility patterns for WCAG 2.1 compliance',
-        'Developed responsive layouts supporting 4K to mobile breakpoints'
-      ],
-      github: 'https://github.com/khgaurav/angular19-portfolio'
-    }
+    // {
+    //   id: 'smart-home',
+    //   title: 'Advanced Home Automation Stack',
+    //   description: 'Containerized smart home ecosystem with high availability and secure remote access',
+    //   tech: [
+    //     'Docker',
+    //     'TensorFlow Lite',
+    //     'Home Assistant',
+    //     'Frigate NVR',
+    //     'Mosquitto MQTT',
+    //     'Cloudflare Tunnel'
+    //   ],
+    //   keyPoints: [
+    //     'Deployed 15+ services on a self-hosted server, achieving seamless remote access with Cloudflare Argos tunnel and 99% uptime.',
+    //     'Scripted automated routines in Home Assistant, transforming traditional rocker switches into energy-efficient smart devices, leading to a 30% reduction in energy consumption.',
+    //     'Integrated cameras with Frigate for live object recognition, enabling smart displays to notify of activity, enhancing home security.',
+    //     'Built a media server on local network using Linux and Jellyfin, enabling global access to over 10,000 photos and 500 videos.'
+    //   ],
+    //   github: 'https://github.com/khgaurav/SmartHome'
+    // },
+    // {
+    //   id: 'angular19-portfolio',
+    //   title: 'Modern Engineering Portfolio',
+    //   description: 'Performance-optimized Angular 19 showcase with enterprise-grade deployment',
+    //   tech: [
+    //     'Angular 19',
+    //     'Docker',
+    //     'TypeScript',
+    //     'Angular Material',
+    //     'WCAG 2.1'
+    //   ],
+    //   keyPoints: [
+    //     'Implemented scroll-triggered animations with 60 FPS consistency',
+    //     'Containerized deployment with Docker + Cloudflare Tunnel',
+    //     'Integrated Angular Material accessibility patterns for WCAG 2.1 compliance',
+    //     'Developed responsive layouts supporting 4K to mobile breakpoints'
+    //   ],
+    //   github: 'https://github.com/khgaurav/angular19-portfolio'
+    // }
   ];
 
   getProjectById(id: string): Project | undefined {

@@ -1,8 +1,8 @@
 @use '@angular/material' as mat;
 
-/* ========== Global Variables ========== */
+/* ========== Global Theme Variables ========== */
 :root {
-  // Colors
+  // Dark Mode Colors (default)
   --navy: #0a192f;
   --light-navy: #112240;
   --lightest-navy: #233554;
@@ -12,18 +12,36 @@
   --green: #64ffda;
   --white: #e6f1ff;
 
-  // Fonts
+  // Light Mode Colors
+  --light-bg: #f5f5f5;
+  --light-bg-secondary: #e6e9f0;
+  --light-bg-tertiary: #d0d7e2;
+  --light-text: #333333;
+  --light-text-secondary: #4a5568;
+  --light-text-tertiary: #718096;
+  --light-accent: #0a7a67;
+
+  // Common Variables
   --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
   --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-
-  // Sizes
   --nav-height: 80px;
   --border-radius: 4px;
   --scrollbar-width: 8px;
   --footer-height: 80px;
+  --transition: all 0.3s ease;
+
+  // Apply dark theme variables as default
+  --bg-color: var(--navy);
+  --bg-color-secondary: var(--light-navy);
+  --bg-color-tertiary: var(--lightest-navy);
+  --text-color: var(--slate);
+  --text-color-secondary: var(--light-slate);
+  --text-color-highlight: var(--lightest-slate);
+  --accent-color: var(--green);
+  --border-color: var(--lightest-navy);
 }
 
-/* ========== Base Styles ========== */
+/* ========== Base Styles with Theme Transitions ========== */
 * {
   margin: 0;
   padding: 0;
@@ -33,7 +51,7 @@
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
-  scroll-snap-type: none ;
+  scroll-snap-type: none;
 }
 
 *, *:before, *:after {
@@ -41,26 +59,40 @@ html {
 }
 
 body {
-  background-color: var(--navy);
-  color: var(--slate);
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: var(--font-sans);
   line-height: 1.3;
   -webkit-font-smoothing: antialiased;
+  transition: var(--transition);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: var(--lightest-slate);
+  color: var(--text-color-highlight);
   margin: 0 0 10px 0;
+  transition: var(--transition);
 }
 
 a {
-  color: var(--green);
+  color: var(--accent-color);
   text-decoration: none;
-  transition: all 0.25s ease;
+  transition: var(--transition);
 
   &:hover {
     color: var(--white);
   }
+}
+
+/* Light mode class that overrides the default dark theme */
+body.light-mode {
+  --bg-color: var(--light-bg);
+  --bg-color-secondary: var(--light-bg-secondary);
+  --bg-color-tertiary: var(--light-bg-tertiary);
+  --text-color: var(--light-text-secondary);
+  --text-color-secondary: var(--light-text-tertiary);
+  --text-color-highlight: var(--light-text);
+  --accent-color: var(--light-accent);
+  --border-color: var(--light-bg-tertiary);
 }
 
 /* ========== Typography ========== */
@@ -82,14 +114,14 @@ a {
   align-items: center;
   font-family: var(--font-mono);
   font-size: clamp(16px, 3vw, 20px);
-  color: var(--green);
+  color: var(--accent-color);
   margin: 10px 0 40px;
 
   &::before {
     // content: '01.';
     margin-right: 10px;
     font-weight: 400;
-    color: var(--green);
+    color: var(--accent-color);
   }
 }
 
@@ -114,12 +146,12 @@ section {
     height: 12px;
     margin: 15px 0;
     border-radius: 50%;
-    background-color: var(--slate);
+    background-color: var(--text-color);
     cursor: pointer;
     transition: all 0.3s ease;
 
     &.active {
-      background-color: var(--green);
+      background-color: var(--accent-color);
       transform: scale(1.4);
     }
   }
@@ -131,7 +163,7 @@ section {
   top: 0;
   left: 0;
   height: 3px;
-  background-color: var(--green);
+  background-color: var(--accent-color);
   z-index: 1001;
   transition: width 0.3s ease;
 }
@@ -164,8 +196,8 @@ section {
 
 /* ========== Material Overrides ========== */
 .mat-card {
-  background-color: var(--light-navy) !important;
-  color: var(--light-slate) !important;
+  background-color: var(--bg-color-secondary) !important;
+  color: var(--text-color-secondary) !important;
   border-radius: var(--border-radius) !important;
 }
 
@@ -173,6 +205,11 @@ section {
   background-color: rgba(10, 25, 47, 0.85) !important;
   backdrop-filter: blur(10px) !important;
 }
+
+body.light-mode .mat-toolbar {
+  background-color: rgba(245, 245, 245, 0.85) !important;
+}
+
 :host {
   display: flex;
   flex-direction: column;
@@ -181,21 +218,36 @@ section {
 
 main {
   flex: 1;
-  padding-bottom: var(--footer-height) //Space for fixed footer
+  padding-bottom: var(--footer-height); //Space for fixed footer
 }
+
 ::-webkit-scrollbar {
   width: var(--scrollbar-width);
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--navy);
+  background: var(--bg-color);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--slate);
+  background: var(--text-color);
   border-radius: 4px;
 
   &:hover {
-    background: var(--green);
+    background: var(--accent-color);
+  }
+}
+
+/* ========== Prefers Color Scheme Media Query ========== */
+@media (prefers-color-scheme: light) {
+  :root.system-theme {
+    --bg-color: var(--light-bg);
+    --bg-color-secondary: var(--light-bg-secondary);
+    --bg-color-tertiary: var(--light-bg-tertiary);
+    --text-color: var(--light-text-secondary);
+    --text-color-secondary: var(--light-text-tertiary);
+    --text-color-highlight: var(--light-text);
+    --accent-color: var(--light-accent);
+    --border-color: var(--light-bg-tertiary);
   }
 }

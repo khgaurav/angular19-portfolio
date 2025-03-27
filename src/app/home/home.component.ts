@@ -14,7 +14,7 @@ import { SkillsComponent } from '../skills/skills.component';
     HeroComponent,
     ProjectsComponent,
     ExperienceComponent,
-    SkillsComponent
+    // SkillsComponent
   ],
   template: `
     <main [@routeAnimations]>
@@ -30,9 +30,9 @@ import { SkillsComponent } from '../skills/skills.component';
         <app-experience></app-experience>
       </section>
 
-      <section id="skills" aria-label="Technical Skills">
+      <!-- <section id="skills" aria-label="Technical Skills">
         <app-skills></app-skills>
-      </section>
+      </section> -->
     </main>
   `,
   styleUrls: ['./home.component.scss']
