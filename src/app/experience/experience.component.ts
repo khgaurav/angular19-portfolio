@@ -1,29 +1,13 @@
 import { Component } from '@angular/core';
-import { animate, style, transition, trigger } from '@angular/animations';
-
-interface Experience {
-  role: string;
-  company: string;
-  duration: string;
-  points: string[];
-}
+import { fadeInUpAnimation } from '../app.animations';
+import { Experience } from '../models/experience.model';
 
 @Component({
   selector: 'app-experience',
   standalone: true,
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.scss'],
-  animations: [
-    trigger('fadeInUp', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(20px)' }),
-        animate('600ms cubic-bezier(0.4, 0, 0.2, 1)', style({
-          opacity: 1,
-          transform: 'translateY(0)'
-        }))
-      ])
-    ])
-  ]
+  animations: [fadeInUpAnimation]
 })
 export class ExperienceComponent {
   experiences: Experience[] = [

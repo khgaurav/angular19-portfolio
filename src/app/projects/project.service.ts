@@ -251,46 +251,7 @@ Current work extends the framework to:
         url: ''
       },
       github: ''
-    },
-    // {
-    //   id: 'smart-home',
-    //   title: 'Advanced Home Automation Stack',
-    //   description: 'Containerized smart home ecosystem with high availability and secure remote access',
-    //   tech: [
-    //     'Docker',
-    //     'TensorFlow Lite',
-    //     'Home Assistant',
-    //     'Frigate NVR',
-    //     'Mosquitto MQTT',
-    //     'Cloudflare Tunnel'
-    //   ],
-    //   keyPoints: [
-    //     'Deployed 15+ services on a self-hosted server, achieving seamless remote access with Cloudflare Argos tunnel and 99% uptime.',
-    //     'Scripted automated routines in Home Assistant, transforming traditional rocker switches into energy-efficient smart devices, leading to a 30% reduction in energy consumption.',
-    //     'Integrated cameras with Frigate for live object recognition, enabling smart displays to notify of activity, enhancing home security.',
-    //     'Built a media server on local network using Linux and Jellyfin, enabling global access to over 10,000 photos and 500 videos.'
-    //   ],
-    //   github: 'https://github.com/khgaurav/SmartHome'
-    // },
-    // {
-    //   id: 'angular19-portfolio',
-    //   title: 'Modern Engineering Portfolio',
-    //   description: 'Performance-optimized Angular 19 showcase with enterprise-grade deployment',
-    //   tech: [
-    //     'Angular 19',
-    //     'Docker',
-    //     'TypeScript',
-    //     'Angular Material',
-    //     'WCAG 2.1'
-    //   ],
-    //   keyPoints: [
-    //     'Implemented scroll-triggered animations with 60 FPS consistency',
-    //     'Containerized deployment with Docker + Cloudflare Tunnel',
-    //     'Integrated Angular Material accessibility patterns for WCAG 2.1 compliance',
-    //     'Developed responsive layouts supporting 4K to mobile breakpoints'
-    //   ],
-    //   github: 'https://github.com/khgaurav/angular19-portfolio'
-    // }
+    }
   ];
 
   getProjectById(id: string): Project | undefined {
