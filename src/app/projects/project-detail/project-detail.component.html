@@ -45,14 +45,14 @@
         @if (project.fullDescription) {
           <div class="project-section">
             <h2>Overview</h2>
-            <p class="section-content">{{ project.fullDescription }}</p>
+            <p class="section-content" [innerHTML]="project.fullDescription"></p>
           </div>
         }
         @if (project.sections?.length) {
           @for (section of project.sections; track section) {
             <div class="project-section">
               <h2>{{ section.title }}</h2>
-              <p class="section-content">{{ section.content }}</p>
+              <p class="section-content" [innerHTML]="section.content"></p>
             </div>
           }
         }

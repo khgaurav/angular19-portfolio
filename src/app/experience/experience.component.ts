@@ -12,6 +12,17 @@ import { Experience } from '../models/experience.model';
 export class ExperienceComponent {
   experiences: Experience[] = [
     {
+      role: 'Computer Vision Co-op',
+      company: 'Pfizer Inc.',
+      duration: 'Jun 2025 - Present',
+      points: [
+        'Implemented Extended Kalman Filter (EKF) algorithms for multi-layer chemical reaction tracking and filtering, enabling real-time volume, homogeneity and turbidity predictions for each distinct phase',
+        'Architected a full-stack computer vision platform integrating GigE industrial cameras with WebRTC streaming infrastructure for low-latency video transmission. Developed FastAPI and WebRTC-based backend with session management for camera control, implementing bidirectional communication between camera bus API and vision processing pipeline',
+        'Developed custom YOLOv9 models for liquid layer detection, implementing an automated feedback loop that processes recorded videos, performs frame filtering, enables manual annotation refinement, and retrains models on Dataiku MLOps platform for continuous performance improvement and model retraining',
+        'Engineered a process automation software that uses the vision model\'s output to autonomously control reactor parameters, including reagent dispensing, temperature regulation, and stirring speed'
+      ]
+    },
+    {
       role: 'Graduate Teaching Assistant',
       company: 'Khoury College of Computer Sciences',
       duration: 'January 2025 - Present',

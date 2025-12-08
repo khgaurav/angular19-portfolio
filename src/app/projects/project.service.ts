@@ -6,6 +6,59 @@ import { Project } from './project.model';
 export class ProjectsService {
   private projects: Project[] = [
     {
+      id: 'pfizer-cv-pipeline',
+      title: 'Real-time Computer Vision Pipeline & Dataiku MLOps',
+      description: 'Industrial computer vision platform for real-time reactor monitoring and automated control',
+      tech: ['Python', 'YOLOv9', 'ONNX', 'WebRTC', 'OPC UA', 'MongoDB', 'MLflow', 'Dataiku', 'FastAPI'],
+      keyPoints: [
+        'Implemented Extended Kalman Filter (EKF) algorithms for multi-layer chemical reaction tracking and filtering, enabling real-time volume, homogeneity and turbidity predictions for each distinct phase',
+        'Architected a full-stack computer vision platform integrating GigE industrial cameras with WebRTC streaming infrastructure for low-latency video transmission',
+        'Developed custom YOLOv9 models for liquid layer detection with automated feedback loops on Dataiku MLOps platform',
+        'Engineered a process automation software utilizing vision model outputs to autonomously control reactor parameters'
+      ],
+      fullDescription: `<p>This project involves a comprehensive technical implementation of a Dataiku pipeline and a real-time computer vision system. It is designed to train, validate, and deploy YOLOv9 object detection models for analyzing liquid layers in reactor videos.</p>
+      <p>The codebase orchestrates a real‑time computer vision pipeline that acquires images from multiple cameras, performs ONNX model inference, enriches raw detections with domain semantics, and disseminates results to process control (OPC UA), persistent storage (MongoDB), and live visualization (WebRTC).</p>`,
+      sections: [
+        {
+          title: 'Data Preparation and Curation',
+          content: `<p>The pipeline converts raw video footage into structured datasets. Key steps include:</p>
+          <ul>
+            <li><strong>Frame Extraction:</strong> Identifying and extracting frames from source videos based on metadata.</li>
+            <li><strong>Feature Engineering:</strong> Calculating composite scores based on Visual Change (SSIM), Parameter Change (bounding box deltas), and State Parameters (homogeneity, volume).</li>
+            <li><strong>Clustering:</strong> Using K-Means to group frames and selecting representative samples to ensure diversity and reduce redundancy.</li>
+            <li><strong>Output:</strong> Generating labeled datasets and diagnostic PCA visualizations.</li>
+          </ul>`
+        },
+        {
+          title: 'Model Training (MLOps)',
+          content: `<p>Managed within the MLflow framework, this stage fine-tunes YOLOv9 models:</p>
+          <ul>
+            <li><strong>Setup:</strong> Preparing local directory structures for YOLO training.</li>
+            <li><strong>Experimentation:</strong> Tracking hyperparameters, metrics (precision, recall, mAP), and artifacts via MLflow.</li>
+            <li><strong>Versioning:</strong> Automatically identifying the best-performing model based on mAP and promoting it to a Dataiku Saved Model for deployment.</li>
+          </ul>`
+        },
+        {
+          title: 'Model Validation and Deployment',
+          content: `<p>Ensures model reliability and efficiency:</p>
+          <ul>
+            <li><strong>Evaluation:</strong> Running validation functions on hold-out sets and pushing metrics to a Dataiku Model Evaluation Store for long-term monitoring.</li>
+            <li><strong>ONNX Optimization:</strong> Creating an end-to-end ONNX model with embedded pre-processing (resizing, normalization) and post-processing (Non-Maximum Suppression, coordinate scaling).</li>
+          </ul>`
+        },
+        {
+          title: 'Real-time Orchestration',
+          content: `<p>The runtime system features:</p>
+          <ul>
+            <li><strong>Session Management:</strong> Handshaking over control sockets to declare camera identity and model selection.</li>
+            <li><strong>Image Ingestion:</strong> Asynchronous frame acquisition and batched analysis.</li>
+            <li><strong>Post-processing:</strong> A sophisticated chain that merges detections based on color and spatial proximity, tracks liquid stratification using EKF, and computes volume/homogeneity metrics.</li>
+            <li><strong>Dissemination:</strong> Publishing state differences to OPC UA for reactor control and full records to MongoDB.</li>
+          </ul>`
+        }
+      ]
+    },
+    {
       id: 'mars-rover',
       title: 'Mars Rover Manipal',
       description: 'Autonomous rover system ranked 7th globally at University Rover Challenge 2020',
@@ -29,27 +82,35 @@ export class ProjectsService {
         'Redesigned a C++ program for rover wheel & arm control and to communicate with the sensors and peripherals connected to STM32/Atmega, incorporating a hill assist feature and fail-safes for rover protection',
         'Implemented AR tag detection for autonomous gate navigation with variable speed vector field path planning'
       ],
-      fullDescription: `Mars Rover Manipal is an interdisciplinary student project that aims to explore robotics and its application in interplanetary expeditions.
-
-      The project MRM annually participates in international and national competitions, The University Rover Challenge, European Rover Challenge, International Rover Challenge, International Rover Design Challenge and the International Mars Hackathon,  organised by The Mars Society- The United States and South Asia since 2016.
-
-      The Electronics & AI subsystem processes and interprets data from various sensors such as cameras, GPS, LiDARS, and IMUs for the autonomous part of the robot and also sets up and interfaces with various segments of the rover, which work together to achieve the rover's desired performance in all tasks for effective control and communication.`,
+      fullDescription: `<p>Mars Rover Manipal is an interdisciplinary student project that aims to explore robotics and its application in interplanetary expeditions.</p>
+      <p>The project MRM annually participates in international and national competitions, The University Rover Challenge, European Rover Challenge, International Rover Challenge, International Rover Design Challenge and the International Mars Hackathon, organised by The Mars Society- The United States and South Asia since 2016.</p>
+      <p>The Electronics & AI subsystem processes and interprets data from various sensors such as cameras, GPS, LiDARS, and IMUs for the autonomous part of the robot and also sets up and interfaces with various segments of the rover, which work together to achieve the rover's desired performance in all tasks for effective control and communication.</p>`,
       sections: [
         {
           title: 'Autonomous Mission',
-          content: `The Autonomous Traversal mission has been approached in a modular fashion by breaking down the given problem statement into subtasks and testing each of them meticulously. For navigation, an RTK GPS has been configured to rectify its error by picking up a RTCM stream. The rover is localized accurately by fusing GPS, IMU and visual odometry data using an extended Kalman filter. For robust obstacle avoidance, the system deduces its surrounding by making use of a 275° FOV 3D LiDAR and a stereocam in tandem. Ground plane from the LiDAR is removed using RANSAC. Obstacles are smoothly circumvented from a long distance by computing a sum of vectors from the cardioid scaled laser scan to provide dynamic soft turn commands. The stereocam is used to avoid nearby obstacles that remain undetected by the LiDAR. The whole autonomous system is set up on ROS to ensure modularity, easy communication between modules and efficient integration of all nodes to accomplish all the subtasks.`
+          content: `<p>The Autonomous Traversal mission has been approached in a modular fashion by breaking down the given problem statement into subtasks and testing each of them meticulously. For navigation, an RTK GPS has been configured to rectify its error by picking up a RTCM stream. The rover is localized accurately by fusing GPS, IMU and visual odometry data using an extended Kalman filter.</p>
+          <p>For robust obstacle avoidance, the system deduces its surrounding by making use of a 275° FOV 3D LiDAR and a stereocam in tandem. Ground plane from the LiDAR is removed using RANSAC. Obstacles are smoothly circumvented from a long distance by computing a sum of vectors from the cardioid scaled laser scan to provide dynamic soft turn commands. The stereocam is used to avoid nearby obstacles that remain undetected by the LiDAR. The whole autonomous system is set up on ROS to ensure modularity, easy communication between modules and efficient integration of all nodes to accomplish all the subtasks.</p>`
         },
         {
           title: 'Rover Control',
-          content: `A 32-bit ARM Cortex M4 based STM32 F3 Discovery is used to achieve precise and accurate control of the rover. It serves as the primary controller responsible for controlling the motor drivers of the wheels and robotic manipulator, and rotation of multiple cameras. The control is divided into five modes: Traversal, Hill assist, Robotic manipulator, Soil collection and Autonomous traversal. A single modular program has been developed that can seamlessly switch between the five modes. Precise 32-bit multi-channel timers are used to implement six-wheel skid drive and hill assist. Hill assist holds the rover at a given position at an inclination where normally slipping might occur, thereby assisting the driver to operate the robotic manipulator on steep hills. Six-wheel skid drive is used to overcome extreme terrains that are hilly, rocky and rough by controlling the torque provided by each motor. Fail safes in the code have been incorporated as protection against rover damages by restricting unwarranted motion of the rover. A custom Battery Monitoring System has been fabricated to monitor battery parameters.`
+          content: `<p>A 32-bit ARM Cortex M4 based STM32 F3 Discovery is used to achieve precise and accurate control of the rover. It serves as the primary controller responsible for controlling the motor drivers of the wheels and robotic manipulator, and rotation of multiple cameras. The control is divided into five modes:</p>
+          <ul>
+            <li>Traversal</li>
+            <li>Hill assist</li>
+            <li>Robotic manipulator</li>
+            <li>Soil collection</li>
+            <li>Autonomous traversal</li>
+          </ul>
+          <p>A single modular program has been developed that can seamlessly switch between the five modes. Precise 32-bit multi-channel timers are used to implement six-wheel skid drive and hill assist. Hill assist holds the rover at a given position at an inclination where normally slipping might occur, thereby assisting the driver to operate the robotic manipulator on steep hills. Six-wheel skid drive is used to overcome extreme terrains that are hilly, rocky and rough by controlling the torque provided by each motor. Fail safes in the code have been incorporated as protection against rover damages by restricting unwarranted motion of the rover. A custom Battery Monitoring System has been fabricated to monitor battery parameters.</p>`
         },
         {
           title: 'Communication',
-          content: `The rover operates on 5.8GHz and 2.4GHz frequency bands with a combination of omni-directional, directional and circular polarized antennas that adhere to the FCC standards and regulations. In previous competitions, the rover lost communication link in Non-Line of Sight (NLOS) situation. A comprehensive analysis of various antenna parameters was performed to isolate the problem. The router's proprietary communication protocol uses an acknowledgment feature for fail-safe data transfer, which caused a problem in NLOS communication. Multiple measures including circular polarized antennas, increasing the height of the antennas, and automatic path traceback have been used to overcome the issue.`
+          content: `<p>The rover operates on 5.8GHz and 2.4GHz frequency bands with a combination of omni-directional, directional and circular polarized antennas that adhere to the FCC standards and regulations. In previous competitions, the rover lost communication link in Non-Line of Sight (NLOS) situation.</p>
+          <p>A comprehensive analysis of various antenna parameters was performed to isolate the problem. The router's proprietary communication protocol uses an acknowledgment feature for fail-safe data transfer, which caused a problem in NLOS communication. Multiple measures including circular polarized antennas, increasing the height of the antennas, and automatic path traceback have been used to overcome the issue.</p>`
         },
         {
           title: 'Graphical User Interface (GUI)',
-          content: `The GUI has different views for every task, each consisting of buttons and graphs. It helps us reduce the base station set-up time in all tasks and makes the control of the rover more intuitive. All camera feeds from the rover are hosted on a local server and accessed on various client laptops as required. This prevents saturation of the bandwidth as the same camera feeds aren't requested multiple times. Live GPS plotting of the rover has been achieved to allow the driver to direct the rover towards the locations given in the task. A navigation indicator and a destination indicator has been incorporated in the GUI for the same.`
+          content: `<p>The GUI has different views for every task, each consisting of buttons and graphs. It helps us reduce the base station set-up time in all tasks and makes the control of the rover more intuitive. All camera feeds from the rover are hosted on a local server and accessed on various client laptops as required. This prevents saturation of the bandwidth as the same camera feeds aren't requested multiple times. Live GPS plotting of the rover has been achieved to allow the driver to direct the rover towards the locations given in the task. A navigation indicator and a destination indicator has been incorporated in the GUI for the same.</p>`
         }
       ],
       demo: {
@@ -78,22 +139,22 @@ export class ProjectsService {
         "Benchmarked against PPO, demonstrating DDPG's 25% better sample efficiency in Meta-World drawer-open tasks",
         "Enhanced robot performance by 33% through novel integration of NeRF-generated volumetric state representations, enabling the learned policy to more efficiently navigate complex environments with improved trajectory planning"
       ],
-      fullDescription: `Based on recent research, this project integrates reinforcement learning (RL) with neural radiance fields (NeRF) to optimize path planning in complex environments. My approach enhances standard DDPG by incorporating Whale Optimization Algorithm (WOA) strategies to accelerate convergence and improve policy performance.
-
-The research paper details novel techniques, including:
-•Prioritized experience replay allowing for faster convergence
-•Custom reward shaping tailored to the dynamics of simulated environments
-•Integration of NeRF for real-time scene reconstruction, enhancing the agent's situational awareness
-
-Extensive experiments on Meta-World benchmarks demonstrate a 5% improvement in path optimality over conventional methods, while the training duration was cut by 40%.`,
+      fullDescription: `<p>Based on recent research, this project integrates reinforcement learning (RL) with neural radiance fields (NeRF) to optimize path planning in complex environments. My approach enhances standard DDPG by incorporating Whale Optimization Algorithm (WOA) strategies to accelerate convergence and improve policy performance.</p>
+      <p>The research paper details novel techniques, including:</p>
+      <ul>
+        <li>Prioritized experience replay allowing for faster convergence</li>
+        <li>Custom reward shaping tailored to the dynamics of simulated environments</li>
+        <li>Integration of NeRF for real-time scene reconstruction, enhancing the agent's situational awareness</li>
+      </ul>
+      <p>Extensive experiments on Meta-World benchmarks demonstrate a 5% improvement in path optimality over conventional methods, while the training duration was cut by 40%.</p>`,
       sections: [
         {
           title: 'Methodology',
-          content: `The method builds on DDPG with modifications to sample and weight experiences more effectively. WOA is applied to fine-tune hyperparameters, and NeRF is embedded to capture the 3D structure of the operating environment, thereby enriching state representations.`
+          content: `<p>The method builds on DDPG with modifications to sample and weight experiences more effectively. WOA is applied to fine-tune hyperparameters, and NeRF is embedded to capture the 3D structure of the operating environment, thereby enriching state representations.</p>`
         },
         {
           title: 'Experimental Results',
-          content: `Benchmark tests on simulated environments reveal significant gains in efficiency and performance. The optimized framework shows a marked reduction in training time and an improvement in convergence stability, validating the merits of the integrated approach.`
+          content: `<p>Benchmark tests on simulated environments reveal significant gains in efficiency and performance. The optimized framework shows a marked reduction in training time and an improvement in convergence stability, validating the merits of the integrated approach.</p>`
         }
       ],
       images: [
@@ -122,54 +183,62 @@ Extensive experiments on Meta-World benchmarks demonstrate a 5% improvement in p
         'Optimized boundary accuracy by 41% through multi-scale feature fusion and global-local context alignment',
         'Deployed real-time inference pipeline (35ms/frame) on NVIDIA Jetson via TensorRT optimization while maintaining 2.25MP resolution'
       ],
-      fullDescription:
-`This advanced monocular depth estimation system enhances Apple's Depth Pro foundation through three key innovations:
-      1) Swin Transformer architecture for linear-complexity multi-scale processing
-      2) Cross-Context Knowledge Distillation from Distill Any Depth's multi-teacher framework
-      3) Edge-optimized deployment via layer fusion and mixed-precision quantization.
-
-The system achieves state-of-the-art performance on NYU Depth v2 (0.385 RMSE) and KITTI (2.873 RMSE) while maintaining real-time capabilities through architectural optimizations and advanced training techniques. Practical applications span robotic navigation, AR/VR scene understanding, and autonomous vehicle perception systems.`,
+      fullDescription: `<p>This advanced monocular depth estimation system enhances Apple's Depth Pro foundation through three key innovations:</p>
+      <ol>
+        <li>Swin Transformer architecture for linear-complexity multi-scale processing</li>
+        <li>Cross-Context Knowledge Distillation from Distill Any Depth's multi-teacher framework</li>
+        <li>Edge-optimized deployment via layer fusion and mixed-precision quantization.</li>
+      </ol>
+      <p>The system achieves state-of-the-art performance on NYU Depth v2 (0.385 RMSE) and KITTI (2.873 RMSE) while maintaining real-time capabilities through architectural optimizations and advanced training techniques. Practical applications span robotic navigation, AR/VR scene understanding, and autonomous vehicle perception systems.</p>`,
       sections: [
         {
           title: 'Architectural Innovations',
-          content:
-`The enhanced architecture combines Swin Transformer's hierarchical attention mechanisms with Depth Pro's original multi-scale ViT design. Key components include:
-      - Shifted window self-attention for local-global feature integration
-      - Cross-Context Distillation head transferring knowledge from Distill Any Depth
-      - Dynamic depth bins adaptation for improved metric depth estimation
-Hybrid quantization (FP16/INT8) enables 4.2x faster inference on edge devices while maintaining sub-centimeter accuracy.`
+          content: `<p>The enhanced architecture combines Swin Transformer's hierarchical attention mechanisms with Depth Pro's original multi-scale ViT design. Key components include:</p>
+          <ul>
+            <li>Shifted window self-attention for local-global feature integration</li>
+            <li>Cross-Context Distillation head transferring knowledge from Distill Any Depth</li>
+            <li>Dynamic depth bins adaptation for improved metric depth estimation</li>
+          </ul>
+          <p>Hybrid quantization (FP16/INT8) enables 4.2x faster inference on edge devices while maintaining sub-centimeter accuracy.</p>`
         },
         {
           title: 'Training Methodology',
-          content:
-`Implemented a phased training approach:
-      1. Pretrained Swin Transformer backbone on synthetic data (MIX-6)
-      2. Knowledge distillation using Distill Any Depth's multi-teacher framework
-      3. Edge deployment optimization via differentiable quantization
-The Cross-Context Distillation loss combines:
-      - Structural similarity (SSIM) for boundary preservation
-      - Scale-aware gradient matching for depth discontinuities
-      - Affinity distillation for global context transfer
-This approach reduced boundary errors by 32% compared to baseline distillation methods.`
+          content: `<p>Implemented a phased training approach:</p>
+          <ol>
+            <li>Pretrained Swin Transformer backbone on synthetic data (MIX-6)</li>
+            <li>Knowledge distillation using Distill Any Depth's multi-teacher framework</li>
+            <li>Edge deployment optimization via differentiable quantization</li>
+          </ol>
+          <p>The Cross-Context Distillation loss combines:</p>
+          <ul>
+            <li>Structural similarity (SSIM) for boundary preservation</li>
+            <li>Scale-aware gradient matching for depth discontinuities</li>
+            <li>Affinity distillation for global context transfer</li>
+          </ul>
+          <p>This approach reduced boundary errors by 32% compared to baseline distillation methods.</p>`
         },
         {
           title: 'Performance Benchmarks',
-          content:
-`Comprehensive evaluation across multiple benchmarks:
-      - NYU Depth v2: 0.385 RMSE (22% improvement over baseline)
-      - KITTI: 2.873 RMSE with 41% better edge accuracy`
+          content: `<p>Comprehensive evaluation across multiple benchmarks:</p>
+          <ul>
+            <li><strong>NYU Depth v2:</strong> 0.385 RMSE (22% improvement over baseline)</li>
+            <li><strong>KITTI:</strong> 2.873 RMSE with 41% better edge accuracy</li>
+          </ul>`
         },
         {
           title: 'Applications and Extensions',
-          content:
-`Deployed in three real-world scenarios:
-      1. Robotic navigation: Improved obstacle detection in cluttered environments
-      2. AR measurement: Sub-centimeter accuracy up to 5m range
-      3. Automotive perception: 4D occupancy grid generation
-Current work extends the framework to:
-      - Temporal depth consistency using neural parametric filters
-      - Few-shot adaptation for specialized domains (medical imaging)
-      - Multi-task learning with surface normal estimation`
+          content: `<p>Deployed in three real-world scenarios:</p>
+          <ol>
+            <li>Robotic navigation: Improved obstacle detection in cluttered environments</li>
+            <li>AR measurement: Sub-centimeter accuracy up to 5m range</li>
+            <li>Automotive perception: 4D occupancy grid generation</li>
+          </ol>
+          <p>Current work extends the framework to:</p>
+          <ul>
+            <li>Temporal depth consistency using neural parametric filters</li>
+            <li>Few-shot adaptation for specialized domains (medical imaging)</li>
+            <li>Multi-task learning with surface normal estimation</li>
+          </ul>`
         }
       ],
       demo: {
@@ -187,23 +256,23 @@ Current work extends the framework to:
         'Implemented a modular Bayesian optimization framework in Python generating min snap trajectories considering dynamic feasibility, synchronized waypoints and obstacle avoidance for multiple drones',
         'Adapted single-drone multi-fidelity approach to a multi-drone approach, optimizing performance 98% dynamic feasibility'
       ],
-      fullDescription: `Multi-Agent Trajectory Optimization leverages a Bayesian Optimization framework to plan and optimize flight trajectories for a coordinated swarm of drones. By integrating Gaussian Process regression, the system predicts feasible trajectory parameters that minimize snap and jerk while ensuring synchronized waypoint alignment across multiple agents. The approach extends single-drone multi-fidelity methods to a multi-agent context, incorporating dynamic constraint handling and collision avoidance in complex environments.`,
+      fullDescription: `<p>Multi-Agent Trajectory Optimization leverages a Bayesian Optimization framework to plan and optimize flight trajectories for a coordinated swarm of drones. By integrating Gaussian Process regression, the system predicts feasible trajectory parameters that minimize snap and jerk while ensuring synchronized waypoint alignment across multiple agents. The approach extends single-drone multi-fidelity methods to a multi-agent context, incorporating dynamic constraint handling and collision avoidance in complex environments.</p>`,
       sections: [
         {
           title: 'Framework Overview',
-          content: `The framework integrates Bayesian Optimization with Gaussian Process regression to generate smooth, dynamically feasible trajectories. It formulates an optimization problem that minimizes trajectory snap while satisfying inter-drone synchronization and collision avoidance constraints.`
+          content: `<p>The framework integrates Bayesian Optimization with Gaussian Process regression to generate smooth, dynamically feasible trajectories. It formulates an optimization problem that minimizes trajectory snap while satisfying inter-drone synchronization and collision avoidance constraints.</p>`
         },
         {
           title: 'Methodology',
-          content: `Building on a single-drone multi-fidelity approach, the algorithm extends to handle multi-agent coordination by incorporating adaptive fidelity scheduling and novel acquisition functions tailored for inter-agent interactions. This method allows efficient exploration of the trajectory space while balancing computational load and accuracy.`
+          content: `<p>Building on a single-drone multi-fidelity approach, the algorithm extends to handle multi-agent coordination by incorporating adaptive fidelity scheduling and novel acquisition functions tailored for inter-agent interactions. This method allows efficient exploration of the trajectory space while balancing computational load and accuracy.</p>`
         },
         {
           title: 'Experimental Setup and Results',
-          content: `Simulations were conducted in complex, dynamic environments with multiple drones operating simultaneously. The results demonstrate that the multi-agent framework achieves over 98% dynamic feasibility, with improved convergence rates and robustness against obstacles compared to baseline methods. Detailed performance metrics—including training times, convergence rates, and obstacle avoidance capabilities—are discussed in the report.`
+          content: `<p>Simulations were conducted in complex, dynamic environments with multiple drones operating simultaneously. The results demonstrate that the multi-agent framework achieves over 98% dynamic feasibility, with improved convergence rates and robustness against obstacles compared to baseline methods. Detailed performance metrics—including training times, convergence rates, and obstacle avoidance capabilities—are discussed in the report.</p>`
         },
         {
           title: 'Discussion and Future Work',
-          content: `The report addresses challenges in scalability and real-time implementation while outlining potential enhancements such as tighter integration with perception systems and adaptive re-planning strategies. Future work will focus on improving fault tolerance and validating the framework in real-world flight tests.`
+          content: `<p>The report addresses challenges in scalability and real-time implementation while outlining potential enhancements such as tighter integration with perception systems and adaptive re-planning strategies. Future work will focus on improving fault tolerance and validating the framework in real-world flight tests.</p>`
         }
       ],
       images: [
@@ -231,19 +300,19 @@ Current work extends the framework to:
         'Constructed a multi-agent debate framework leveraging two distinct LLMs to simulate opposing arguments, utilizing LangGraph to construct a debating workflow that facilitates opposing argument enhancement via iterative feedback',
         'Incorporated human-in-the-loop with human preference through LLM-as-a-judge comparing BERTScore with OpenDebateEvidence knowledge base to build 40k golden samples'
       ],
-      fullDescription: `Debate Training with LLMs and Multi-Agent Interaction Structures is a cutting-edge project that combines multi-agent systems with large language models to simulate realistic debates. Inspired by the concepts detailed in the SocrAItic Circle presentation, the framework engages agents that assume opposing stances to rigorously test arguments and generate improved debate strategies. By leveraging iterative feedback and integrating human judgment, the system aims to refine debate quality and ultimately build a high-quality dataset of 40k golden samples for benchmarking and training purposes.`,
+      fullDescription: `<p>Debate Training with LLMs and Multi-Agent Interaction Structures is a cutting-edge project that combines multi-agent systems with large language models to simulate realistic debates. Inspired by the concepts detailed in the SocrAItic Circle presentation, the framework engages agents that assume opposing stances to rigorously test arguments and generate improved debate strategies. By leveraging iterative feedback and integrating human judgment, the system aims to refine debate quality and ultimately build a high-quality dataset of 40k golden samples for benchmarking and training purposes.</p>`,
       sections: [
         {
           title: 'Methodology',
-          content: `The system utilizes a dual-agent setup where each agent simulates a different perspective. The debate workflow is constructed using LangGraph, ensuring that each round of debate progressively refines the presented arguments. A human-in-the-loop mechanism is integrated by employing an LLM configured as a judge. This judge evaluates the debate rounds by comparing BERTScore metrics with a curated OpenDebateEvidence knowledge base, ensuring that debate outcomes reflect high-quality reasoning and evidence.`
+          content: `<p>The system utilizes a dual-agent setup where each agent simulates a different perspective. The debate workflow is constructed using LangGraph, ensuring that each round of debate progressively refines the presented arguments. A human-in-the-loop mechanism is integrated by employing an LLM configured as a judge. This judge evaluates the debate rounds by comparing BERTScore metrics with a curated OpenDebateEvidence knowledge base, ensuring that debate outcomes reflect high-quality reasoning and evidence.</p>`
         },
         {
           title: 'Experimental Evaluation',
-          content: `Pilot tests demonstrated that the iterative feedback significantly improves argument coherence and quality. The integration of human preferences through LLM-as-a-judge has enabled the collection of 40k golden samples, forming a comprehensive benchmark for future debate training systems.`
+          content: `<p>Pilot tests demonstrated that the iterative feedback significantly improves argument coherence and quality. The integration of human preferences through LLM-as-a-judge has enabled the collection of 40k golden samples, forming a comprehensive benchmark for future debate training systems.</p>`
         },
         {
           title: 'Discussion and Future Work',
-          content: `The current framework lays the foundation for automated debate training using LLMs. Future work will focus on scaling the system to incorporate additional agents, further refining the debate evaluation metrics, and integrating real-time human feedback to continuously enhance the debate quality.`
+          content: `<p>The current framework lays the foundation for automated debate training using LLMs. Future work will focus on scaling the system to incorporate additional agents, further refining the debate evaluation metrics, and integrating real-time human feedback to continuously enhance the debate quality.</p>`
         }
       ],
       demo: {
@@ -252,6 +321,7 @@ Current work extends the framework to:
       },
       github: ''
     }
+
   ];
 
   getProjectById(id: string): Project | undefined {
