@@ -3,18 +3,103 @@
   flex-direction: column;
   justify-content: center;
   padding: 0px 2rem 30px;
-  min-height: calc(100vh - var(--nav-height) - var(--footer-height)); // Account for both header and footer
+  min-height: calc(100vh - var(--nav-height) - var(--footer-height));
   max-width: 1000px;
   margin: 0 auto;
   scroll-margin-top: var(--nav-height);
+
+  &__photo-wrapper {
+    margin-bottom: 2rem;
+    // Initial state for GSAP animation
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  &__photo-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    // Animated gradient border
+    &::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-color), #57cbff, var(--accent-color));
+      background-size: 200% 200%;
+      z-index: -1;
+      animation: gradientRotate 4s ease infinite;
+    }
+
+    // Glow effect
+    &::after {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(100, 255, 218, 0.2) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -2;
+    }
+
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+
+      .hero__photo {
+        transform: scale(1.05);
+        filter: grayscale(0%) brightness(1);
+      }
+
+      .hero__photo-ring {
+        transform: scale(1.15) rotate(180deg);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: grayscale(20%) brightness(0.95);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--bg-color-secondary);
+  }
+
+  &__photo-ring {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border-radius: 50%;
+    border: 2px dashed var(--accent-color);
+    opacity: 0.5;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: ringPulse 3s ease-in-out infinite;
+  }
 
   &__subtitle {
     font-family: var(--font-mono);
     color: var(--accent-color);
     font-size: clamp(16px, 3vw, 18px);
     margin: 0 0 20px 4px;
+    // Initial state for GSAP animation
     opacity: 0;
-    animation: fadeInUp 1s 0.5s forwards;
+    will-change: transform, opacity;
   }
 
   &__title {
@@ -22,34 +107,38 @@
     font-size: clamp(40px, 8vw, 80px);
     line-height: 1.1;
     margin: 0 0 20px 0;
+    // Initial state for GSAP animation
     opacity: 0;
-    animation: fadeInUp 1s 0.7s forwards;
+    will-change: transform, opacity;
   }
 
   &__subtitle-large {
     color: var(--text-color);
     font-size: clamp(30px, 6vw, 50px);
     margin: 0 0 30px 0;
+    // Initial state for GSAP animation
     opacity: 0;
-    animation: fadeInUp 1s 0.9s forwards;
+    will-change: transform, opacity;
   }
 
   &__description {
     max-width: 540px;
     margin-bottom: 40px;
+    // Initial state for GSAP animation
+    opacity: 0;
+    will-change: transform, opacity;
 
     p {
       color: var(--text-color);
       font-size: clamp(16px, 3vw, 18px);
       line-height: 1.5;
-      opacity: 0;
-      animation: fadeInUp 1s 1.1s forwards;
     }
   }
 
   &__cta {
+    // Initial state for GSAP animation
     opacity: 0;
-    animation: fadeInUp 1s 1.3s forwards;
+    will-change: transform, opacity;
   }
 }
 
@@ -73,21 +162,48 @@
   }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+// Keyframe animations for photo effects
+@keyframes gradientRotate {
+  0% {
+    background-position: 0% 50%;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes ringPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
   }
 }
 
 @media (max-width: 768px) {
-    .hero {
-      padding: 60px 1.5rem 20px;
-      min-height: calc(100vh - var(--nav-height) - var(--footer-height) - 20px);
+  .hero {
+    padding: 60px 1.5rem 20px;
+    min-height: calc(100vh - var(--nav-height) - var(--footer-height) - 20px);
+
+    &__photo-wrapper {
+      margin-bottom: 1.5rem;
+    }
+
+    &__photo-container {
+      width: 140px;
+      height: 140px;
+    }
 
     &__description p {
       font-size: 16px;

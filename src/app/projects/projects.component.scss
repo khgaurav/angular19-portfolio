@@ -4,6 +4,12 @@
   padding: 0.5rem;
 }
 
+.numbered-heading {
+  // Initial state for GSAP animation
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
 .projects-list {
   margin-top: 50px;
 }
@@ -14,15 +20,19 @@
   background-color: var(--bg-color-secondary);
   border-radius: 12px;
   padding: 2rem;
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   margin-bottom: 30px;
   min-height: auto;
-  cursor: pointer; // Add this to show clickable cursor
-  user-select: none; // Prevents text selection on click
-  -webkit-tap-highlight-color: transparent; // Removes tap highlight on mobile
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  // Initial state for GSAP animation
+  opacity: 0;
+  will-change: transform, opacity;
 
   &:hover {
     transform: translateY(-7px);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
 
     .project-title {
       color: var(--accent-color);
@@ -30,7 +40,7 @@
   }
 
   &:active {
-    transform: translateY(-3px); // Gives a subtle press effect
+    transform: translateY(-3px);
   }
 }
 
@@ -97,7 +107,7 @@
   gap: 10px;
   list-style: none;
   padding: 0;
-  margin: 0 0 auto 0; // Push links to bottom
+  margin: 0 0 auto 0;
   font-family: var(--font-mono);
   font-size: 13px;
 
@@ -130,6 +140,7 @@
     }
   }
 }
+
 .view-more {
   color: var(--accent-color);
   font-family: var(--font-mono);
@@ -145,16 +156,6 @@
 
 .project-card:hover .view-more i {
   transform: translateX(5px);
-}
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @media (max-width: 768px) {

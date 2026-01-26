@@ -14,6 +14,9 @@
   .project-header {
     margin-bottom: 3rem;
     text-align: center;
+    // Initial state for GSAP animation
+    opacity: 0;
+    will-change: transform, opacity;
 
     .project-title {
       color: var(--accent-color);
@@ -61,21 +64,45 @@
     .project-gallery {
       margin: 2rem 0;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
       gap: 2rem;
 
       .image-container {
         display: flex;
         flex-direction: column;
         align-items: center;
+        background: var(--bg-color-secondary);
+        border-radius: 12px;
+        padding: 1.5rem 1rem 0.75rem 1rem;
+        border: 1px solid rgba(100, 255, 218, 0.1);
+        overflow: hidden;
+        // GPU acceleration for smooth animations
+        will-change: transform, opacity;
+        transform: translateZ(0);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+          border-color: var(--accent-color);
+          box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.4);
+        }
+
+        &.gsap-image {
+          // Initial state for GSAP animation
+          opacity: 0;
+        }
 
         .project-image {
           width: 100%;
-          height: 300px;
-          object-fit: cover;
+          height: auto;
+          max-height: 500px;
+          object-fit: contain;
           border-radius: 8px;
           transition: transform 0.3s ease;
           cursor: pointer;
+          flex-grow: 1;
+          // GPU acceleration
+          will-change: transform;
+          transform: translateZ(0);
 
           &:hover {
             transform: scale(1.02);
@@ -83,7 +110,8 @@
         }
 
         .image-caption {
-          margin-top: 1rem;
+          margin-top: auto;
+          padding-top: 0.75rem;
           text-align: center;
           color: var(--text-color);
           font-size: 0.9rem;
@@ -120,7 +148,7 @@
           object-fit: contain;
           border-radius: 8px;
           transition: transform 0.3s ease;
-          z-index: 1001; // Add z-index to ensure image is above modal background
+          z-index: 1001;
         }
 
         .modal-caption {
@@ -172,7 +200,15 @@
         background: var(--bg-color-secondary);
         border-radius: 8px;
         border: 1px solid rgba(100, 255, 218, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        // GPU acceleration for smooth animations
+        will-change: transform, opacity;
+        transform: translateZ(0);
+
+        &.gsap-section {
+          // Initial state for GSAP animation
+          opacity: 0;
+        }
 
         &:hover {
           transform: translateY(-5px);
@@ -187,6 +223,8 @@
           font-family: var(--font-mono);
           position: relative;
           padding-left: 2rem;
+          // GPU acceleration
+          will-change: transform, opacity;
 
           &::before {
             content: "▹";
@@ -205,9 +243,12 @@
           padding-left: 2rem;
           border-left: 2px solid var(--border-color);
           margin-left: 0.5rem;
-          
+          // GPU acceleration
+          will-change: transform, opacity;
+
           ::ng-deep p {
             margin-bottom: 1rem;
+
             &:last-child {
               margin-bottom: 0;
             }
@@ -217,11 +258,11 @@
             list-style-type: disc;
             margin: 1rem 0;
             padding-left: 1.5rem;
-            
+
             li {
               margin-bottom: 0.5rem;
               padding-left: 0.5rem;
-              
+
               &::marker {
                 color: var(--accent-color);
               }
@@ -238,7 +279,7 @@
       gap: 10px;
       list-style: none;
       padding: 0;
-      margin: 0 0 auto 0; // Push links to bottom
+      margin: 0 0 auto 0;
       font-family: var(--font-mono);
       font-size: 13px;
 
@@ -248,18 +289,36 @@
         background-color: var(--bg-color-secondary);
         border-radius: 6px;
         border: 1px solid var(--accent-color);
+        // GPU acceleration for smooth pop-in animation
+        will-change: transform, opacity;
+        transform: translateZ(0);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px -5px rgba(100, 255, 218, 0.3);
+        }
       }
     }
 
   }
 }
 
+// Standalone section outside .project-sections (Technologies section)
+.project-section.gsap-section {
+  // Initial state for GSAP animation
+  opacity: 0;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
 @media (max-width: 768px) {
   .main {
     padding: 0rem;
     width: 100%;
-    margin: 0 auto; // Center the content
+    margin: 0 auto;
   }
+
   .project-detail {
     padding: 1rem;
     width: 100%;
@@ -272,53 +331,53 @@
     }
 
     .project-content {
-    .project-gallery {
-      grid-template-columns: 1fr;
-    }
+      .project-gallery {
+        grid-template-columns: 1fr;
+      }
 
-    .fullscreen-modal {
-      .modal-content {
-        width: 98%;
+      .fullscreen-modal {
+        .modal-content {
+          width: 98%;
 
-        img {
-          min-width: 95%;
-          min-height: 80vh;
-          max-width: 98%;
-          max-height: 85vh;
+          img {
+            min-width: 95%;
+            min-height: 80vh;
+            max-width: 98%;
+            max-height: 85vh;
+          }
         }
       }
-    }
 
-    .project-sections {
-      .project-section {
-        padding: 1rem;
-        margin: 1.5rem 0;
-        width: 100%;
+      .project-sections {
+        .project-section {
+          padding: 1rem;
+          margin: 1.5rem 0;
+          width: 100%;
 
-        h2 {
-          font-size: 1.3rem;
-          padding-left: 1.5rem;
-          margin-bottom: 1rem;
+          h2 {
+            font-size: 1.3rem;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
 
-          &::before {
+            &::before {
+              font-size: 1rem;
+            }
+          }
+
+          .section-content {
+            padding-left: 1rem;
+            padding-right: 1rem;
             font-size: 1rem;
-          }
-        }
+            line-height: 1.6;
+            text-align: left;
+            margin-left: 0;
 
-        .section-content {
-          padding-left: 1rem;
-          padding-right: 1rem;
-          font-size: 1rem;
-          line-height: 1.6;
-          text-align: left;
-          margin-left: 0;
-
-          &::first-letter {
-            font-size: 1.2em;
+            &::first-letter {
+              font-size: 1.2em;
+            }
           }
         }
       }
     }
-  }
   }
 }

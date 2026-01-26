@@ -1,7 +1,7 @@
 <main class="main">
   <section class="project-detail">
     @if (project) {
-      <header class="project-header">
+      <header class="project-header" #projectHeader>
         <h1 class="project-title">{{ project.title }}</h1>
         <p class="project-description">{{ project.description }}</p>
 
@@ -24,11 +24,11 @@
       </div>
     </header>
 
-    <div class="project-content">
+    <div class="project-content" #projectContent>
       @if (project.images && project.images.length) {
         <div class="project-gallery">
           @for (image of project.images; track image) {
-            <div class="image-container">
+            <div class="image-container gsap-image">
               <img
               [src]="image.src"
               [alt]="project.title + ' image'"
@@ -43,14 +43,14 @@
 
       <div class="project-sections">
         @if (project.fullDescription) {
-          <div class="project-section">
+          <div class="project-section gsap-section">
             <h2>Overview</h2>
             <p class="section-content" [innerHTML]="project.fullDescription"></p>
           </div>
         }
         @if (project.sections?.length) {
           @for (section of project.sections; track section) {
-            <div class="project-section">
+            <div class="project-section gsap-section">
               <h2>{{ section.title }}</h2>
               <p class="section-content" [innerHTML]="section.content"></p>
             </div>
@@ -58,7 +58,7 @@
         }
       </div>
 
-      <div class="project-section">
+      <div class="project-section gsap-section">
         <h2>Technologies Used</h2>
         <ul class="project-tech-list">
           @for (tech of project.tech; track tech) {
