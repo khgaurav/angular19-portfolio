@@ -6,59 +6,6 @@ import { Project } from './project.model';
 export class ProjectsService {
   private projects: Project[] = [
     {
-      id: 'pfizer-cv-pipeline',
-      title: 'Real-time Computer Vision Pipeline & Dataiku MLOps',
-      description: 'Industrial computer vision platform for real-time reactor monitoring and automated control',
-      tech: ['Python', 'YOLOv9', 'ONNX', 'WebRTC', 'OPC UA', 'MongoDB', 'MLflow', 'Dataiku', 'FastAPI'],
-      keyPoints: [
-        'Implemented Extended Kalman Filter (EKF) algorithms for multi-layer chemical reaction tracking and filtering, enabling real-time volume, homogeneity and turbidity predictions for each distinct phase',
-        'Architected a full-stack computer vision platform integrating GigE industrial cameras with WebRTC streaming infrastructure for low-latency video transmission',
-        'Developed custom YOLOv9 models for liquid layer detection with automated feedback loops on Dataiku MLOps platform',
-        'Engineered a process automation software utilizing vision model outputs to autonomously control reactor parameters'
-      ],
-      fullDescription: `<p>This project involves a comprehensive technical implementation of a Dataiku pipeline and a real-time computer vision system. It is designed to train, validate, and deploy YOLOv9 object detection models for analyzing liquid layers in reactor videos.</p>
-      <p>The codebase orchestrates a real‑time computer vision pipeline that acquires images from multiple cameras, performs ONNX model inference, enriches raw detections with domain semantics, and disseminates results to process control (OPC UA), persistent storage (MongoDB), and live visualization (WebRTC).</p>`,
-      sections: [
-        {
-          title: 'Data Preparation and Curation',
-          content: `<p>The pipeline converts raw video footage into structured datasets. Key steps include:</p>
-          <ul>
-            <li><strong>Frame Extraction:</strong> Identifying and extracting frames from source videos based on metadata.</li>
-            <li><strong>Feature Engineering:</strong> Calculating composite scores based on Visual Change (SSIM), Parameter Change (bounding box deltas), and State Parameters (homogeneity, volume).</li>
-            <li><strong>Clustering:</strong> Using K-Means to group frames and selecting representative samples to ensure diversity and reduce redundancy.</li>
-            <li><strong>Output:</strong> Generating labeled datasets and diagnostic PCA visualizations.</li>
-          </ul>`
-        },
-        {
-          title: 'Model Training (MLOps)',
-          content: `<p>Managed within the MLflow framework, this stage fine-tunes YOLOv9 models:</p>
-          <ul>
-            <li><strong>Setup:</strong> Preparing local directory structures for YOLO training.</li>
-            <li><strong>Experimentation:</strong> Tracking hyperparameters, metrics (precision, recall, mAP), and artifacts via MLflow.</li>
-            <li><strong>Versioning:</strong> Automatically identifying the best-performing model based on mAP and promoting it to a Dataiku Saved Model for deployment.</li>
-          </ul>`
-        },
-        {
-          title: 'Model Validation and Deployment',
-          content: `<p>Ensures model reliability and efficiency:</p>
-          <ul>
-            <li><strong>Evaluation:</strong> Running validation functions on hold-out sets and pushing metrics to a Dataiku Model Evaluation Store for long-term monitoring.</li>
-            <li><strong>ONNX Optimization:</strong> Creating an end-to-end ONNX model with embedded pre-processing (resizing, normalization) and post-processing (Non-Maximum Suppression, coordinate scaling).</li>
-          </ul>`
-        },
-        {
-          title: 'Real-time Orchestration',
-          content: `<p>The runtime system features:</p>
-          <ul>
-            <li><strong>Session Management:</strong> Handshaking over control sockets to declare camera identity and model selection.</li>
-            <li><strong>Image Ingestion:</strong> Asynchronous frame acquisition and batched analysis.</li>
-            <li><strong>Post-processing:</strong> A sophisticated chain that merges detections based on color and spatial proximity, tracks liquid stratification using EKF, and computes volume/homogeneity metrics.</li>
-            <li><strong>Dissemination:</strong> Publishing state differences to OPC UA for reactor control and full records to MongoDB.</li>
-          </ul>`
-        }
-      ]
-    },
-    {
       id: 'mars-rover',
       title: 'Mars Rover Manipal',
       description: 'Autonomous rover system ranked 7th globally at University Rover Challenge 2020',

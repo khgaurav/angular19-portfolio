@@ -19,7 +19,7 @@ import { ContactComponent } from './contact/contact.component';
 })
 
 export class AppComponent implements OnInit {
-  title = 'Gaurav Kothamachu Harish - Robotics Engineer';
+  title = 'Gaurav Kothamachu Harish';
   sections = [
     { id: 'hero', name: 'Home' },
     { id: 'experience', name: 'Experience' },
