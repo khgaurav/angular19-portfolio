@@ -29,7 +29,7 @@ export class ExperienceComponent {
       company: 'Khoury College of Computer Sciences',
       duration: 'January 2025 - Present',
       points: [
-        'Mentoring 109 graduate students in advanced Reinforcement Learning concepts',
+        'Mentoring 278 graduate students in advanced Reinforcement Learning concepts',
         'Developing and evaluating Python-based programming assignments on RL frameworks, providing detailed feedback'
       ]
     },
@@ -39,8 +39,8 @@ export class ExperienceComponent {
       duration: 'Jan 2021 - Aug 2024',
       points: [
         'Implemented an LLM powered chatbot using RAG and GPT-3.5 Turbo on unstructured documentation, delivering personalized error resolution suggestions that increased website conversion rates by 12%',
-        'Transitioned monolithic application to Kubernetes on AWS using Go microservices, reducing cloud costs by 35% through autoscaling and scheduled deployments via Jenkins with secrets and ConfigMap management',
-        'Built a Kafka-based event-driven microservice with Protobuf serialization in Go for real-time data aggregation from multiple sources, and pioneered anomaly detection alerts using Splunk ML on user behavior analytics',
+        'Transitioned monolithic application to Kubernetes on AWS using microservices, reducing cloud costs by 35% through autoscaling and scheduled deployments via Jenkins with secrets and ConfigMap management',
+        'Built a Kafka-based event-driven microservice with Protobuf serialization for real-time data aggregation from multiple sources, and pioneered anomaly detection alerts using Splunk ML on user behavior analytics',
         'Configured Redis as shared cache and session store across Kubernetes (OpenShift) pods, enabling stateless horizontal scaling and consistent user sessions across all backend deployments',
         'Architected secure ingress/egress network with firewalls, load balancers, and SNAT on Kubernetes, automating the provisioning process to reduce setup effort by 63%'
       ]
