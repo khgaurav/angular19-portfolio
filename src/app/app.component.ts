@@ -22,9 +22,9 @@ export class AppComponent implements OnInit {
   title = 'Gaurav Kothamachu Harish';
   sections = [
     { id: 'hero', name: 'Home' },
-    { id: 'experience', name: 'Experience' },
-    { id: 'projects', name: 'Projects' },
     { id: 'skills', name: 'Skills' },
+    { id: 'projects', name: 'Projects' },
+    { id: 'experience', name: 'Experience' },
     { id: 'contact', name: 'Contact' }
   ];
 

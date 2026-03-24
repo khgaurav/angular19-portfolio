@@ -12,14 +12,16 @@ import { Experience } from '../models/experience.model';
 export class ExperienceComponent {
   experiences: Experience[] = [
     {
-      role: 'Computer Vision Co-op',
+      role: 'AI/ML Engineer Co-op',
       company: 'Pfizer Inc.',
-      duration: 'Jun 2025 - Present',
+      duration: 'Jun 2025 - Dec 2025',
       points: [
-        'Implemented Extended Kalman Filter (EKF) algorithms for multi-layer chemical reaction tracking and filtering, enabling real-time volume, homogeneity and turbidity predictions for each distinct phase',
-        'Architected a full-stack computer vision platform integrating GigE industrial cameras with WebRTC streaming infrastructure for low-latency video transmission. Developed FastAPI and WebRTC-based backend with session management for camera control, implementing bidirectional communication between camera bus API and vision processing pipeline',
-        'Developed custom YOLOv9 models for liquid layer detection, implementing an automated feedback loop that processes recorded videos, performs frame filtering, enables manual annotation refinement, and retrains models on Dataiku MLOps platform for continuous performance improvement and model retraining',
-        'Engineered a process automation software that uses the vision model\'s output to autonomously control reactor parameters, including reagent dispensing, temperature regulation, and stirring speed'
+        'Trained YOLOv9/v11 models for lab reaction monitoring in Dataiku, integrating MLflow for end-to-end experiment tracking, automated model versioning, and best-model deployment to production',
+        'Optimized inference pipeline by converting models to ONNX with TensorRT acceleration, reducing latency from 12ms to 5ms, with pre/post-processing layers embedded directly in the ONNX graph',
+        'Architected full-stack RxInSight platform with FastAPI backend, WebRTC streaming, and OPC-UA server exposing CV parameters for autonomous reactor control with frame-level data stored in AWS DocumentDB',
+        'Engineered adaptive frame filtering combining SSIM change detection with K-means clustering on weighted state features, reducing 118-hour video datasets to 3283 training samples',
+        'Established closed-loop annotation feedback system where model predictions generate suggested labels in Dataiku, enabling iterative model improvement through continuous retraining on GPU clusters',
+        'Developed Chart.js visualization dashboard for querying DocumentDB by experiment ID, displaying interactive time-series plots of CV parameters for post-experiment analysis and monitoring'
       ]
     },
     {
@@ -33,33 +35,14 @@ export class ExperienceComponent {
     },
     {
       role: 'Software Development Engineer II',
-      company: 'Amadeus Labs',
-      duration: 'May 2024 - August 2024',
+      company: 'Amadeus Software Labs',
+      duration: 'Jan 2021 - Aug 2024',
       points: [
-        'Implemented an LLM powered chatbot using RAG and GPT-3.5 Turbo, trained on unstructured documentation to deliver personalized error resolution suggestions based on user context, resulting in a 12% increase in website conversion rates',
-        'Architected a secure ingress/egress network setup with firewalls, load balancers, and SNAT for internet access from Openshift containers, enabling external API security and automated entire process to reduce effort by 63',
-        'Migrated local setups for developers from Docker to Podman and automated hot code deployment via PowerShell'
-      ]
-    },
-    {
-      role: 'Software Development Engineer I',
-      company: 'Amadeus Labs',
-      duration: 'August 2021 - April 2024',
-      points: [
-        'Led development of 50+ features for the Air Canada website (Angular/Java/MSSQL), including major cutovers such as Manage Booking Page Redesign and introduction of new AC Wallet payment method, with a focus on modular code and 100% test coverage resulting in zero production rollbacks',
-        'Transitioned monolithic Spring Boot application to OpenShift on Azure, reducing cloud costs by 35% through autoscaling and scheduled deployment through Jenkins and secured changes using secrets and ConfigMap',
-        'Undertook initiatives to enhance Air Canada website’s security and performance by fixing a zero-day gift card exploit, preventing million-dollar revenue loss, and resolving 4x CPU usage spikes, ensuring no downtime for 5M+ users',
-        'Engineered a patent-pending REST API technique reducing payload size by 62%, improving mobile load times by 1.8s',
-        'Conceived a novel family seat selection feature for the airline’s website, resulting in a $2,000 innovation award'
-      ]
-    },
-    {
-      role: 'SDE Intern',
-      company: 'Amadeus Labs',
-      duration: 'January 2021 - June 2021',
-      points: [
-        'Developed a microservice to calculate MongoDB statistics for the Altea Inventory tool, reducing stuck job complaints by 43%',
-        'Engineered an analytics solution leveraging Splunk and machine learning to alert user behavior trends in Airline websites'
+        'Implemented an LLM powered chatbot using RAG and GPT-3.5 Turbo on unstructured documentation, delivering personalized error resolution suggestions that increased website conversion rates by 12%',
+        'Transitioned monolithic application to Kubernetes on AWS using Go microservices, reducing cloud costs by 35% through autoscaling and scheduled deployments via Jenkins with secrets and ConfigMap management',
+        'Built a Kafka-based event-driven microservice with Protobuf serialization in Go for real-time data aggregation from multiple sources, and pioneered anomaly detection alerts using Splunk ML on user behavior analytics',
+        'Configured Redis as shared cache and session store across Kubernetes (OpenShift) pods, enabling stateless horizontal scaling and consistent user sessions across all backend deployments',
+        'Architected secure ingress/egress network with firewalls, load balancers, and SNAT on Kubernetes, automating the provisioning process to reduce setup effort by 63%'
       ]
     },
     {

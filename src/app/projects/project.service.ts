@@ -6,6 +6,50 @@ import { Project } from './project.model';
 export class ProjectsService {
   private projects: Project[] = [
     {
+      id: 'debate-training',
+      title: 'Debate Training with LLMs and Multi-Agent Interaction Structures',
+      description: 'Multi-agent framework leveraging LLMs to simulate and enhance debate processes',
+      tech: ['Python', 'LLMs', 'LangChain', 'LangGraph', 'OpenAI API', 'Ollama', 'OpenDebateEvidence'],
+      keyPoints: [
+        'Constructed a multi-agent debate framework leveraging two distinct LLMs using LangGraph for agentic workflow orchestration with state management, retry logic, and iterative feedback loops between opposing agents',
+        'Incorporated human-in-the-loop evaluation with LLM-as-a-judge comparing BERTScore against OpenDebateEvidence knowledge base to build 40k golden samples for model benchmarking'
+      ],
+      fullDescription: `<p>Debate Training with LLMs and Multi-Agent Interaction Structures is a cutting-edge project that combines multi-agent systems with large language models to simulate realistic debates. Inspired by the concepts detailed in the SocrAItic Circle presentation, the framework engages agents that assume opposing stances to rigorously test arguments and generate improved debate strategies. By leveraging iterative feedback and integrating human judgment, the system aims to refine debate quality and ultimately build a high-quality dataset of 40k golden samples for benchmarking and training purposes.</p>`,
+      sections: [
+        {
+          title: 'Methodology',
+          content: `<p>The system utilizes a dual-agent setup where each agent simulates a different perspective. The debate workflow is constructed using LangGraph, ensuring that each round of debate progressively refines the presented arguments. A human-in-the-loop mechanism is integrated by employing an LLM configured as a judge. This judge evaluates the debate rounds by comparing BERTScore metrics with a curated OpenDebateEvidence knowledge base, ensuring that debate outcomes reflect high-quality reasoning and evidence.</p>`
+        },
+        {
+          title: 'Experimental Evaluation',
+          content: `<p>Pilot tests demonstrated that the iterative feedback significantly improves argument coherence and quality. The integration of human preferences through LLM-as-a-judge has enabled the collection of 40k golden samples, forming a comprehensive benchmark for future debate training systems.</p>`
+        },
+        {
+          title: 'Discussion and Future Work',
+          content: `<p>The current framework lays the foundation for automated debate training using LLMs. Future work will focus on scaling the system to incorporate additional agents, further refining the debate evaluation metrics, and integrating real-time human feedback to continuously enhance the debate quality.</p>`
+        }
+      ],
+      demo: {
+        type: 'pdf',
+        url: ''
+      },
+      github: ''
+    },
+    {
+      id: 'vlm-localization',
+      title: 'VLM Semantic Localization for Lightweight Mapping',
+      description: 'Hybrid localization system combining LIO-SAM SLAM with SigLIP 2 VLM embeddings and FAISS vector search',
+      tech: ['Python', 'C++', 'SLAM', 'SigLIP 2', 'FAISS', 'ROS'],
+      keyPoints: [
+        'Designed a hybrid localization system combining LIO-SAM SLAM with SigLIP 2 VLM embeddings and FAISS vector search, enabling sub-millisecond pose retrieval while reducing map storage by 90%+ over dense point clouds',
+        'Implemented batch embedding extraction pipeline with timestamp-matched keyframe association, building a compact FAISS index of SE(3) poses and embedding vectors for scalable visual place recognition'
+      ],
+      fullDescription: `<p>This project introduces a robust hybrid localization approach that significantly reduces memory footprint by leveraging VLM embeddings for scalable place recognition alongside traditional SLAM systems.</p>`,
+      sections: [],
+      images: [],
+      github: ''
+    },
+    {
       id: 'mars-rover',
       title: 'Mars Rover Manipal',
       description: 'Autonomous rover system ranked 7th globally at University Rover Challenge 2020',
@@ -237,36 +281,6 @@ export class ProjectsService {
         type: 'pdf',
         url: 'projects/multi-agent-bayes-opt/Gaurav_Multi_Agent_Bayes_Opt_Report.pdf'
       }
-    },
-    {
-      id: 'debate-training',
-      title: 'Debate Training with LLMs and Multi-Agent Interaction Structures',
-      description: 'Multi-agent framework leveraging LLMs to simulate and enhance debate processes',
-      tech: ['Python', 'LLMs', 'LangChain', 'LangGraph', 'OpenAI API', 'Ollama', 'OpenDebateEvidence'],
-      keyPoints: [
-        'Constructed a multi-agent debate framework leveraging two distinct LLMs to simulate opposing arguments, utilizing LangGraph to construct a debating workflow that facilitates opposing argument enhancement via iterative feedback',
-        'Incorporated human-in-the-loop with human preference through LLM-as-a-judge comparing BERTScore with OpenDebateEvidence knowledge base to build 40k golden samples'
-      ],
-      fullDescription: `<p>Debate Training with LLMs and Multi-Agent Interaction Structures is a cutting-edge project that combines multi-agent systems with large language models to simulate realistic debates. Inspired by the concepts detailed in the SocrAItic Circle presentation, the framework engages agents that assume opposing stances to rigorously test arguments and generate improved debate strategies. By leveraging iterative feedback and integrating human judgment, the system aims to refine debate quality and ultimately build a high-quality dataset of 40k golden samples for benchmarking and training purposes.</p>`,
-      sections: [
-        {
-          title: 'Methodology',
-          content: `<p>The system utilizes a dual-agent setup where each agent simulates a different perspective. The debate workflow is constructed using LangGraph, ensuring that each round of debate progressively refines the presented arguments. A human-in-the-loop mechanism is integrated by employing an LLM configured as a judge. This judge evaluates the debate rounds by comparing BERTScore metrics with a curated OpenDebateEvidence knowledge base, ensuring that debate outcomes reflect high-quality reasoning and evidence.</p>`
-        },
-        {
-          title: 'Experimental Evaluation',
-          content: `<p>Pilot tests demonstrated that the iterative feedback significantly improves argument coherence and quality. The integration of human preferences through LLM-as-a-judge has enabled the collection of 40k golden samples, forming a comprehensive benchmark for future debate training systems.</p>`
-        },
-        {
-          title: 'Discussion and Future Work',
-          content: `<p>The current framework lays the foundation for automated debate training using LLMs. Future work will focus on scaling the system to incorporate additional agents, further refining the debate evaluation metrics, and integrating real-time human feedback to continuously enhance the debate quality.</p>`
-        }
-      ],
-      demo: {
-        type: 'pdf',
-        url: ''
-      },
-      github: ''
     }
 
   ];

@@ -15,20 +15,20 @@ export class SkillsComponent {
       name: 'AI/ML & Robotics',
       skills: [
         {
+          name: 'LLMs & Generative AI',
+          description: 'Built multi-agent frameworks, RAG systems, and AI assistants leveraging LangChain, LangGraph, OpenAI APIs, and LLM-as-a-judge methodologies.'
+        },
+        {
+          name: 'Computer Vision',
+          description: 'Leveraged PyTorch, OpenCV, and Ultralytics YOLO for tasks such as obstacle detection, scene understanding, and optimized ONNX inference.'
+        },
+        {
           name: 'Reinforcement Learning',
           description: 'Developed and fine-tuned RL algorithms, integrating methods like DDPG and PPO to solve robotic control and planning problems.'
         },
         {
           name: 'Sensor Fusion & Perception',
-          description: 'Implemented sensor fusion techniques using Kalman filters and deep learning for robust perception in dynamic environments, ideal for autonomous navigation.'
-        },
-        {
-          name: 'ROS/ROS2 Expertise',
-          description: 'Designed and maintained autonomous systems with ROS, integrating hardware sensors and advanced planning algorithms for precise control.'
-        },
-        {
-          name: 'Computer Vision',
-          description: 'Leveraged TensorFlow and OpenCV for tasks such as obstacle detection and scene understanding to support robotic decision-making.'
+          description: 'Implemented sensor fusion techniques using Kalman filters and deep learning for robust perception in dynamic environments.'
         }
       ]
     },
@@ -36,54 +36,37 @@ export class SkillsComponent {
       name: 'Software Development & Engineering',
       skills: [
         {
-          name: 'Full-Stack Development',
-          description: 'Built robust web applications using Angular on the frontend and Spring Boot for microservices, drawing on experience from professional software development roles.'
+          name: 'Full-Stack & Backend Development',
+          description: 'Built robust web applications and microservices using Go, Python, TypeScript, HTML/CSS, and FastAPI for real-time data processing.'
+        },
+        {
+          name: 'DevOps & Cloud Infrastructure',
+          description: 'Used Docker, Kubernetes, OpenShift, Helm, AWS, and CI/CD pipelines (Jenkins, GitHub Actions) to streamline deployments and manage scalable environments.'
+        },
+        {
+          name: 'System Architecture',
+          description: 'Architected secure event-driven and distributed systems using asynchronous message brokers like Kafka and caching layers like Redis.'
         },
         {
           name: 'Performance Optimization',
-          description: 'Optimized code and system performance through thorough debugging and profiling, minimizing latency in distributed systems.'
-        },
-        {
-          name: 'DevOps & Containerization',
-          description: 'Used Docker, Kubernetes, and CI/CD pipelines to streamline development processes and manage scalable deployments.'
-        },
-        {
-          name: 'Embedded Systems',
-          description: 'Developed and integrated firmware on microcontrollers (STM32, Atmega328p) to achieve real-time control in robotics applications.'
+          description: 'Optimized codebase and infrastructure performance through thorough debugging, profiling, and latency reduction in production systems.'
         }
       ]
     },
     {
-      name: 'Technical & Academic Leadership',
+      name: 'Data & Analytics',
       skills: [
         {
-          name: 'Robotics Research',
-          description: 'Conducted academic research in AI-driven robotics, with a focus on integrating advanced perception with autonomous planning algorithms.'
+          name: 'MLOps & Experiment Tracking',
+          description: 'Managed end-to-end ML lifecycles using Dataiku and MLflow to version datasets, track experiments, and automate model deployments.'
         },
         {
-          name: 'Cross-Functional Mentorship',
-          description: 'Mentored peers and led project teams, leveraging hands-on experience from MSc projects and industry roles to guide innovative solutions.'
+          name: 'System Monitoring & Observability',
+          description: 'Implemented real-time monitoring and anomaly detection using Splunk, Dynatrace, and custom dashboards to guarantee reliable uptime.'
         },
         {
-          name: 'Innovative Problem Solving',
-          description: 'Applied creative engineering and research methods to overcome complex challenges in both academic and professional environments.'
-        }
-      ]
-    },
-    {
-      name: 'Tools, Simulation & Analytics',
-      skills: [
-        {
-          name: 'Simulation Platforms',
-          description: 'Utilized Gazebo and MuJoCo for high-fidelity robotic simulations, validating control strategies before real-world testing.'
-        },
-        {
-          name: 'Cloud Robotics',
-          description: 'Integrated cloud-based services for data analytics and remote system management, enhancing the scalability of robotic systems.'
-        },
-        {
-          name: 'System Monitoring & Analytics',
-          description: 'Implemented real-time monitoring tools and dashboards to ensure reliable performance in complex distributed systems.'
+          name: 'Data Processing & Storage',
+          description: 'Engineered scalable data ingestion pipelines and optimized queries using SQL, Pandas, and NoSQL databases like MongoDB and AWS DocumentDB.'
         }
       ]
     }

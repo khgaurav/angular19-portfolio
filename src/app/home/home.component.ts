@@ -18,12 +18,16 @@ gsap.registerPlugin(ScrollTrigger);
     HeroComponent,
     ProjectsComponent,
     ExperienceComponent,
-    // SkillsComponent
+    SkillsComponent
   ],
   template: `
     <main>
       <section id="hero" class="gsap-hero">
         <app-hero></app-hero>
+      </section>
+
+      <section id="skills" aria-label="Technical Skills">
+        <app-skills></app-skills>
       </section>
 
       <section id="projects" aria-label="Featured Projects" class="gsap-projects">
@@ -33,10 +37,6 @@ gsap.registerPlugin(ScrollTrigger);
       <section id="experience" aria-label="Professional Experience" class="gsap-experience">
         <app-experience></app-experience>
       </section>
-
-      <!-- <section id="skills" aria-label="Technical Skills">
-        <app-skills></app-skills>
-      </section> -->
     </main>
   `,
   styleUrls: ['./home.component.scss']
