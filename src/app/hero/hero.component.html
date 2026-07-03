@@ -1,4 +1,21 @@
 <section class="hero" id="about">
+  <!-- Print-Only Resume Header -->
+  <div class="print-only-header">
+    <h1 class="print-name">Gaurav Kothamachu Harish</h1>
+    <div class="print-subtitle">Software Engineer — AI/LLMs, Robotics, Scalable Systems</div>
+    <div class="print-contact">
+      <a href="mailto:kothamachuharish.g@northeastern.edu">
+        <i class="fas fa-envelope"></i> kothamachuharish.g&#64;northeastern.edu
+      </a>
+      <a href="https://linkedin.com/in/gauravkh" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i> linkedin.com/in/gauravkh
+      </a>
+      <a href="https://github.com/khgaurav" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> github.com/khgaurav
+      </a>
+    </div>
+  </div>
+
   <div class="hero__photo-wrapper">
     <div class="hero__photo-container">
       <img 
@@ -21,8 +38,8 @@
   </div>
 
   <div class="hero__cta">
-    <a href="https://1drv.ms/b/c/ecd2ef8085fecd92/EfqWJZR8ngJAosNGGCsl2DsBUzihl8EoiW839yT7N_JZPQ?e=7gwugr" class="cta-button" target="_blank">
-      Check out my resume!
-    </a>
+    <button (click)="printPage()" class="cta-button">
+      Print Resume
+    </button>
   </div>
 </section>

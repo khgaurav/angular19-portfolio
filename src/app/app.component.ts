@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { routeAnimation } from './app.animations';
 import { ScrollService } from './services/scroll.service';
@@ -45,5 +45,23 @@ export class AppComponent implements OnInit {
 
   scrollTo(sectionId: string) {
     this.scrollService.scrollTo(sectionId);
+  }
+
+  @HostListener('window:beforeprint')
+  onBeforePrint() {
+    document.querySelectorAll('details').forEach(el => {
+      if (!el.hasAttribute('open')) {
+        el.setAttribute('open', '');
+        el.setAttribute('data-was-closed', 'true');
+      }
+    });
+  }
+
+  @HostListener('window:afterprint')
+  onAfterPrint() {
+    document.querySelectorAll('details[data-was-closed]').forEach(el => {
+      el.removeAttribute('open');
+      el.removeAttribute('data-was-closed');
+    });
   }
 }

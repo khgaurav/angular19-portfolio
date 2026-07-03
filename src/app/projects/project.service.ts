@@ -6,6 +6,34 @@ import { Project } from './project.model';
 export class ProjectsService {
   private projects: Project[] = [
     {
+      id: 'vlm-localization',
+      title: 'Hybrid Semantic Localization Using LiDAR SLAM and Vision-Language Embeddings',
+      description: 'Hybrid localization framework combining geometric SLAM with vision-language model (VLM) embeddings to create a lightweight semantic map',
+      tech: ['Python', 'C++', 'SLAM', 'LIO-SAM', 'SigLIP 2', 'FAISS', 'ROS', 'PyTorch'],
+      keyPoints: [
+        'Designed a hybrid localization system combining LIO-SAM SLAM with SigLIP 2 VLM embeddings and FAISS vector search, achieving a 17x reduction in map size (368 KB vs 6.0 MB voxelized SLAM map / 2.31 GB raw LiDAR bag)',
+        'Evaluated on the M2DGR dataset (gate_01 sequence), achieving an exceptional in-map median Absolute Trajectory Error (ATE) of 0.32 m and 95th percentile error of 2.1 m without local geometric refinement',
+        'Implemented a temporal plausibility filter on top-10 retrieved candidate matches to resolve visual aliasing/ambiguous matches, ensuring robust sequential trajectory estimation'
+      ],
+      fullDescription: `<p>This project introduces a robust, lightweight hybrid localization framework that combines geometric SLAM (LIO-SAM) with semantic vision-language model (VLM) embeddings from SigLIP 2 for scalable place recognition. By storing only 768-dimensional float vectors and SE(3) poses for keyframes rather than dense point clouds, the system dramatically reduces memory footprint while maintaining high-fidelity trajectory tracking and sub-millisecond pose retrieval.</p>`,
+      sections: [
+        {
+          title: 'System Overview & Mapping Pipeline',
+          content: `<p>The mapping pipeline uses LIO-SAM to process LiDAR and IMU data, generating keyframe poses. Each keyframe is associated with a timestamp-matched RGB image. The images are passed through the SigLIP 2 VLM vision encoder to produce 768-dimensional global embedding vectors. These embeddings are stored in a FAISS index configured for cosine similarity search, mapping to their respective SE(3) poses. This compresses the map storage to just 368 KB for 120 keyframes—a 17x reduction over voxelized SLAM maps and over 6,500x smaller than raw sensor streams.</p>`
+        },
+        {
+          title: 'Localization & Temporal Filtering',
+          content: `<p>During online localization, query RGB images from a camera are processed through the same SigLIP 2 model to extract embeddings, which are compared against the FAISS index to retrieve the top-10 candidate keyframe poses. To mitigate perceptual aliasing (where visually similar scenes map to different physical locations), a temporal plausibility filter is applied. The filter rejects candidate matches that imply unrealistic motion or large spatial jumps, resulting in a stable and robust visual localization trajectory.</p>`
+        },
+        {
+          title: 'Experimental Evaluation',
+          content: `<p>We evaluated the system on the gate_01 sequence of the M2DGR dataset using Absolute Trajectory Error (ATE) metrics. Without local geometric refinement (such as Iterative Closest Point), the purely topological retrieval achieved an exceptional median ATE of 0.32 meters, with 88.4% of queries falling within a 1-meter threshold, demonstrating the viability of lightweight, camera-only semantic localization for edge devices.</p>`
+        }
+      ],
+      images: [],
+      github: 'https://github.com/khgaurav/Semantic_SLAM'
+    },
+    {
       id: 'debate-training',
       title: 'Debate Training with LLMs and Multi-Agent Interaction Structures',
       description: 'Multi-agent framework leveraging LLMs to simulate and enhance debate processes',
@@ -33,20 +61,6 @@ export class ProjectsService {
         type: 'pdf',
         url: ''
       },
-      github: ''
-    },
-    {
-      id: 'vlm-localization',
-      title: 'VLM Semantic Localization for Lightweight Mapping',
-      description: 'Hybrid localization system combining LIO-SAM SLAM with SigLIP 2 VLM embeddings and FAISS vector search',
-      tech: ['Python', 'C++', 'SLAM', 'SigLIP 2', 'FAISS', 'ROS'],
-      keyPoints: [
-        'Designed a hybrid localization system combining LIO-SAM SLAM with SigLIP 2 VLM embeddings and FAISS vector search, enabling sub-millisecond pose retrieval while reducing map storage by 90%+ over dense point clouds',
-        'Implemented batch embedding extraction pipeline with timestamp-matched keyframe association, building a compact FAISS index of SE(3) poses and embedding vectors for scalable visual place recognition'
-      ],
-      fullDescription: `<p>This project introduces a robust hybrid localization approach that significantly reduces memory footprint by leveraging VLM embeddings for scalable place recognition alongside traditional SLAM systems.</p>`,
-      sections: [],
-      images: [],
       github: ''
     },
     {

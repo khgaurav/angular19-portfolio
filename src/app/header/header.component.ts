@@ -49,4 +49,8 @@ export class HeaderComponent implements OnInit {
       this.renderer.addClass(this.document.body, 'light-mode');
     }
   }
+
+  printPage() {
+    window.print();
+  }
 }

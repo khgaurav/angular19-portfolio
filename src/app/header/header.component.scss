@@ -75,7 +75,7 @@
   }
 }
 
-.resume-button {
+.print-button {
   color: var(--accent-color);
   background-color: transparent;
   border: 1px solid var(--accent-color);
@@ -83,6 +83,11 @@
   padding: 12px 20px;
   margin-left: 20px;
   transition: all 0.25s ease;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  outline: none;
 
   &:hover {
     background-color: rgba(100, 255, 218, 0.1);
@@ -182,7 +187,7 @@ body.light-mode {
     }
   }
 
-  .resume-button:hover {
+  .print-button:hover {
     background-color: rgba(0, 123, 255, 0.1);
   }
 }
@@ -203,7 +208,7 @@ body.light-mode {
     display: none; // Will add mobile menu later
   }
 
-  .resume-button {
+  .print-button {
     display: none;
   }
 }

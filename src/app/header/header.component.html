@@ -65,11 +65,11 @@
           </label>
         </li>
 
-        <!-- Resume Button (Keep outside li if preferred, or wrap in li) -->
-        <li class="nav__item"> <!-- Better semantic structure within the list -->
-          <a href="https://1drv.ms/b/c/ecd2ef8085fecd92/EfqWJZR8ngJAosNGGCsl2DsBUzihl8EoiW839yT7N_JZPQ?e=7gwugr" class="resume-button" target="_blank">
-            Resume
-          </a>
+        <!-- Print Resume Button -->
+        <li class="nav__item">
+          <button (click)="printPage()" class="print-button" aria-label="Print Resume">
+            Print Resume
+          </button>
         </li>
       </ol>
     </div>
