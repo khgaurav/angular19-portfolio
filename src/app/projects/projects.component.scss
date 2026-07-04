@@ -34,9 +34,9 @@
   // Initial state for GSAP animation
   opacity: 0;
   will-change: transform, opacity;
+  transform-style: preserve-3d;
 
   &:hover {
-    transform: translateY(-6px);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
     border-color: rgba(100, 255, 218, 0.2);
 

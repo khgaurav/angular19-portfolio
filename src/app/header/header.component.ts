@@ -13,6 +13,7 @@ import { Router, RouterLink } from '@angular/router';
 export class HeaderComponent implements OnInit {
   activeSection = '';
   isDarkMode: boolean = true;
+  isMobileMenuOpen: boolean = false;
   isHome: boolean = true;
 
   constructor(
@@ -23,7 +24,22 @@ export class HeaderComponent implements OnInit {
   ) {
     this.router.events.subscribe(() => {
       this.isHome = this.router.url === '/' || this.router.url.startsWith('/#');
+      this.closeMobileMenu();
     });
+  }
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    if (this.isMobileMenuOpen) {
+      this.renderer.addClass(this.document.body, 'menu-open');
+    } else {
+      this.renderer.removeClass(this.document.body, 'menu-open');
+    }
+  }
+
+  closeMobileMenu() {
+    this.isMobileMenuOpen = false;
+    this.renderer.removeClass(this.document.body, 'menu-open');
   }
 
   ngOnInit() {
@@ -44,10 +60,37 @@ export class HeaderComponent implements OnInit {
     this.applyTheme();
   }
 
+  clickCoords = { x: 0, y: 0 };
+
+  setClickCoords(event: MouseEvent) {
+    if (event.clientX && event.clientY) {
+      this.clickCoords.x = event.clientX;
+      this.clickCoords.y = event.clientY;
+    }
+  }
+
   toggleTheme() {
+    const x = this.clickCoords.x || window.innerWidth / 2;
+    const y = this.clickCoords.y || window.innerHeight / 2;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    document.documentElement.style.setProperty('--x', `${x}px`);
+    document.documentElement.style.setProperty('--y', `${y}px`);
+    document.documentElement.style.setProperty('--r', `${endRadius}px`);
+
     this.isDarkMode = !this.isDarkMode;
     localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
-    this.applyTheme();
+
+    if ((document as any).startViewTransition) {
+      (document as any).startViewTransition(() => {
+        this.applyTheme();
+      });
+    } else {
+      this.applyTheme();
+    }
   }
 
   applyTheme() {

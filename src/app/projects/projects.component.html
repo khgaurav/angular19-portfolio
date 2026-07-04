@@ -4,13 +4,16 @@
   <div class="projects-list">
     @for (project of projects; track project) {
       <div class="project-card"
-     (click)="navigateToProject(project.id)"
-     [attr.aria-label]="'View ' + project.title"
-     [@fadeInUp]
-     role="button"
-     tabindex="0"
-     (keydown.enter)="navigateToProject(project.id)"
-     (keydown.space)="$event.preventDefault(); navigateToProject(project.id)">
+      #card
+      (mousemove)="onMouseMove($event, card)"
+      (mouseleave)="onMouseLeave(card)"
+      (click)="navigateToProject(project.id)"
+      [attr.aria-label]="'View ' + project.title"
+      [@fadeInUp]
+      role="button"
+      tabindex="0"
+      (keydown.enter)="navigateToProject(project.id)"
+      (keydown.space)="$event.preventDefault(); navigateToProject(project.id)">
         <div class="project-content">
           <div class="project-header">
             <h3 class="project-title">{{ project.title }}</h3>
