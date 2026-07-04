@@ -12,6 +12,14 @@
 </head>
 <script>fetch('/_t').catch(function(){})</script>
 <body>
+  <script>
+    (function() {
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'light' || (!storedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.body.classList.add('light-mode');
+      }
+    })();
+  </script>
   <app-root></app-root>
 </body>
 </html>

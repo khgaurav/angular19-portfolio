@@ -24,11 +24,15 @@
   // Common Variables
   --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
   --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-  --nav-height: 80px;
-  --border-radius: 4px;
-  --scrollbar-width: 8px;
-  --footer-height: 80px;
-  --transition: all 0.3s ease;
+  --nav-height: 64px;
+  --border-radius: 12px;
+  --border-radius-sm: 8px;
+  --border-radius-lg: 16px;
+  --scrollbar-width: 6px;
+  --footer-height: 70px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
   // Apply dark theme variables as default
   --bg-color: var(--navy);
@@ -62,15 +66,19 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: var(--font-sans);
-  line-height: 1.3;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  transition: var(--transition);
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-color-highlight);
   margin: 0 0 10px 0;
-  transition: var(--transition);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 a {
@@ -93,6 +101,33 @@ body.light-mode {
   --text-color-highlight: var(--light-text);
   --accent-color: var(--light-accent);
   --border-color: var(--light-bg-tertiary);
+
+  /* Global light mode component overrides (bypassing emulated view encapsulation) */
+  .header {
+    background-color: rgba(245, 245, 245, 0.8) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .persistent-footer {
+    background-color: rgba(245, 245, 245, 0.85) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .theme-switch {
+    .slider {
+      background-color: rgba(0, 123, 255, 0.12) !important;
+      border-color: rgba(0, 123, 255, 0.12) !important;
+
+      &:before {
+        background-color: #ffffff !important;
+      }
+    }
+  }
+
+  .print-button:hover {
+    background-color: rgba(10, 122, 103, 0.08) !important;
+    box-shadow: 0 4px 12px rgba(10, 122, 103, 0.12) !important;
+  }
 }
 
 /* ========== Typography ========== */
@@ -112,26 +147,34 @@ body.light-mode {
 .numbered-heading {
   display: flex;
   align-items: center;
-  font-family: var(--font-mono);
-  font-size: clamp(16px, 3vw, 20px);
-  color: var(--accent-color);
-  margin: 10px 0 40px;
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 3.5vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-color-highlight);
+  margin: 10px 0 32px;
+  position: relative;
+  padding-bottom: 12px;
 
-  &::before {
-    // content: '01.';
-    margin-right: 10px;
-    font-weight: 400;
-    color: var(--accent-color);
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
   }
 }
 
 /* ========== Layout ========== */
 section {
   scroll-snap-align: start;
-  min-height: 100vh;
-  padding: 0px 2rem;
+  min-height: auto;
+  padding: 5rem 2rem;
   position: relative;
-  scroll-margin-top: 100px;
+  scroll-margin-top: var(--nav-height);
 }
 
 .scroll-indicators {
@@ -533,7 +576,7 @@ section {
 
 .mat-toolbar {
   background-color: rgba(10, 25, 47, 0.85) !important;
-  backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(20px) !important;
 }
 
 body.light-mode .mat-toolbar {
@@ -556,12 +599,12 @@ main {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-color);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--text-color);
-  border-radius: 4px;
+  background: rgba(136, 146, 176, 0.3);
+  border-radius: 10px;
 
   &:hover {
     background: var(--accent-color);

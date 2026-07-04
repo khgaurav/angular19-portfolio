@@ -1,41 +1,34 @@
 <nav class="header">
   <div class="header__content">
-    <a href="/" class="logo" aria-label="home">
+    <a routerLink="/" class="logo" aria-label="home">
       <span class="logo__text">G</span>
     </a>
 
     <div class="nav__links">
       <ol class="nav__list">
         <li class="nav__item">
-          <a href="#about"
+          <a [href]="isHome ? '#about' : '/#about'"
              class="nav__link"
              [class.active]="activeSection === 'hero'">
             About
           </a>
         </li>
         <li class="nav__item">
-          <a href="#projects"
-          class="nav__link"
-          [class.active]="activeSection === 'projects'">
-          Projects
-        </a>
-      </li>
-      <li class="nav__item">
-        <a href="#experience"
-           class="nav__link"
-           [class.active]="activeSection === 'experience'">
-          Experience
-        </a>
-      </li>
-        <!-- <li class="nav__item">
-          <a href="#skills"
+          <a [href]="isHome ? '#projects' : '/#projects'"
              class="nav__link"
-             [class.active]="activeSection === 'skills'">
-            Skills
+             [class.active]="activeSection === 'projects'">
+            Projects
           </a>
-        </li> -->
+        </li>
         <li class="nav__item">
-          <a href="#contact"
+          <a [href]="isHome ? '#experience' : '/#experience'"
+             class="nav__link"
+             [class.active]="activeSection === 'experience'">
+            Experience
+          </a>
+        </li>
+        <li class="nav__item">
+          <a [href]="isHome ? '#contact' : '/#contact'"
              class="nav__link"
              [class.active]="activeSection === 'contact'">
             Contact

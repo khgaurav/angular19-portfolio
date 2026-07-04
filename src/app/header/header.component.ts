@@ -1,22 +1,30 @@
 import { Component, OnInit, Inject, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ScrollService } from '../services/scroll.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  standalone: true
+  standalone: true,
+  imports: [RouterLink]
 })
 export class HeaderComponent implements OnInit {
   activeSection = '';
   isDarkMode: boolean = true;
+  isHome: boolean = true;
 
   constructor(
     private scrollService: ScrollService,
     @Inject(DOCUMENT) private document: Document,
-    private renderer: Renderer2
-  ) {}
+    private renderer: Renderer2,
+    private router: Router
+  ) {
+    this.router.events.subscribe(() => {
+      this.isHome = this.router.url === '/' || this.router.url.startsWith('/#');
+    });
+  }
 
   ngOnInit() {
     this.scrollService.activeSection$.subscribe(section => {

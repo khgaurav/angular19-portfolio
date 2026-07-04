@@ -4,12 +4,12 @@
   justify-content: center;
   padding: 0px 2rem 30px;
   min-height: calc(100vh - var(--nav-height) - var(--footer-height));
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
   scroll-margin-top: var(--nav-height);
 
   &__photo-wrapper {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     // Initial state for GSAP animation
     opacity: 0;
     will-change: transform, opacity;
@@ -17,38 +17,38 @@
 
   &__photo-container {
     position: relative;
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     cursor: pointer;
 
-    // Animated gradient border
+    // Modern gradient border
     &::before {
       content: '';
       position: absolute;
-      top: -4px;
-      left: -4px;
-      right: -4px;
-      bottom: -4px;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent-color), #57cbff, var(--accent-color));
+      background: linear-gradient(135deg, var(--accent-color), rgba(87, 203, 255, 0.6), var(--accent-color));
       background-size: 200% 200%;
       z-index: -1;
-      animation: gradientRotate 4s ease infinite;
+      animation: gradientRotate 6s ease infinite;
     }
 
-    // Glow effect
+    // Soft glow effect
     &::after {
       content: '';
       position: absolute;
-      top: -8px;
-      left: -8px;
-      right: -8px;
-      bottom: -8px;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(100, 255, 218, 0.2) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(100, 255, 218, 0.15) 0%, transparent 70%);
       opacity: 0;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: -2;
     }
 
@@ -61,11 +61,6 @@
         transform: scale(1.05);
         filter: grayscale(0%) brightness(1);
       }
-
-      .hero__photo-ring {
-        transform: scale(1.15) rotate(180deg);
-        opacity: 1;
-      }
     }
   }
 
@@ -74,29 +69,21 @@
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    filter: grayscale(20%) brightness(0.95);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(10%) brightness(0.97);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     background: var(--bg-color-secondary);
   }
 
   &__photo-ring {
-    position: absolute;
-    top: -15px;
-    left: -15px;
-    right: -15px;
-    bottom: -15px;
-    border-radius: 50%;
-    border: 2px dashed var(--accent-color);
-    opacity: 0.5;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: ringPulse 3s ease-in-out infinite;
+    display: none; // Remove dated dashed ring
   }
 
   &__subtitle {
     font-family: var(--font-mono);
     color: var(--accent-color);
-    font-size: clamp(16px, 3vw, 18px);
-    margin: 0 0 20px 4px;
+    font-size: clamp(14px, 2.5vw, 16px);
+    margin: 0 0 16px 2px;
+    letter-spacing: 0.04em;
     // Initial state for GSAP animation
     opacity: 0;
     will-change: transform, opacity;
@@ -104,9 +91,11 @@
 
   &__title {
     color: var(--text-color-highlight);
-    font-size: clamp(40px, 8vw, 80px);
-    line-height: 1.1;
-    margin: 0 0 20px 0;
+    font-size: clamp(36px, 7vw, 64px);
+    line-height: 1.05;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.03em;
+    font-weight: 700;
     // Initial state for GSAP animation
     opacity: 0;
     will-change: transform, opacity;
@@ -114,24 +103,26 @@
 
   &__subtitle-large {
     color: var(--text-color);
-    font-size: clamp(30px, 6vw, 50px);
-    margin: 0 0 30px 0;
+    font-size: clamp(24px, 5vw, 42px);
+    margin: 0 0 28px 0;
+    letter-spacing: -0.02em;
+    font-weight: 600;
     // Initial state for GSAP animation
     opacity: 0;
     will-change: transform, opacity;
   }
 
   &__description {
-    max-width: 540px;
-    margin-bottom: 40px;
+    max-width: 520px;
+    margin-bottom: 36px;
     // Initial state for GSAP animation
     opacity: 0;
     will-change: transform, opacity;
 
     p {
       color: var(--text-color);
-      font-size: clamp(16px, 3vw, 18px);
-      line-height: 1.5;
+      font-size: clamp(15px, 2.5vw, 17px);
+      line-height: 1.7;
     }
   }
 
@@ -147,18 +138,24 @@
   color: var(--accent-color);
   background-color: transparent;
   border: 1px solid var(--accent-color);
-  border-radius: var(--border-radius);
-  padding: 1.25rem 1.75rem;
+  border-radius: 999px;
+  padding: 0.9rem 2rem;
   font-family: var(--font-mono);
   font-size: 14px;
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.02em;
 
   &:hover {
     background-color: rgba(100, 255, 218, 0.1);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(100, 255, 218, 0.15);
+  }
+
+  &:active {
+    transform: scale(0.98);
   }
 }
 
@@ -177,20 +174,6 @@
   }
 }
 
-@keyframes ringPulse {
-
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-
-  50% {
-    transform: scale(1.05);
-    opacity: 0.8;
-  }
-}
-
 @media (max-width: 768px) {
   .hero {
     padding: 60px 1.5rem 20px;
@@ -201,12 +184,12 @@
     }
 
     &__photo-container {
-      width: 140px;
-      height: 140px;
+      width: 120px;
+      height: 120px;
     }
 
     &__description p {
-      font-size: 16px;
+      font-size: 15px;
     }
   }
 }

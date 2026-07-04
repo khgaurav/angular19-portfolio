@@ -1,5 +1,5 @@
 #experience {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0.5rem;
 
@@ -14,49 +14,77 @@
 
   &__list {
     position: relative;
-    max-width: 800px;
+    max-width: 100%;
   }
 
   &__item {
-    margin-bottom: 50px;
-    padding-left: 30px;
-    border-left: 2px solid var(--accent-color);
+    margin-bottom: 24px;
+    padding: 1.5rem 1.75rem;
+    border-left: 3px solid var(--accent-color);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    background-color: var(--bg-color-secondary);
+    border-top: 1px solid rgba(100, 255, 218, 0.04);
+    border-right: 1px solid rgba(100, 255, 218, 0.04);
+    border-bottom: 1px solid rgba(100, 255, 218, 0.04);
     position: relative;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     // Initial state for GSAP animation
     opacity: 0;
     will-change: transform, opacity;
 
     &:hover {
+      transform: translateX(6px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
       .company {
         color: var(--accent-color);
       }
+    }
+
+    // Timeline dot
+    &::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 1.75rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--accent-color);
+      border: 3px solid var(--bg-color);
+      z-index: 1;
     }
   }
 
   &__title {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    font-size: 22px;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 18px;
   }
 
   .role {
     color: var(--text-color-highlight);
+    font-weight: 600;
   }
 
   .company {
     color: var(--accent-color);
     font-family: var(--font-mono);
-    font-size: 16px;
-    transition: color 0.25s ease;
+    font-size: 14px;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &__duration {
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 12px;
     color: var(--text-color);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    opacity: 0.8;
   }
 
   &__points {
@@ -66,17 +94,18 @@
 
   &__point {
     position: relative;
-    padding-left: 25px;
-    margin-bottom: 10px;
+    padding-left: 20px;
+    margin-bottom: 8px;
     color: var(--text-color);
-    line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.6;
 
     &::before {
       content: '▹';
       position: absolute;
       left: 0;
       color: var(--accent-color);
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 }
@@ -84,14 +113,14 @@
 @media (max-width: 768px) {
   .experience {
     &__item {
-      padding-left: 20px;
-      margin-bottom: 40px;
+      padding: 1.25rem;
+      margin-bottom: 20px;
     }
 
     &__title {
       flex-direction: column;
       align-items: flex-start;
-      gap: 5px;
+      gap: 4px;
     }
   }
 }

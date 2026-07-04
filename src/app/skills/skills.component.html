@@ -1,12 +1,16 @@
 <section id="skills">
   <h2 class="numbered-heading">My Toolbox</h2>
-  <div class="skills-grid">
-    @for (category of skillCategories; track category; let i = $index) {
-      <div class="skill-category">
-        <h3 class="category-title">{{ category.name }}</h3>
+  <div class="skills-bento">
+    <!-- Cell 1: AI/ML & Robotics (Col Span 2, Row Span 1) -->
+    @if (skillCategories[0]) {
+      <div class="bento-cell bento-cell--ai-ml">
+        <div class="bento-cell__glow"></div>
+        <h3 class="category-title">
+          <i class="fa-solid fa-brain"></i> {{ skillCategories[0].name }}
+        </h3>
         <ul class="skill-list">
-          @for (skill of category.skills; track skill) {
-            <li class="skill-item" [@fadeIn]="{ value: '', params: { delay: i * 0.1 } }">
+          @for (skill of skillCategories[0].skills; track skill) {
+            <li class="skill-item">
               <details>
                 <summary aria-expanded="false">{{ skill.name }}</summary>
                 <p>{{ skill.description }}</p>
@@ -16,16 +20,72 @@
         </ul>
       </div>
     }
+
+    <!-- Cell 2: Software Dev & Systems Engineering (Col Span 1, Row Span 2) -->
+    @if (skillCategories[1]) {
+      <div class="bento-cell bento-cell--systems">
+        <h3 class="category-title">
+          <i class="fa-solid fa-code"></i> {{ skillCategories[1].name }}
+        </h3>
+        <ul class="skill-list">
+          @for (skill of skillCategories[1].skills; track skill) {
+            <li class="skill-item">
+              <details>
+                <summary aria-expanded="false">{{ skill.name }}</summary>
+                <p>{{ skill.description }}</p>
+              </details>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+
+    <!-- Cell 3: Academic Role / Focus (Col Span 1, Row Span 1) -->
+    <div class="bento-cell bento-cell--edu">
+      <h3 class="category-title">
+        <i class="fa-solid fa-graduation-cap"></i> Academic & Research
+      </h3>
+      <div class="edu-content">
+        <div class="edu-item">
+          <span class="edu-tag">MSc CS Student</span>
+          <p>Northeastern University</p>
+        </div>
+        <div class="edu-item">
+          <span class="edu-tag">Teaching Assistant</span>
+          <p>Reinforcement Learning</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell 4: Data & Analytics (Col Span 1, Row Span 1) -->
+    @if (skillCategories[2]) {
+      <div class="bento-cell bento-cell--data">
+        <h3 class="category-title">
+          <i class="fa-solid fa-chart-simple"></i> {{ skillCategories[2].name }}
+        </h3>
+        <ul class="skill-list">
+          @for (skill of skillCategories[2].skills; track skill) {
+            <li class="skill-item">
+              <details>
+                <summary aria-expanded="false">{{ skill.name }}</summary>
+                <p>{{ skill.description }}</p>
+              </details>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+
   </div>
 </section>
 
-<!-- Inline Script for handling auto-expansion on find (Ctrl+F/⌘+F) and button controls -->
+<!-- Inline Script for handling auto-expansion on find (Ctrl+F/⌘+F) -->
 <script>
   // Update aria-expanded attribute when details toggle
   document.querySelectorAll('details').forEach(detail => {
     detail.addEventListener('toggle', () => {
       const summary = detail.querySelector('summary');
-      summary.setAttribute('aria-expanded', detail.open);
+      if (summary) summary.setAttribute('aria-expanded', detail.open);
     });
   });
 
@@ -34,32 +94,9 @@
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'f') {
       document.querySelectorAll('details').forEach((detail) => {
         detail.open = true;
-        // Update aria attribute
         const summary = detail.querySelector('summary');
         if(summary) summary.setAttribute('aria-expanded', 'true');
       });
     }
-  });
-
-  // Add listeners for Expand All and Collapse All buttons
-  document.addEventListener('DOMContentLoaded', () => {
-    const expandButton = document.getElementById('expand-all');
-    const collapseButton = document.getElementById('collapse-all');
-
-    expandButton.addEventListener('click', () => {
-      document.querySelectorAll('details').forEach((detail) => {
-        detail.open = true;
-        const summary = detail.querySelector('summary');
-        if(summary) summary.setAttribute('aria-expanded', 'true');
-      });
-    });
-
-    collapseButton.addEventListener('click', () => {
-      document.querySelectorAll('details').forEach((detail) => {
-        detail.open = false;
-        const summary = detail.querySelector('summary');
-        if(summary) summary.setAttribute('aria-expanded', 'false');
-      });
-    });
   });
 </script>
