@@ -41,14 +41,14 @@ export class ProjectsService {
         'C++',
         'Python',
         'ROS',
+        'CAN bus',
         'RTK GPS',
         'IMU',
         '3D LiDAR',
         'Stereocam',
         'Extended Kalman Filter',
         'RANSAC',
-        'STM32',
-        'Atmega'
+        'STM32'
       ],
       keyPoints: [
         'Led a diverse cross-disciplinary team of 9 students in the URC 2020, achieving 7th place among 93 global teams',

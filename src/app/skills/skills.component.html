@@ -13,7 +13,7 @@
             <li class="skill-item">
               <details>
                 <summary aria-expanded="false">{{ skill.name }}</summary>
-                <p>{{ skill.description }}</p>
+                <p [innerHTML]="skill.description"></p>
               </details>
             </li>
           }
@@ -32,7 +32,7 @@
             <li class="skill-item">
               <details>
                 <summary aria-expanded="false">{{ skill.name }}</summary>
-                <p>{{ skill.description }}</p>
+                <p [innerHTML]="skill.description"></p>
               </details>
             </li>
           }
@@ -61,14 +61,14 @@
     @if (skillCategories[2]) {
       <div class="bento-cell bento-cell--data">
         <h3 class="category-title">
-          <i class="fa-solid fa-chart-simple"></i> {{ skillCategories[2].name }}
+          <i class="fa-solid fa-microchip"></i> {{ skillCategories[2].name }}
         </h3>
         <ul class="skill-list">
           @for (skill of skillCategories[2].skills; track skill) {
             <li class="skill-item">
               <details>
                 <summary aria-expanded="false">{{ skill.name }}</summary>
-                <p>{{ skill.description }}</p>
+                <p [innerHTML]="skill.description"></p>
               </details>
             </li>
           }

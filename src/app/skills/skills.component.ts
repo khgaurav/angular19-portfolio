@@ -12,61 +12,49 @@ import { Skill, SkillCategory } from '../models/skill.model';
 export class SkillsComponent {
   skillCategories: SkillCategory[] = [
     {
-      name: 'AI/ML & Robotics',
+      name: 'Robotics & AI/ML Technologies',
       skills: [
         {
-          name: 'LLMs & Generative AI',
-          description: 'Built multi-agent frameworks, RAG systems, and AI assistants leveraging LangChain, LangGraph, OpenAI APIs, and LLM-as-a-judge methodologies.'
+          name: 'Robotics & Control Systems',
+          description: 'Hands-on experience developing autonomous navigation protocols with <strong>ROS1</strong> and <strong>ROS2</strong>. Proficient in <strong>CAN Protocol</strong> interfacing, message decoding, state estimation via <strong>GTSAM</strong>, and robot simulation in <strong>Gazebo</strong>.'
         },
         {
-          name: 'Computer Vision',
-          description: 'Leveraged PyTorch, OpenCV, and Ultralytics YOLO for tasks such as obstacle detection, scene understanding, and optimized ONNX inference.'
+          name: 'Computer Vision & Deep Learning',
+          description: 'Experience training and optimizing models (e.g. <strong>Ultralytics YOLO</strong>) using <strong>PyTorch</strong> and <strong>TensorFlow</strong>. Expertise in <strong>OpenCV</strong> for image processing, <strong>Sensor Fusion</strong> (Kalman filters), and hardware-accelerated inference via <strong>ONNX</strong> and <strong>TensorRT</strong>.'
         },
         {
-          name: 'Reinforcement Learning',
-          description: 'Developed and fine-tuned RL algorithms, integrating methods like DDPG and PPO to solve robotic control and planning problems.'
-        },
-        {
-          name: 'Sensor Fusion & Perception',
-          description: 'Implemented sensor fusion techniques using Kalman filters and deep learning for robust perception in dynamic environments.'
+          name: 'Data Processing & Analytics',
+          description: 'Efficient data pipeline engineering and scientific computing using <strong>Pandas</strong>, <strong>NumPy</strong>, and <strong>SQL</strong> for analyzing sensor logs and training datasets.'
         }
       ]
     },
     {
-      name: 'Software Development & Engineering',
+      name: 'Software Development & Tools',
       skills: [
         {
-          name: 'Full-Stack & Backend Development',
-          description: 'Built robust web applications and microservices using Go, Python, TypeScript, HTML/CSS, and FastAPI for real-time data processing.'
+          name: 'Programming Languages',
+          description: 'Strong proficiency in <strong>Python</strong> (for automation/scripting) and <strong>C++</strong> (for performance-critical systems). Experience with <strong>Embedded C</strong>, <strong>SQL</strong>, <strong>Shell Scripting</strong>, and <strong>MATLAB</strong>.'
         },
         {
-          name: 'DevOps & Cloud Infrastructure',
-          description: 'Used Docker, Kubernetes, OpenShift, Helm, AWS, and CI/CD pipelines (Jenkins, GitHub Actions) to streamline deployments and manage scalable environments.'
+          name: 'Developer Tools & Platforms',
+          description: 'Familiar with version control via <strong>Git</strong>, containerization using <strong>Docker</strong>, and experiment tracking/model deployment pipelines with <strong>MLflow</strong> and <strong>Dataiku</strong>.'
         },
         {
-          name: 'System Architecture',
-          description: 'Architected secure event-driven and distributed systems using asynchronous message brokers like Kafka and caching layers like Redis.'
-        },
-        {
-          name: 'Performance Optimization',
-          description: 'Optimized codebase and infrastructure performance through thorough debugging, profiling, and latency reduction in production systems.'
+          name: 'Robotic Software & Visualization',
+          description: 'Proficient in tools like <strong>Rviz</strong> (for sensor visualization), <strong>MuJoCo</strong> (for physics simulation), <strong>MoveIt2</strong> (for motion planning), <strong>Cartographer</strong> (for SLAM mapping), and <strong>WebRTC</strong> (for real-time streaming).'
         }
       ]
     },
     {
-      name: 'Data & Analytics',
+      name: 'Hardware & Embedded Systems',
       skills: [
         {
-          name: 'MLOps & Experiment Tracking',
-          description: 'Managed end-to-end ML lifecycles using Dataiku and MLflow to version datasets, track experiments, and automate model deployments.'
+          name: 'Microcontrollers & Hardware Interfacing',
+          description: 'Experience programming <strong>STM32</strong> microcontrollers, interfacing with sensors/actuators, and debugging vehicle electronics with <strong>CANalyzer</strong>.'
         },
         {
-          name: 'System Monitoring & Observability',
-          description: 'Implemented real-time monitoring and anomaly detection using Splunk, Dynatrace, and custom dashboards to guarantee reliable uptime.'
-        },
-        {
-          name: 'Data Processing & Storage',
-          description: 'Engineered scalable data ingestion pipelines and optimized queries using SQL, Pandas, and NoSQL databases like MongoDB and AWS DocumentDB.'
+          name: 'Sensors & Calibration',
+          description: 'Practical exposure to <strong>Camera-LiDAR Calibration</strong> and sensor integration including <strong>GigE Industrial Cameras</strong>, <strong>Radar</strong>, <strong>IMU</strong>, and <strong>GNSS</strong> on platforms like <strong>Turtlebot</strong> and <strong>Nvidia Jetson TX2</strong>.'
         }
       ]
     }
