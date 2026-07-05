@@ -12,16 +12,35 @@ import { Experience } from '../models/experience.model';
 export class ExperienceComponent {
   experiences: Experience[] = [
     {
-      role: 'AI/ML Engineer Co-op',
+      role: 'Computer Vision Co-op',
       company: 'Pfizer Inc.',
       duration: 'Jun 2025 - Dec 2025',
       points: [
-        'Trained YOLOv9/v11 models for lab reaction monitoring in Dataiku, integrating MLflow for end-to-end experiment tracking, automated model versioning, and best-model deployment to production',
-        'Optimized inference pipeline by converting models to ONNX with TensorRT acceleration, reducing latency from 12ms to 5ms, with pre/post-processing layers embedded directly in the ONNX graph',
-        'Architected full-stack RxInSight platform with FastAPI backend, WebRTC streaming, and OPC-UA server exposing CV parameters for autonomous reactor control with frame-level data stored in AWS DocumentDB',
-        'Engineered adaptive frame filtering combining SSIM change detection with K-means clustering on weighted state features, reducing 118-hour video datasets to 3283 training samples',
-        'Established closed-loop annotation feedback system where model predictions generate suggested labels in Dataiku, enabling iterative model improvement through continuous retraining on GPU clusters',
-        'Developed Chart.js visualization dashboard for querying DocumentDB by experiment ID, displaying interactive time-series plots of CV parameters for post-experiment analysis and monitoring'
+        'Trained <strong>YOLOv9/v11</strong> models to monitor lab reactions by detecting homogeneous/heterogeneous liquid layers, headspace, and solids/residue in <strong>Dataiku</strong>, integrating <strong>MLflow</strong> for end-to-end training and experiment tracking',
+        'Implemented <strong>Extended Kalman Filter</strong> with dual-measurement fusion for multi-layer liquid tracking, reducing volume estimation jitter and enabling smooth real-time height predictions across biphasic reactions',
+        'Built <strong>Support Vector Regression</strong> model for pixel-to-mL volume calibration achieving 96.7% accuracy, trained on 100-500 RPM stirring rate data to compensate for meniscus distortion effects',
+        'Optimized inference by using <strong>ONNX</strong> models with <strong>TensorRT</strong>, reducing latency by 58%, with ONNX post-processing layers'
+      ]
+    },
+    {
+      role: 'Software Development Engineer II',
+      company: 'Amadeus Software Labs Pvt Ltd',
+      duration: 'Jan 2021 - Aug 2024',
+      points: [
+        'Led development of 50+ features for the Air Canada website (<strong>Java</strong>/<strong>MSSQL</strong>), with modular code and 100% test coverage resulting in zero production rollbacks',
+        'Developed a patent-pending REST API technique reducing payload size by 62%, improving mobile load times by 1.8s',
+        'Implemented an AI-powered chatbot using <strong>Azure AI Search</strong> trained on unstructured documentation for error resolution, resulting in a 10% improvement in website conversion rates',
+        'Enhanced website security by fixing a zero-day gift card exploit preventing million-dollar revenue loss, and resolving 4x CPU usage spikes ensuring no downtime for 5M+ users'
+      ]
+    },
+    {
+      role: 'Control Systems Research Intern',
+      company: 'Perma-Liner Industries Pte. Ltd',
+      duration: 'Jun 2019 - Aug 2019',
+      points: [
+        'Designed autonomous navigation protocols with <strong>RtabMap SLAM</strong> on <strong>ROS1</strong> and <strong>ROS2</strong> on Ubuntu Linux, creating detailed maps of tunnel/pipe environments for crack and anomaly detection, achieving 95% localization accuracy',
+        'Programmed <strong>STM32F103</strong> microcontroller and Grove I2C motor drivers for precise motor control with high-speed encoders',
+        'Developed and executed <strong>Python</strong>-based test scripts and automation tools on Ubuntu Linux to validate navigation nodes in <strong>ROS2</strong>, recording and replaying <strong>rosbags</strong> for performance analysis'
       ]
     },
     {
@@ -32,28 +51,7 @@ export class ExperienceComponent {
         'Mentoring 278 graduate students in advanced Reinforcement Learning concepts',
         'Developing and evaluating Python-based programming assignments on RL frameworks, providing detailed feedback'
       ]
-    },
-    {
-      role: 'Software Development Engineer II',
-      company: 'Amadeus Software Labs',
-      duration: 'Jan 2021 - Aug 2024',
-      points: [
-        'Implemented an LLM powered chatbot using RAG and GPT-3.5 Turbo on unstructured documentation, delivering personalized error resolution suggestions that increased website conversion rates by 12%',
-        'Transitioned monolithic application to Kubernetes on AWS using microservices, reducing cloud costs by 35% through autoscaling and scheduled deployments via Jenkins with secrets and ConfigMap management',
-        'Built a Kafka-based event-driven microservice with Protobuf serialization for real-time data aggregation from multiple sources, and pioneered anomaly detection alerts using Splunk ML on user behavior analytics',
-        'Configured Redis as shared cache and session store across Kubernetes (OpenShift) pods, enabling stateless horizontal scaling and consistent user sessions across all backend deployments',
-        'Architected secure ingress/egress network with firewalls, load balancers, and SNAT on Kubernetes, automating the provisioning process to reduce setup effort by 63%'
-      ]
-    },
-    {
-      role: 'Control Systems Intern',
-      company: 'Perma-Liner Industries',
-      duration: 'June 2019 - August 2019',
-      points: [
-        'Developed EKF-based localization system for GPS-denied environments',
-        'Achieved 95% positioning accuracy in tunnel environments',
-        'Implemented obstacle avoidance and autonomous traversal for open martian environment using ROS, 3D SICK LiDAR, GPS and IMU sensors'
-      ]
     }
   ];
 }
+

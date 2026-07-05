@@ -13,8 +13,7 @@
 
         <ul class="experience__points">
           @for (point of exp.points; track point) {
-            <li class="experience__point">
-              {{ point }}
+            <li class="experience__point" [innerHTML]="point">
             </li>
           }
         </ul>

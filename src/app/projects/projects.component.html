@@ -24,7 +24,7 @@
             <div class="project-keypoints">
               <ul>
                 @for (point of project.keyPoints; track point) {
-                  <li>{{ point }}</li>
+                  <li [innerHTML]="point"></li>
                 }
               </ul>
             </div>

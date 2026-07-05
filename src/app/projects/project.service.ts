@@ -6,6 +6,104 @@ import { Project } from './project.model';
 export class ProjectsService {
   private projects: Project[] = [
     {
+      id: 'elevation-terrain-mapping',
+      title: 'Advanced Elevation and Terrain Mapping for Navigation',
+      description: 'FPGA-accelerated robotic navigation framework utilizing RGBD terrain classification and elevation mapping on ROS2.',
+      tech: ['ROS2', 'Python', 'C++', 'PyTorch', 'U-Net', 'FPGA', 'grid_map'],
+      keyPoints: [
+        'Engineered a scalable robotic navigation framework by using FPGA-accelerated RGBD terrain U-Net classification model and elevation mapping on <strong>ROS2</strong> while utilizing <strong>grid_map</strong> to handle multiple data layers',
+        'Achieved a 40% reduction in model size while maintaining classification performance by optimizing the U-Net neural network through <strong>knowledge distillation</strong> and parameter auto-tuning',
+        'Developed <strong>ROS2</strong> launch files and <strong>Python</strong> scripts to simulate and verify RGB-D sensor data streams, calibrate depth sensors, and validate multi-layer <strong>grid_map</strong> interactions'
+      ],
+      fullDescription: `<p>This project introduces a scalable and efficient robotic navigation framework developed at the Silicon Synapse Lab. The system leverages an FPGA-accelerated RGBD terrain U-Net classification model in conjunction with elevation mapping on ROS2. By utilizing the grid_map library, the framework is capable of handling multiple spatial data layers in real-time, providing robust and terrain-aware path planning for autonomous systems.</p>`,
+      sections: [
+        {
+          title: 'FPGA-Accelerated Terrain Classification',
+          content: `<p>To ensure real-time operation on resource-constrained robotic platforms, we engineered a high-throughput U-Net classification model deployed on FPGA accelerators. The model processes RGB-D sensor streams to classify terrains in real-time. By offloading the neural network inference to custom FPGA hardware, we achieved low-latency, deterministic execution essential for safe autonomous navigation.</p>`
+        },
+        {
+          title: 'Elevation Mapping & Grid Map Integration',
+          content: `<p>The classification outputs are integrated into a multi-layer elevation mapping system running on ROS2. Utilizing the grid_map package, the system dynamically manages layers for height, terrain class, roughness, and traversability. This multi-layer representation allows the robot's motion planner to make informed path decisions based on 3D geometric and semantic terrain attributes.</p>`
+        },
+        {
+          title: 'Model Optimization & Validation',
+          content: `<p>To fit the U-Net model within the limited hardware constraints of the FPGA, we optimized the neural network using knowledge distillation and parameter auto-tuning. This achieved a 40% reduction in model size with negligible impact on classification accuracy. The system was validated using custom Python scripts and ROS2 launch files designed to simulate sensor data streams, calibrate depth sensors, and verify multi-layer grid_map interactions.</p>`
+        }
+      ],
+      images: [],
+      github: ''
+    },
+    {
+      id: 'mars-rover',
+      title: 'Mars Rover Manipal',
+      description: 'Autonomous rover system ranked 7th globally at University Rover Challenge 2020',
+      tech: [
+        'C++',
+        'Python',
+        'ROS',
+        'RTK GPS',
+        'IMU',
+        '3D LiDAR',
+        'Stereocam',
+        'Extended Kalman Filter',
+        'RANSAC',
+        'STM32',
+        'Atmega'
+      ],
+      keyPoints: [
+        'Led a diverse cross-disciplinary team of 9 students in the URC 2020, achieving 7th place among 93 global teams',
+        'Utilized <strong>RANSAC</strong> for ground plane extraction from a 3D LiDAR point cloud for obstacle detection and developed an autonomous navigation system on ROS for a Martian environment, fusing IMU and GPS via an extended Kalman filter',
+        'Redesigned the C++ wheel arm control program to interface with STM32 over <strong>CAN bus</strong>, <strong>decoding messages</strong> and implementing real-time hill-assist and fail-safes',
+        'Designed and executed test scripts in <strong>Python</strong> and <strong>C++</strong> on Ubuntu to validate LiDAR-IMU-GPS sensor fusion and control modules, recording logs with <strong>rosbag</strong> and visualizing in <strong>Rviz</strong>'
+      ],
+      fullDescription: `<p>Mars Rover Manipal is an interdisciplinary student project that aims to explore robotics and its application in interplanetary expeditions.</p>
+      <p>The project MRM annually participates in international and national competitions, The University Rover Challenge, European Rover Challenge, International Rover Challenge, International Rover Design Challenge and the International Mars Hackathon, organised by The Mars Society- The United States and South Asia since 2016.</p>
+      <p>The Electronics & AI subsystem processes and interprets data from various sensors such as cameras, GPS, LiDARS, and IMUs for the autonomous part of the robot and also sets up and interfaces with various segments of the rover, which work together to achieve the rover's desired performance in all tasks for effective control and communication.</p>`,
+      sections: [
+        {
+          title: 'Autonomous Mission',
+          content: `<p>The Autonomous Traversal mission has been approached in a modular fashion by breaking down the given problem statement into subtasks and testing each of them meticulously. For navigation, an RTK GPS has been configured to rectify its error by picking up a RTCM stream. The rover is localized accurately by fusing GPS, IMU and visual odometry data using an extended Kalman filter.</p>
+          <p>For robust obstacle avoidance, the system deduces its surrounding by making use of a 275° FOV 3D LiDAR and a stereocam in tandem. Ground plane from the LiDAR is removed using RANSAC. Obstacles are smoothly circumvented from a long distance by computing a sum of vectors from the cardioid scaled laser scan to provide dynamic soft turn commands. The stereocam is used to avoid nearby obstacles that remain undetected by the LiDAR. The whole autonomous system is set up on ROS to ensure modularity, easy communication between modules and efficient integration of all nodes to accomplish all the subtasks.</p>`
+        },
+        {
+          title: 'Rover Control',
+          content: `<p>A 32-bit ARM Cortex M4 based STM32 F3 Discovery is used to achieve precise and accurate control of the rover. It serves as the primary controller responsible for controlling the motor drivers of the wheels and robotic manipulator, and rotation of multiple cameras. The control is divided into five modes:</p>
+          <ul>
+            <li>Traversal</li>
+            <li>Hill assist</li>
+            <li>Robotic manipulator</li>
+            <li>Soil collection</li>
+            <li>Autonomous traversal</li>
+          </ul>
+          <p>A single modular program has been developed that can seamlessly switch between the five modes. Precise 32-bit multi-channel timers are used to implement six-wheel skid drive and hill assist. Hill assist holds the rover at a given position at an inclination where normally slipping might occur, thereby assisting the driver to operate the robotic manipulator on steep hills. Six-wheel skid drive is used to overcome extreme terrains that are hilly, rocky and rough by controlling the torque provided by each motor. Fail safes in the code have been incorporated as protection against rover damages by restricting unwarranted motion of the rover. A custom Battery Monitoring System has been fabricated to monitor battery parameters.</p>`
+        },
+        {
+          title: 'Communication',
+          content: `<p>The rover operates on 5.8GHz and 2.4GHz frequency bands with a combination of omni-directional, directional and circular polarized antennas that adhere to the FCC standards and regulations. In previous competitions, the rover lost communication link in Non-Line of Sight (NLOS) situation.</p>
+          <p>A comprehensive analysis of various antenna parameters was performed to isolate the problem. The router's proprietary communication protocol uses an acknowledgment feature for fail-safe data transfer, which caused a problem in NLOS communication. Multiple measures including circular polarized antennas, increasing the height of the antennas, and automatic path traceback have been used to overcome the issue.</p>`
+        },
+        {
+          title: 'Graphical User Interface (GUI)',
+          content: `<p>The GUI has different views for every task, each consisting of buttons and graphs. It helps us reduce the base station set-up time in all tasks and makes the control of the rover more intuitive. All camera feeds from the rover are hosted on a local server and accessed on various client laptops as required. This prevents saturation of the bandwidth as the same camera feeds aren't requested multiple times. Live GPS plotting of the rover has been achieved to allow the driver to direct the rover towards the locations given in the task. A navigation indicator and a destination indicator has been incorporated in the GUI for the same.</p>`
+        }
+      ],
+      demo: {
+        type: 'youtube',
+        url: 'https://youtu.be/V22SHOJQx4I?t=80'
+      },
+      github: 'https://github.com/abhirajtiwari/catkin_ws',
+      images: [
+        {
+          src: 'projects/mars-rover/rover.png',
+          caption: 'Rover 2020 - Full Robot View'
+        },
+        {
+          src: 'projects/mars-rover/obstacle.png',
+          caption: 'Obstacle Detection and Avoidance System'
+        }
+      ],
+    },
+    {
       id: 'vlm-localization',
       title: 'Hybrid Semantic Localization Using LiDAR SLAM and Vision-Language Embeddings',
       description: 'Hybrid localization framework combining geometric SLAM with vision-language model (VLM) embeddings to create a lightweight semantic map',
@@ -62,77 +160,6 @@ export class ProjectsService {
         url: ''
       },
       github: ''
-    },
-    {
-      id: 'mars-rover',
-      title: 'Mars Rover Manipal',
-      description: 'Autonomous rover system ranked 7th globally at University Rover Challenge 2020',
-      tech: [
-        'C++',
-        'Python',
-        'ROS',
-        'RTK GPS',
-        'IMU',
-        '3D LiDAR',
-        'Stereocam',
-        'Extended Kalman Filter',
-        'RANSAC',
-        'STM32',
-        'Atmega'
-      ],
-      keyPoints: [
-        'Led a diverse cross-disciplinary team of 9 students in the URC 2020, achieving 7th place among 93 global teams',
-        'Negotiated sponsorship agreements with industry leaders SICK and Mouser, securing resources worth $6,000 for the team',
-        'Utilized RANSAC for ground plane extraction from a 3D LiDAR point cloud for obstacle detection and developed an autonomous navigation system on ROS for a Martian environment, fusing IMU and GPS data via an extended Kalman filter',
-        'Redesigned a C++ program for rover wheel & arm control and to communicate with the sensors and peripherals connected to STM32/Atmega, incorporating a hill assist feature and fail-safes for rover protection',
-        'Implemented AR tag detection for autonomous gate navigation with variable speed vector field path planning'
-      ],
-      fullDescription: `<p>Mars Rover Manipal is an interdisciplinary student project that aims to explore robotics and its application in interplanetary expeditions.</p>
-      <p>The project MRM annually participates in international and national competitions, The University Rover Challenge, European Rover Challenge, International Rover Challenge, International Rover Design Challenge and the International Mars Hackathon, organised by The Mars Society- The United States and South Asia since 2016.</p>
-      <p>The Electronics & AI subsystem processes and interprets data from various sensors such as cameras, GPS, LiDARS, and IMUs for the autonomous part of the robot and also sets up and interfaces with various segments of the rover, which work together to achieve the rover's desired performance in all tasks for effective control and communication.</p>`,
-      sections: [
-        {
-          title: 'Autonomous Mission',
-          content: `<p>The Autonomous Traversal mission has been approached in a modular fashion by breaking down the given problem statement into subtasks and testing each of them meticulously. For navigation, an RTK GPS has been configured to rectify its error by picking up a RTCM stream. The rover is localized accurately by fusing GPS, IMU and visual odometry data using an extended Kalman filter.</p>
-          <p>For robust obstacle avoidance, the system deduces its surrounding by making use of a 275° FOV 3D LiDAR and a stereocam in tandem. Ground plane from the LiDAR is removed using RANSAC. Obstacles are smoothly circumvented from a long distance by computing a sum of vectors from the cardioid scaled laser scan to provide dynamic soft turn commands. The stereocam is used to avoid nearby obstacles that remain undetected by the LiDAR. The whole autonomous system is set up on ROS to ensure modularity, easy communication between modules and efficient integration of all nodes to accomplish all the subtasks.</p>`
-        },
-        {
-          title: 'Rover Control',
-          content: `<p>A 32-bit ARM Cortex M4 based STM32 F3 Discovery is used to achieve precise and accurate control of the rover. It serves as the primary controller responsible for controlling the motor drivers of the wheels and robotic manipulator, and rotation of multiple cameras. The control is divided into five modes:</p>
-          <ul>
-            <li>Traversal</li>
-            <li>Hill assist</li>
-            <li>Robotic manipulator</li>
-            <li>Soil collection</li>
-            <li>Autonomous traversal</li>
-          </ul>
-          <p>A single modular program has been developed that can seamlessly switch between the five modes. Precise 32-bit multi-channel timers are used to implement six-wheel skid drive and hill assist. Hill assist holds the rover at a given position at an inclination where normally slipping might occur, thereby assisting the driver to operate the robotic manipulator on steep hills. Six-wheel skid drive is used to overcome extreme terrains that are hilly, rocky and rough by controlling the torque provided by each motor. Fail safes in the code have been incorporated as protection against rover damages by restricting unwarranted motion of the rover. A custom Battery Monitoring System has been fabricated to monitor battery parameters.</p>`
-        },
-        {
-          title: 'Communication',
-          content: `<p>The rover operates on 5.8GHz and 2.4GHz frequency bands with a combination of omni-directional, directional and circular polarized antennas that adhere to the FCC standards and regulations. In previous competitions, the rover lost communication link in Non-Line of Sight (NLOS) situation.</p>
-          <p>A comprehensive analysis of various antenna parameters was performed to isolate the problem. The router's proprietary communication protocol uses an acknowledgment feature for fail-safe data transfer, which caused a problem in NLOS communication. Multiple measures including circular polarized antennas, increasing the height of the antennas, and automatic path traceback have been used to overcome the issue.</p>`
-        },
-        {
-          title: 'Graphical User Interface (GUI)',
-          content: `<p>The GUI has different views for every task, each consisting of buttons and graphs. It helps us reduce the base station set-up time in all tasks and makes the control of the rover more intuitive. All camera feeds from the rover are hosted on a local server and accessed on various client laptops as required. This prevents saturation of the bandwidth as the same camera feeds aren't requested multiple times. Live GPS plotting of the rover has been achieved to allow the driver to direct the rover towards the locations given in the task. A navigation indicator and a destination indicator has been incorporated in the GUI for the same.</p>`
-        }
-      ],
-      demo: {
-        type: 'youtube',
-        url: 'https://youtu.be/V22SHOJQx4I?t=80'
-      },
-      github: 'https://github.com/abhirajtiwari/catkin_ws',
-      images: [
-        {
-          src: 'projects/mars-rover/rover.png',
-          caption: 'Rover 2020 - Full Robot View'
-        },
-        {
-          src: 'projects/mars-rover/obstacle.png',
-          caption: 'Obstacle Detection and Avoidance System'
-        }
-      ],
     },
     {
       id: 'path-planning',
