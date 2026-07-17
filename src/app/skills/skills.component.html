@@ -1,7 +1,7 @@
 <section id="skills">
   <h2 class="numbered-heading">My Toolbox</h2>
   <div class="skills-bento">
-    <!-- Cell 1: AI/ML & Robotics (Col Span 2, Row Span 1) -->
+    <!-- Cell 1: AI/ML & Reinforcement Learning (Col Span 2, Row Span 1) -->
     @if (skillCategories[0]) {
       <div class="bento-cell bento-cell--ai-ml">
         <div class="bento-cell__glow"></div>
@@ -21,11 +21,11 @@
       </div>
     }
 
-    <!-- Cell 2: Software Dev & Systems Engineering (Col Span 1, Row Span 2) -->
+    <!-- Cell 2: Chip Design & Verification (Col Span 1, Row Span 2) -->
     @if (skillCategories[1]) {
       <div class="bento-cell bento-cell--systems">
         <h3 class="category-title">
-          <i class="fa-solid fa-code"></i> {{ skillCategories[1].name }}
+          <i class="fa-solid fa-microchip"></i> {{ skillCategories[1].name }}
         </h3>
         <ul class="skill-list">
           @for (skill of skillCategories[1].skills; track skill) {
@@ -57,11 +57,11 @@
       </div>
     </div>
 
-    <!-- Cell 4: Data & Analytics (Col Span 1, Row Span 1) -->
+    <!-- Cell 4: Data Pipelines & MLOps (Col Span 1, Row Span 1) -->
     @if (skillCategories[2]) {
       <div class="bento-cell bento-cell--data">
         <h3 class="category-title">
-          <i class="fa-solid fa-chart-simple"></i> {{ skillCategories[2].name }}
+          <i class="fa-solid fa-network-wired"></i> {{ skillCategories[2].name }}
         </h3>
         <ul class="skill-list">
           @for (skill of skillCategories[2].skills; track skill) {

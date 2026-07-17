@@ -1,38 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Project } from './project.model';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectsService {
   private projects: Project[] = [
-    {
-      id: 'vlm-localization',
-      title: 'Hybrid Semantic Localization Using LiDAR SLAM and Vision-Language Embeddings',
-      description: 'Hybrid localization framework combining geometric SLAM with vision-language model (VLM) embeddings to create a lightweight semantic map',
-      tech: ['Python', 'C++', 'SLAM', 'LIO-SAM', 'SigLIP 2', 'FAISS', 'ROS', 'PyTorch'],
-      keyPoints: [
-        'Designed a hybrid localization system combining LIO-SAM SLAM with SigLIP 2 VLM embeddings and FAISS vector search, achieving a 17x reduction in map size (368 KB vs 6.0 MB voxelized SLAM map / 2.31 GB raw LiDAR bag)',
-        'Evaluated on the M2DGR dataset (gate_01 sequence), achieving an exceptional in-map median Absolute Trajectory Error (ATE) of 0.32 m and 95th percentile error of 2.1 m without local geometric refinement',
-        'Implemented a temporal plausibility filter on top-10 retrieved candidate matches to resolve visual aliasing/ambiguous matches, ensuring robust sequential trajectory estimation'
-      ],
-      fullDescription: `<p>This project introduces a robust, lightweight hybrid localization framework that combines geometric SLAM (LIO-SAM) with semantic vision-language model (VLM) embeddings from SigLIP 2 for scalable place recognition. By storing only 768-dimensional float vectors and SE(3) poses for keyframes rather than dense point clouds, the system dramatically reduces memory footprint while maintaining high-fidelity trajectory tracking and sub-millisecond pose retrieval.</p>`,
-      sections: [
-        {
-          title: 'System Overview & Mapping Pipeline',
-          content: `<p>The mapping pipeline uses LIO-SAM to process LiDAR and IMU data, generating keyframe poses. Each keyframe is associated with a timestamp-matched RGB image. The images are passed through the SigLIP 2 VLM vision encoder to produce 768-dimensional global embedding vectors. These embeddings are stored in a FAISS index configured for cosine similarity search, mapping to their respective SE(3) poses. This compresses the map storage to just 368 KB for 120 keyframes—a 17x reduction over voxelized SLAM maps and over 6,500x smaller than raw sensor streams.</p>`
-        },
-        {
-          title: 'Localization & Temporal Filtering',
-          content: `<p>During online localization, query RGB images from a camera are processed through the same SigLIP 2 model to extract embeddings, which are compared against the FAISS index to retrieve the top-10 candidate keyframe poses. To mitigate perceptual aliasing (where visually similar scenes map to different physical locations), a temporal plausibility filter is applied. The filter rejects candidate matches that imply unrealistic motion or large spatial jumps, resulting in a stable and robust visual localization trajectory.</p>`
-        },
-        {
-          title: 'Experimental Evaluation',
-          content: `<p>We evaluated the system on the gate_01 sequence of the M2DGR dataset using Absolute Trajectory Error (ATE) metrics. Without local geometric refinement (such as Iterative Closest Point), the purely topological retrieval achieved an exceptional median ATE of 0.32 meters, with 88.4% of queries falling within a 1-meter threshold, demonstrating the viability of lightweight, camera-only semantic localization for edge devices.</p>`
-        }
-      ],
-      images: [],
-      github: 'https://github.com/khgaurav/Semantic_SLAM'
-    },
     {
       id: 'debate-training',
       title: 'Debate Training with LLMs and Multi-Agent Interaction Structures',
@@ -62,6 +35,144 @@ export class ProjectsService {
         url: ''
       },
       github: ''
+    },
+    {
+      id: 'path-planning',
+      title: 'Reinforcement Learning for Robotic Path Planning',
+      description: 'Optimized DDPG algorithm in Python with 35% faster convergence using Whale Optimization and Prioritized Experience Replay',
+      tech: ['Python', 'PyTorch', 'TorchRL', 'MuJoCo', 'Stable-Baselines3', 'PPO', 'Reinforcement Learning'],
+      keyPoints: [
+        'Optimized DDPG in Python for path planning on a 7-DoF Franka Panda arm in MuJoCo, adding prioritized experience replay through TorchRL and Whale Optimization hyperparameter tuning to reach 35% faster convergence',
+        'Benchmarked against PPO from Stable-Baselines3 on Meta-World drawer-open, showing DDPG’s better sample efficiency',
+        'Documented the work in a research manuscript with released code at github.com/khgaurav/RL_DDPG_Nerf'
+      ],
+      fullDescription: `<p>Based on recent research, this project integrates reinforcement learning (RL) with neural radiance fields (NeRF) to optimize path planning in complex environments. My approach enhances standard DDPG by incorporating Whale Optimization Algorithm (WOA) strategies to accelerate convergence and improve policy performance.</p>
+      <p>The research paper details novel techniques, including:</p>
+      <ul>
+        <li>Prioritized experience replay allowing for faster convergence</li>
+        <li>Custom reward shaping tailored to the dynamics of simulated environments</li>
+        <li>Integration of NeRF for real-time scene reconstruction, enhancing the agent's situational awareness</li>
+      </ul>
+      <p>Extensive experiments on Meta-World benchmarks demonstrate a 5% improvement in path optimality over conventional methods, while the training duration was cut by 40%.</p>`,
+      sections: [
+        {
+          title: 'Methodology',
+          content: `<p>The method builds on DDPG with modifications to sample and weight experiences more effectively. WOA is applied to fine-tune hyperparameters, and NeRF is embedded to capture the 3D structure of the operating environment, thereby enriching state representations.</p>`
+        },
+        {
+          title: 'Experimental Results',
+          content: `<p>Benchmark tests on simulated environments reveal significant gains in efficiency and performance. The optimized framework shows a marked reduction in training time and an improvement in convergence stability, validating the merits of the integrated approach.</p>`
+        }
+      ],
+      images: [
+        {
+          src: 'projects/path-planning/Panda_Final_Policy.gif',
+          caption: 'Final Policy from DDPG'
+        },
+        {
+          src: 'projects/path-planning/Panda_Final_Params.png',
+          caption: 'Learning progress'
+        },
+      ],
+      github: 'https://github.com/khgaurav/RL_DDPG_Nerf',
+      demo: {
+        type: 'pdf',
+        url: 'projects/path-planning/Gaurav_RL_Project.pdf'
+      },
+    },
+    {
+      id: 'fpga-terrain',
+      title: 'Hardware-Aware Terrain Classification on FPGA',
+      description: 'Optimized and deployed a deep learning terrain classifier on AMD Kria KR260 FPGA using Vitis AI and quantization',
+      tech: ['Python', 'FPGA', 'Vitis AI', 'ROS2', 'AMD Kria KR260', 'Quantization', 'Knowledge Distillation', 'PyTorch'],
+      keyPoints: [
+        'Deployed a terrain-classification network onto AMD Kria KR260 FPGA fabric through the Xilinx Vitis AI flow, quantizing to INT8 for the DPU to meet real-time latency and on-chip memory limits under ROS2',
+        'Cut classifier 40% with knowledge distillation and parameter auto-tuning while holding accuracy for onboard use'
+      ],
+      fullDescription: `<p>This project introduces a hardware-aware implementation of a deep learning terrain classifier deployed on an embedded FPGA platform (AMD Kria KR260). By using knowledge distillation to compress a teacher model and quantizing weights/activations to 8-bit integers (INT8) using Vitis AI, we optimized the network for the Deep Learning Processor Unit (DPU) to achieve low-latency execution suited for mobile robots under ROS2.</p>`,
+      sections: [
+        {
+          title: 'Model Compression & Quantization',
+          content: `<p>To run the network on resource-constrained hardware, we used a knowledge distillation framework where a lightweight student network was trained under the guidance of a high-capacity CNN. The student network was then quantized using Vitis AI's Post-Training Quantization (PTQ) to INT8 precision. This process reduced the parameter footprint by 40% while preserving baseline classification accuracy within 1.2%.</p>`
+        },
+        {
+          title: 'FPGA Deployment and ROS2 Integration',
+          content: `<p>The quantized model was compiled into DPU instructions and deployed on the Kria KR260. A ROS2 node was developed in C++ to capture camera/IMU streams, preprocess inputs, invoke the DPU runner, and publish terrain classifications. This achieved real-time execution meeting the strict latency and on-chip memory constraints required for navigation feedback.</p>`
+        }
+      ],
+      github: 'https://github.com/khgaurav/FPGA_Terrain_Classification'
+    },
+    {
+      id: 'i2c-protocol',
+      title: 'I2C Protocol RTL Design in Verilog',
+      description: 'Designed and simulated a single-master single-slave I2C bus RTL in Verilog with clock stretching',
+      tech: ['Verilog', 'Xilinx Vivado', 'ModelSim', 'RTL Design', 'FPGA', 'Digital Systems'],
+      keyPoints: [
+        'Designed and simulated a single-master single-slave I2C bus RTL in Verilog on the Xilinx toolchain, implementing START and STOP conditions, 7-bit addressing, ACK handshaking, and clock stretching over the SDA and SCL lines',
+        'Verified master-slave read and write transactions in simulation with SCL configurable independent of system clock'
+      ],
+      fullDescription: `<p>This project features a complete, synthesizable Register-Transfer Level (RTL) design of the standard I2C communication protocol in Verilog. It models a single-master single-slave topology, supporting essential features like start/stop generation, 7-bit device addressing, read/write bit transfer, acknowledgment handshaking, and master-side clock stretching for slower slave devices.</p>`,
+      sections: [
+        {
+          title: 'RTL Architecture & Finite State Machine',
+          content: `<p>The core design uses a Finite State Machine (FSM) to control the I2C protocol states. The master state machine transitions through IDLE, START, ADDR, ACK1, WR_DATA, RD_DATA, ACK2, and STOP states. Clock stretching is handled by monitoring the SCL line; if a slave pulls SCL low to slow down transfer, the master detects this and stalls its internal counter until SCL is released high.</p>`
+        },
+        {
+          title: 'Simulation and Verification',
+          content: `<p>Functional verification was performed using a testbench in ModelSim/Vivado Simulator. We simulated read and write transactions with varying data payloads and speed modes (up to 400 kHz). The simulation verified clock stretching by injecting artificial slave delays, confirming that the master correctly paused and resumed data transmission without corruption.</p>`
+        }
+      ],
+      github: 'https://github.com/khgaurav/I2C_RTL_Design'
+    },
+    {
+      id: 'sentiment-analysis',
+      title: 'Sentiment Analysis with Rigorous Evaluation',
+      description: 'Trained a Bi-LSTM with Bahdanau attention and Word2Vec on 1M reviews with extensive ablation and error analysis',
+      tech: ['Python', 'PyTorch', 'Word2Vec', 'Bi-LSTM', 'Attention Mechanisms', 'NLP', 'k-fold CV', 'Ablation Studies'],
+      keyPoints: [
+        'Trained a Bi-LSTM with Bahdanau attention and custom skip-gram Word2Vec embeddings on 1M cleaned Amazon reviews for sentiment classification, reaching 93.9% accuracy and 0.96 F1 after tokenizing the raw corpus',
+        'Designed the evaluation with k-fold stratified cross-validation and a nine-variant ablation over depth, dropout, and attention, then ran extreme-error analysis to surface systematic false positives from label noise'
+      ],
+      fullDescription: `<p>This project focuses on a high-accuracy Bidirectional LSTM classifier with Bahdanau attention for sentiment analysis on a corpus of 1 million Amazon reviews. Beyond standard training, the project emphasizes a highly rigorous validation framework including stratified k-fold cross-validation, a 9-variant ablation study, and systematic error analysis to identify label noise and model boundaries.</p>`,
+      sections: [
+        {
+          title: 'Architecture & Attention Model',
+          content: `<p>We trained custom Word2Vec skip-gram embeddings on the corpus to initialize the embedding layer. The classifier features a Bidirectional LSTM layer followed by a Bahdanau (additive) attention mechanism, which computes alignment scores over hidden states to focus on key sentimental terms. This model achieved an F1-score of 0.96 and an accuracy of 93.9%.</p>`
+        },
+        {
+          title: 'Rigorous Ablation & Error Analysis',
+          content: `<p>To validate architectural choices, we performed a 9-variant ablation study over network depth, dropout rates, and attention configurations. Evaluation was performed using stratified 5-fold cross-validation. Furthermore, we conducted an extreme-error analysis on the top misclassifications, revealing that a large portion of errors originated from label noise in the dataset itself rather than model failure.</p>`
+        }
+      ],
+      github: 'https://github.com/khgaurav/Sentiment_Evaluation'
+    },
+    {
+      id: 'vlm-localization',
+      title: 'Hybrid Semantic Localization Using LiDAR SLAM and Vision-Language Embeddings',
+      description: 'Hybrid localization framework combining geometric SLAM with vision-language model (VLM) embeddings to create a lightweight semantic map',
+      tech: ['Python', 'C++', 'SLAM', 'LIO-SAM', 'SigLIP 2', 'FAISS', 'ROS', 'PyTorch'],
+      keyPoints: [
+        'Designed a hybrid localization system combining LIO-SAM SLAM with SigLIP 2 VLM embeddings and FAISS vector search, achieving a 17x reduction in map size (368 KB vs 6.0 MB voxelized SLAM map / 2.31 GB raw LiDAR bag)',
+        'Evaluated on the M2DGR dataset (gate_01 sequence), achieving an exceptional in-map median Absolute Trajectory Error (ATE) of 0.32 m and 95th percentile error of 2.1 m without local geometric refinement',
+        'Implemented a temporal plausibility filter on top-10 retrieved candidate matches to resolve visual aliasing/ambiguous matches, ensuring robust sequential trajectory estimation'
+      ],
+      fullDescription: `<p>This project introduces a robust, lightweight hybrid localization framework that combines geometric SLAM (LIO-SAM) with semantic vision-language model (VLM) embeddings from SigLIP 2 for scalable place recognition. By storing only 768-dimensional float vectors and SE(3) poses for keyframes rather than dense point clouds, the system dramatically reduces memory footprint while maintaining high-fidelity trajectory tracking and sub-millisecond pose retrieval.</p>`,
+      sections: [
+        {
+          title: 'System Overview & Mapping Pipeline',
+          content: `<p>The mapping pipeline uses LIO-SAM to process LiDAR and IMU data, generating keyframe poses. Each keyframe is associated with a timestamp-matched RGB image. The images are passed through the SigLIP 2 VLM vision encoder to produce 768-dimensional global embedding vectors. These embeddings are stored in a FAISS index configured for cosine similarity search, mapping to their respective SE(3) poses. This compresses the map storage to just 368 KB for 120 keyframes—a 17x reduction over voxelized SLAM maps and over 6,500x smaller than raw sensor streams.</p>`
+        },
+        {
+          title: 'Localization & Temporal Filtering',
+          content: `<p>During online localization, query RGB images from a camera are processed through the same SigLIP 2 model to extract embeddings, which are compared against the FAISS index to retrieve the top-10 candidate keyframe poses. To mitigate perceptual aliasing (where visually similar scenes map to different physical locations), a temporal plausibility filter is applied. The filter rejects candidate matches that imply unrealistic motion or large spatial jumps, resulting in a stable and robust visual localization trajectory.</p>`
+        },
+        {
+          title: 'Experimental Evaluation',
+          content: `<p>We evaluated the system on the gate_01 sequence of the M2DGR dataset using Absolute Trajectory Error (ATE) metrics. Without local geometric refinement (such as Iterative Closest Point), the purely topological retrieval achieved an exceptional median ATE of 0.32 meters, with 88.4% of queries falling within a 1-meter threshold, demonstrating the viability of lightweight, camera-only semantic localization for edge devices.</p>`
+        }
+      ],
+      images: [],
+      github: 'https://github.com/khgaurav/Semantic_SLAM'
     },
     {
       id: 'mars-rover',
@@ -133,50 +244,6 @@ export class ProjectsService {
           caption: 'Obstacle Detection and Avoidance System'
         }
       ],
-    },
-    {
-      id: 'path-planning',
-      title: 'Path Planning with Reinforcement Learning',
-      description: 'Optimized DDPG algorithm with 2x faster convergence using Whale Optimization and Neural Radiance Fields',
-      tech: ['PyTorch', 'TorchRL', 'NeRF', 'MuJoCo'],
-      keyPoints: [
-        'Optimized DDPG algorithm to learn control policies for a 7-DoF Franka Emika Panda Robot in obstacle-rich environments, implementing Prioritized Experience Replay and Whale Optimization for hyperparameter tuning, achieving 35% faster convergence',
-        "Benchmarked against PPO, demonstrating DDPG's 25% better sample efficiency in Meta-World drawer-open tasks",
-        "Enhanced robot performance by 33% through novel integration of NeRF-generated volumetric state representations, enabling the learned policy to more efficiently navigate complex environments with improved trajectory planning"
-      ],
-      fullDescription: `<p>Based on recent research, this project integrates reinforcement learning (RL) with neural radiance fields (NeRF) to optimize path planning in complex environments. My approach enhances standard DDPG by incorporating Whale Optimization Algorithm (WOA) strategies to accelerate convergence and improve policy performance.</p>
-      <p>The research paper details novel techniques, including:</p>
-      <ul>
-        <li>Prioritized experience replay allowing for faster convergence</li>
-        <li>Custom reward shaping tailored to the dynamics of simulated environments</li>
-        <li>Integration of NeRF for real-time scene reconstruction, enhancing the agent's situational awareness</li>
-      </ul>
-      <p>Extensive experiments on Meta-World benchmarks demonstrate a 5% improvement in path optimality over conventional methods, while the training duration was cut by 40%.</p>`,
-      sections: [
-        {
-          title: 'Methodology',
-          content: `<p>The method builds on DDPG with modifications to sample and weight experiences more effectively. WOA is applied to fine-tune hyperparameters, and NeRF is embedded to capture the 3D structure of the operating environment, thereby enriching state representations.</p>`
-        },
-        {
-          title: 'Experimental Results',
-          content: `<p>Benchmark tests on simulated environments reveal significant gains in efficiency and performance. The optimized framework shows a marked reduction in training time and an improvement in convergence stability, validating the merits of the integrated approach.</p>`
-        }
-      ],
-      images: [
-        {
-          src: 'projects/path-planning/Panda_Final_Policy.gif',
-          caption: 'Final Policy from DDPG'
-        },
-        {
-          src: 'projects/path-planning/Panda_Final_Params.png',
-          caption: 'Learning progress'
-        },
-      ],
-      github: 'https://github.com/khgaurav/RL_DDPG_Nerf',
-      demo: {
-        type: 'pdf',
-        url: 'projects/path-planning/Gaurav_RL_Project.pdf'
-      },
     },
     {
       id: 'monocular-depth',
@@ -296,7 +363,6 @@ export class ProjectsService {
         url: 'projects/multi-agent-bayes-opt/Gaurav_Multi_Agent_Bayes_Opt_Report.pdf'
       }
     }
-
   ];
 
   getProjectById(id: string): Project | undefined {

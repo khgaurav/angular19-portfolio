@@ -12,61 +12,65 @@ import { Skill, SkillCategory } from '../models/skill.model';
 export class SkillsComponent {
   skillCategories: SkillCategory[] = [
     {
-      name: 'AI/ML & Robotics',
+      name: 'AI/ML & Reinforcement Learning',
       skills: [
         {
-          name: 'LLMs & Generative AI',
-          description: 'Built multi-agent frameworks, RAG systems, and AI assistants leveraging LangChain, LangGraph, OpenAI APIs, and LLM-as-a-judge methodologies.'
+          name: 'Reinforcement Learning (RL)',
+          description: 'Deep experience optimizing control policies (DDPG/PPO) in MuJoCo environments for path planning and robotic tasks.'
         },
         {
-          name: 'Computer Vision',
-          description: 'Leveraged PyTorch, OpenCV, and Ultralytics YOLO for tasks such as obstacle detection, scene understanding, and optimized ONNX inference.'
+          name: 'Deep Learning & CV',
+          description: 'Experience building/training neural networks (PyTorch, TensorFlow) and deploying YOLO detectors for real-time monitoring.'
         },
         {
-          name: 'Reinforcement Learning',
-          description: 'Developed and fine-tuned RL algorithms, integrating methods like DDPG and PPO to solve robotic control and planning problems.'
+          name: 'Inference Optimization',
+          description: 'Optimizing and compiling deep models via ONNX and TensorRT acceleration, reducing latency by over 50%.'
         },
         {
-          name: 'Sensor Fusion & Perception',
-          description: 'Implemented sensor fusion techniques using Kalman filters and deep learning for robust perception in dynamic environments.'
+          name: 'Evaluation Methodology',
+          description: 'Designing rigorous evaluation frameworks, including stratified cross-validation, ablation studies, and error analysis.'
         }
       ]
     },
     {
-      name: 'Software Development & Engineering',
+      name: 'Chip Design & Verification',
       skills: [
         {
-          name: 'Full-Stack & Backend Development',
-          description: 'Built robust web applications and microservices using Go, Python, TypeScript, HTML/CSS, and FastAPI for real-time data processing.'
+          name: 'Verilog / SystemVerilog',
+          description: 'Designing and simulating synthesizable digital hardware architectures, state machines, and interface controllers.'
         },
         {
-          name: 'DevOps & Cloud Infrastructure',
-          description: 'Used Docker, Kubernetes, OpenShift, Helm, AWS, and CI/CD pipelines (Jenkins, GitHub Actions) to streamline deployments and manage scalable environments.'
+          name: 'FPGA Deployment',
+          description: 'Compiling and deploying neural networks onto AMD Kria KR260 FPGA fabrics through the Xilinx Vitis AI flow.'
         },
         {
-          name: 'System Architecture',
-          description: 'Architected secure event-driven and distributed systems using asynchronous message brokers like Kafka and caching layers like Redis.'
+          name: 'RTL & Interface Design',
+          description: 'Implementing bus protocols (I2C, SPI), clock stretching, and custom hardware-software interfaces.'
         },
         {
-          name: 'Performance Optimization',
-          description: 'Optimized codebase and infrastructure performance through thorough debugging, profiling, and latency reduction in production systems.'
+          name: 'Quantization & DPU',
+          description: 'Quantizing model weights/activations to INT8 precision to fit DPU memory and meet real-time latency constraints.'
         }
       ]
     },
     {
-      name: 'Data & Analytics',
+      name: 'Data Pipelines & MLOps',
       skills: [
         {
-          name: 'MLOps & Experiment Tracking',
-          description: 'Managed end-to-end ML lifecycles using Dataiku and MLflow to version datasets, track experiments, and automate model deployments.'
+          name: 'Data Pipelines & Generation',
+          description: 'Building pipelines for high-throughput streaming (Kafka, Protobuf) and synthetic data/frame creation.'
         },
         {
-          name: 'System Monitoring & Observability',
-          description: 'Implemented real-time monitoring and anomaly detection using Splunk, Dynatrace, and custom dashboards to guarantee reliable uptime.'
+          name: 'MLOps & Orchestration',
+          description: 'Managing end-to-end ML lifecycles, dataset versioning, and experiment tracking using MLflow and Dataiku.'
         },
         {
-          name: 'Data Processing & Storage',
-          description: 'Engineered scalable data ingestion pipelines and optimized queries using SQL, Pandas, and NoSQL databases like MongoDB and AWS DocumentDB.'
+          name: 'Backend & Vector Search',
+          description: 'Developing performant backend microservices (FastAPI, Spring Boot) and integrating FAISS vector databases.'
+        },
+        {
+          name: 'Database Systems',
+          description: 'Structuring, indexing, and querying prediction streams and experiment logs using MongoDB DocumentDB.'
         }
       ]
     }
