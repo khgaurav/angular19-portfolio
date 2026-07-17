@@ -9,25 +9,26 @@ export class ProjectsService {
     {
       id: 'debate-training',
       title: 'Debate Training with LLMs and Multi-Agent Interaction Structures',
-      description: 'Multi-agent framework leveraging LLMs to simulate and enhance debate processes',
-      tech: ['Python', 'LLMs', 'LangChain', 'LangGraph', 'OpenAI API', 'Ollama', 'OpenDebateEvidence'],
+      description: 'Multi-agent framework leveraging LangChain and LangGraph with an RL-as-a-judge feedback loop for agent retraining',
+      tech: ['Python', 'LLMs', 'LangChain', 'LangGraph', 'Reinforcement Learning', 'RLAIF', 'OpenAI API', 'OpenDebateEvidence'],
       keyPoints: [
-        'Constructed a multi-agent debate framework leveraging two distinct LLMs using LangGraph for agentic workflow orchestration with state management, retry logic, and iterative feedback loops between opposing agents',
-        'Incorporated human-in-the-loop evaluation with LLM-as-a-judge comparing BERTScore against OpenDebateEvidence knowledge base to build 40k golden samples for model benchmarking'
+        'Constructed a multi-agent debate framework using LangChain and LangGraph for complex agentic workflows, state management, and structured debate orchestration between opposing LLM agents',
+        'Implemented an RL-as-a-judge (RLAIF) feedback system utilizing policy gradient methods to evaluate debate quality and output rewards, iteratively retraining and aligning the base LLM agents',
+        'Incorporated human-in-the-loop validation, benchmarking generations against OpenDebateEvidence to build a high-fidelity 40k sample golden dataset for agent alignment'
       ],
-      fullDescription: `<p>Debate Training with LLMs and Multi-Agent Interaction Structures is a cutting-edge project that combines multi-agent systems with large language models to simulate realistic debates. Inspired by the concepts detailed in the SocrAItic Circle presentation, the framework engages agents that assume opposing stances to rigorously test arguments and generate improved debate strategies. By leveraging iterative feedback and integrating human judgment, the system aims to refine debate quality and ultimately build a high-quality dataset of 40k golden samples for benchmarking and training purposes.</p>`,
+      fullDescription: `<p>An advanced multi-agent debate training framework built on top of LangChain and LangGraph, engaging opposing LLM agents in structured, state-managed debate sequences. To continuously improve argument formulation and coherence, the system integrates a Reinforcement Learning from AI Feedback (RLAIF) loop. Here, an RL-based evaluator acts as a judge, computing reward signals from debate transcripts to fine-tune the debate agents iteratively.</p>`,
       sections: [
         {
-          title: 'Methodology',
-          content: `<p>The system utilizes a dual-agent setup where each agent simulates a different perspective. The debate workflow is constructed using LangGraph, ensuring that each round of debate progressively refines the presented arguments. A human-in-the-loop mechanism is integrated by employing an LLM configured as a judge. This judge evaluates the debate rounds by comparing BERTScore metrics with a curated OpenDebateEvidence knowledge base, ensuring that debate outcomes reflect high-quality reasoning and evidence.</p>`
+          title: 'Multi-Agent Workflows with LangGraph',
+          content: `<p>Using LangGraph for complex routing, we built a cyclical graph structure representing a multi-turn debate. Opposing agents (powered by custom LLM configurations) access specialized knowledge pools via LangChain document loaders. LangGraph manages the session state, storing argument structures, rebuttals, and evaluations. The framework supports dynamic agent handoffs, automatic retry logic for format compliance, and contextual memory management.</p>`
         },
         {
-          title: 'Experimental Evaluation',
-          content: `<p>Pilot tests demonstrated that the iterative feedback significantly improves argument coherence and quality. The integration of human preferences through LLM-as-a-judge has enabled the collection of 40k golden samples, forming a comprehensive benchmark for future debate training systems.</p>`
+          title: 'RL-as-a-Judge Retraining Loop',
+          content: `<p>To overcome the limitations of static LLM evaluations, we implemented a reinforcement learning loop (RLAIF). An RL judge network evaluates the generated debate text based on logical consistency, relevance, and semantic grounding. The judge outputs a scalar reward score, which is used to update the policy of the debate LLM agents using REINFORCE-style policy gradient updates, driving continuous alignment and improving debate persuasiveness over successive training epochs.</p>`
         },
         {
-          title: 'Discussion and Future Work',
-          content: `<p>The current framework lays the foundation for automated debate training using LLMs. Future work will focus on scaling the system to incorporate additional agents, further refining the debate evaluation metrics, and integrating real-time human feedback to continuously enhance the debate quality.</p>`
+          title: 'Benchmarking & Dataset Generation',
+          content: `<p>To evaluate the system, we benchmarked the agents against the OpenDebateEvidence knowledge base. Combining the RL judge's evaluations with periodic human-in-the-loop calibration, we compiled a high-fidelity dataset of 40k debate samples. This dataset serves as a benchmark for training and aligning specialized LLMs on complex, multi-perspective reasoning tasks.</p>`
         }
       ],
       demo: {

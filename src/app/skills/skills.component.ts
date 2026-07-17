@@ -15,20 +15,20 @@ export class SkillsComponent {
       name: 'AI/ML & Reinforcement Learning',
       skills: [
         {
+          name: 'LLMs & Agentic Frameworks',
+          description: 'Building multi-agent reasoning graphs (LangGraph), complex routing/retrieval chains (LangChain), and RAG pipelines.'
+        },
+        {
           name: 'Reinforcement Learning (RL)',
-          description: 'Deep experience optimizing control policies (DDPG/PPO) in MuJoCo environments for path planning and robotic tasks.'
+          description: 'Deep experience optimizing control policies (DDPG/PPO) in MuJoCo environments and designing RL-as-a-judge (RLAIF) loops for model retraining.'
         },
         {
           name: 'Deep Learning & CV',
           description: 'Experience building/training neural networks (PyTorch, TensorFlow) and deploying YOLO detectors for real-time monitoring.'
         },
         {
-          name: 'Inference Optimization',
-          description: 'Optimizing and compiling deep models via ONNX and TensorRT acceleration, reducing latency by over 50%.'
-        },
-        {
-          name: 'Evaluation Methodology',
-          description: 'Designing rigorous evaluation frameworks, including stratified cross-validation, ablation studies, and error analysis.'
+          name: 'Evaluation & Validation',
+          description: 'Designing rigorous evaluation frameworks, including stratified cross-validation, ablation studies, and extreme-error analysis.'
         }
       ]
     },
